@@ -1,0 +1,15 @@
+C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Tone_Organ/clk_divider.sv {1 {vlog -work work -sv -stats=none C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Tone_Organ/clk_divider.sv
+Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
+-- Compiling module clk_divider
+
+Top level modules:
+	clk_divider
+
+} {} {}} C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Tone_Organ/clk_divider_tb.sv {1 {vlog -work work -sv -stats=none C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Tone_Organ/clk_divider_tb.sv
+Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
+-- Compiling module clk_divider_tb
+
+Top level modules:
+	clk_divider_tb
+
+} {} {}}

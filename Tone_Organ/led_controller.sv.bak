@@ -1,0 +1,18 @@
+module led_controller(
+    input logic Clock_1Hz,
+    output logic [9:0] leds
+    );
+
+    initial begin
+        leds = 10'b00000_00001;
+    end
+
+    always_ff @ (posedge clk) begin
+        if (leds[9] == 1)
+            leds <= 10'b00000_00001;
+        else 
+            leds <= leds * 2;
+    end
+
+
+endmodule
