@@ -3,167 +3,167 @@ TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Setup 'TD_CLK27'
-Slack : -66.870
-TNS   : -2195.822
+Slack : -67.976
+TNS   : -2229.891
 
 Type  : Setup 'CLOCK_50'
-Slack : -0.948
-TNS   : -0.948
+Slack : -1.002
+TNS   : -1.002
 
 Type  : Setup 'altera_reserved_tck'
-Slack : 10.176
-TNS   : 0.000
-
-Type  : Setup 'audio_controller:audio_control|TFF_power_of_2_division_counter_with_auto_phase_inversion:generate_aud_ctrl_clk|widereg:div_regs_gen[1].div_reg|outdata[0]'
-Slack : 13.815
+Slack : 9.672
 TNS   : 0.000
 
 Type  : Setup 'doublesync:SYNC_CLOCK22KHz|reg2'
-Slack : 14.401
+Slack : 13.631
 TNS   : 0.000
 
 Type  : Setup 'audio_controller:audio_control|audio_clock:u4|LRCK_1X'
-Slack : 15.319
+Slack : 15.586
+TNS   : 0.000
+
+Type  : Setup 'audio_controller:audio_control|TFF_power_of_2_division_counter_with_auto_phase_inversion:generate_aud_ctrl_clk|widereg:div_regs_gen[1].div_reg|outdata[0]'
+Slack : 15.673
 TNS   : 0.000
 
 Type  : Setup 'audio_controller:audio_control|TFF_power_of_2_division_counter_with_auto_phase_inversion:generate_aud_ctrl_clk|widereg:div_reg_top|outdata[0]'
-Slack : 17.615
+Slack : 17.634
 TNS   : 0.000
 
 Type  : Setup 'address_fsm:ADDRESS_CONTROLLER|state[1]'
-Slack : 30.696
+Slack : 30.415
 TNS   : 0.000
 
 Type  : Setup 'doublesync:SYNC_CLOCK1Hz|reg2'
-Slack : 34.103
+Slack : 33.509
 TNS   : 0.000
 
 Type  : Setup 'audio_controller:audio_control|I2C_AV_Config:u3|mI2C_CTRL_CLK'
-Slack : 34.545
+Slack : 34.697
 TNS   : 0.000
 
 Type  : Setup 'audio_controller:audio_control|audio_clock:u4|oAUD_BCK'
-Slack : 36.981
-TNS   : 0.000
-
-Type  : Hold 'CLOCK_50'
-Slack : 0.124
+Slack : 36.796
 TNS   : 0.000
 
 Type  : Hold 'altera_reserved_tck'
-Slack : 0.138
+Slack : 0.142
 TNS   : 0.000
 
-Type  : Hold 'doublesync:SYNC_CLOCK1Hz|reg2'
-Slack : 0.160
+Type  : Hold 'CLOCK_50'
+Slack : 0.153
 TNS   : 0.000
 
 Type  : Hold 'audio_controller:audio_control|I2C_AV_Config:u3|mI2C_CTRL_CLK'
-Slack : 0.274
+Slack : 0.268
+TNS   : 0.000
+
+Type  : Hold 'doublesync:SYNC_CLOCK1Hz|reg2'
+Slack : 0.280
 TNS   : 0.000
 
 Type  : Hold 'audio_controller:audio_control|TFF_power_of_2_division_counter_with_auto_phase_inversion:generate_aud_ctrl_clk|widereg:div_reg_top|outdata[0]'
-Slack : 0.538
-TNS   : 0.000
-
-Type  : Hold 'audio_controller:audio_control|TFF_power_of_2_division_counter_with_auto_phase_inversion:generate_aud_ctrl_clk|widereg:div_regs_gen[1].div_reg|outdata[0]'
-Slack : 0.659
-TNS   : 0.000
-
-Type  : Hold 'TD_CLK27'
-Slack : 0.681
-TNS   : 0.000
-
-Type  : Hold 'address_fsm:ADDRESS_CONTROLLER|state[1]'
-Slack : 0.757
-TNS   : 0.000
-
-Type  : Hold 'doublesync:SYNC_CLOCK22KHz|reg2'
-Slack : 0.794
+Slack : 0.592
 TNS   : 0.000
 
 Type  : Hold 'audio_controller:audio_control|audio_clock:u4|oAUD_BCK'
-Slack : 0.798
+Slack : 0.644
+TNS   : 0.000
+
+Type  : Hold 'audio_controller:audio_control|TFF_power_of_2_division_counter_with_auto_phase_inversion:generate_aud_ctrl_clk|widereg:div_regs_gen[1].div_reg|outdata[0]'
+Slack : 0.651
+TNS   : 0.000
+
+Type  : Hold 'TD_CLK27'
+Slack : 0.682
+TNS   : 0.000
+
+Type  : Hold 'doublesync:SYNC_CLOCK22KHz|reg2'
+Slack : 0.797
+TNS   : 0.000
+
+Type  : Hold 'address_fsm:ADDRESS_CONTROLLER|state[1]'
+Slack : 0.841
 TNS   : 0.000
 
 Type  : Hold 'audio_controller:audio_control|audio_clock:u4|LRCK_1X'
-Slack : 1.972
+Slack : 2.056
 TNS   : 0.000
 
 Type  : Recovery 'CLOCK_50'
-Slack : 7.149
+Slack : 8.006
 TNS   : 0.000
 
 Type  : Recovery 'audio_controller:audio_control|audio_clock:u4|oAUD_BCK'
-Slack : 13.781
+Slack : 14.067
 TNS   : 0.000
 
 Type  : Recovery 'audio_controller:audio_control|TFF_power_of_2_division_counter_with_auto_phase_inversion:generate_aud_ctrl_clk|widereg:div_regs_gen[1].div_reg|outdata[0]'
-Slack : 14.759
+Slack : 14.525
 TNS   : 0.000
 
 Type  : Recovery 'altera_reserved_tck'
-Slack : 15.362
-TNS   : 0.000
-
-Type  : Removal 'altera_reserved_tck'
-Slack : 0.774
+Slack : 14.814
 TNS   : 0.000
 
 Type  : Removal 'CLOCK_50'
-Slack : 0.998
+Slack : 0.552
+TNS   : 0.000
+
+Type  : Removal 'altera_reserved_tck'
+Slack : 0.566
 TNS   : 0.000
 
 Type  : Removal 'audio_controller:audio_control|TFF_power_of_2_division_counter_with_auto_phase_inversion:generate_aud_ctrl_clk|widereg:div_regs_gen[1].div_reg|outdata[0]'
-Slack : 2.745
+Slack : 2.541
 TNS   : 0.000
 
 Type  : Removal 'audio_controller:audio_control|audio_clock:u4|oAUD_BCK'
-Slack : 3.843
+Slack : 3.586
 TNS   : 0.000
 
 Type  : Minimum Pulse Width 'CLOCK_50'
-Slack : 8.457
+Slack : 8.480
 TNS   : 0.000
 
 Type  : Minimum Pulse Width 'altera_reserved_tck'
-Slack : 15.113
+Slack : 15.076
 TNS   : 0.000
 
 Type  : Minimum Pulse Width 'TD_CLK27'
 Slack : 17.726
 TNS   : 0.000
 
-Type  : Minimum Pulse Width 'doublesync:SYNC_CLOCK1Hz|reg2'
-Slack : 19.233
+Type  : Minimum Pulse Width 'audio_controller:audio_control|TFF_power_of_2_division_counter_with_auto_phase_inversion:generate_aud_ctrl_clk|widereg:div_regs_gen[1].div_reg|outdata[0]'
+Slack : 19.254
 TNS   : 0.000
 
-Type  : Minimum Pulse Width 'audio_controller:audio_control|TFF_power_of_2_division_counter_with_auto_phase_inversion:generate_aud_ctrl_clk|widereg:div_regs_gen[1].div_reg|outdata[0]'
-Slack : 19.251
+Type  : Minimum Pulse Width 'doublesync:SYNC_CLOCK22KHz|reg2'
+Slack : 19.259
 TNS   : 0.000
 
 Type  : Minimum Pulse Width 'audio_controller:audio_control|audio_clock:u4|oAUD_BCK'
 Slack : 19.279
 TNS   : 0.000
 
-Type  : Minimum Pulse Width 'audio_controller:audio_control|TFF_power_of_2_division_counter_with_auto_phase_inversion:generate_aud_ctrl_clk|widereg:div_reg_top|outdata[0]'
-Slack : 19.292
-TNS   : 0.000
-
 Type  : Minimum Pulse Width 'audio_controller:audio_control|I2C_AV_Config:u3|mI2C_CTRL_CLK'
-Slack : 19.304
+Slack : 19.286
 TNS   : 0.000
 
-Type  : Minimum Pulse Width 'doublesync:SYNC_CLOCK22KHz|reg2'
-Slack : 19.341
+Type  : Minimum Pulse Width 'audio_controller:audio_control|TFF_power_of_2_division_counter_with_auto_phase_inversion:generate_aud_ctrl_clk|widereg:div_reg_top|outdata[0]'
+Slack : 19.289
+TNS   : 0.000
+
+Type  : Minimum Pulse Width 'doublesync:SYNC_CLOCK1Hz|reg2'
+Slack : 19.335
 TNS   : 0.000
 
 Type  : Minimum Pulse Width 'address_fsm:ADDRESS_CONTROLLER|state[1]'
-Slack : 19.380
+Slack : 19.342
 TNS   : 0.000
 
 Type  : Minimum Pulse Width 'audio_controller:audio_control|audio_clock:u4|LRCK_1X'
-Slack : 19.384
+Slack : 19.407
 TNS   : 0.000
 
 ------------------------------------------------------------

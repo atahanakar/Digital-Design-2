@@ -256,7 +256,7 @@ picoblaze_template    #(
                             .input_data(audio_data),
                             .UPPER_LEDS(LED[9:2]),
                             .LED0(LED[0]),
-                            .interrupt(address_ready)
+                            .interrupt(1'b1)
                             );
         
 //=======================================================================================================================
