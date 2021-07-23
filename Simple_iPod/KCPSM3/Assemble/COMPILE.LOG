@@ -198,20 +198,26 @@ JUMP END
 two:
 SL0 s2
 JUMP NC,one
-LOAD s1,E0
-OUTPUT s1,LED_port
+LOAD s1, E0
+OUTPUT s1, LED_port
 JUMP END
 one:
 SL0 s2
-JUMP NC,zero
-LOAD s1,C0
-OUTPUT s1,LED_port
+JUMP NC, zero
+LOAD s1, C0
+OUTPUT s1, LED_port
 JUMP END
 zero:
 SL0 s2
-JUMP NC,END
-LOAD s1,80
-OUTPUT s1,LED_port
+JUMP NC, real_zero
+LOAD s1, 80
+OUTPUT s1, LED_port
+JUMP END
+real_zero:
+SL0 s2
+JUMP NC, END
+LOAD s1, 00
+OUTPUT s1, LED_port
 JUMP END
 END:
 LOAD s1, 00  ; reset
@@ -443,8 +449,14 @@ OUTPUT s1, LED_port
 JUMP END
 zero: 
 SL0 s2
-JUMP NC, END
+JUMP NC, real_zero
 LOAD s1, 80
+OUTPUT s1, LED_port
+JUMP END
+real_zero: 
+SL0 s2
+JUMP NC, END
+LOAD s1, 00
 OUTPUT s1, LED_port
 JUMP END
 END: 
@@ -695,31 +707,37 @@ PASS 3 - Resolving addresses and line labels
 064 JUMP END
 065 zero: 
 065 SL0 s2
-066 JUMP NC, END
+066 JUMP NC, real_zero
 067 LOAD s1, 80
 068 OUTPUT s1, LED_port
 069 JUMP END
-06A END: 
-06A LOAD s1, 00; reset
-06B LOAD s2, 00
-06C LOAD s3, 00
-06D STORE s1, save_s1; save to memory
-06E STORE s2, save_s2
-06F STORE s3, save_s3
-070 FETCH s0, ISR_preserve_s0;let's return them to the stack
-071 FETCH s1, ISR_preserve_s1
-072 FETCH s2, ISR_preserve_s2
-073 FETCH s3, ISR_preserve_s3
-074 FETCH s4, ISR_preserve_s4
-075 FETCH s5, ISR_preserve_s5
-076 RETURNI ENABLE
-077 
+06A real_zero: 
+06A SL0 s2
+06B JUMP NC, END
+06C LOAD s1, 00
+06D OUTPUT s1, LED_port
+06E JUMP END
+06F END: 
+06F LOAD s1, 00; reset
+070 LOAD s2, 00
+071 LOAD s3, 00
+072 STORE s1, save_s1; save to memory
+073 STORE s2, save_s2
+074 STORE s3, save_s3
+075 FETCH s0, ISR_preserve_s0;let's return them to the stack
+076 FETCH s1, ISR_preserve_s1
+077 FETCH s2, ISR_preserve_s2
+078 FETCH s3, ISR_preserve_s3
+079 FETCH s4, ISR_preserve_s4
+07A FETCH s5, ISR_preserve_s5
+07B RETURNI ENABLE
+07C 
 ;**************************************************************************************
-077 ; Interrupt Vector
-077 
+07C ; Interrupt Vector
+07C 
 ;**************************************************************************************
-077 ;
-077 ADDRESS 3FF;for interrupt
+07C ;
+07C ADDRESS 3FF;for interrupt
 3FF JUMP ISR;for interrupt
 3FF ;
 3FF ;
@@ -949,30 +967,36 @@ PASS 4 - Resolving Operands
 064 JUMP END
 065 zero: 
 065 SL0 s2
-066 JUMP NC, END
+066 JUMP NC, real_zero
 067 LOAD s1, 80
 068 OUTPUT s1, LED_port
 069 JUMP END
-06A END: 
-06A LOAD s1, 00; reset
-06B LOAD s2, 00
-06C LOAD s3, 00
-06D STORE s1, save_s1; save to memory
-06E STORE s2, save_s2
-06F STORE s3, save_s3
-070 FETCH s0, ISR_preserve_s0;let's return them to the stack
-071 FETCH s1, ISR_preserve_s1
-072 FETCH s2, ISR_preserve_s2
-073 FETCH s3, ISR_preserve_s3
-074 FETCH s4, ISR_preserve_s4
-075 FETCH s5, ISR_preserve_s5
-076 RETURNI ENABLE
-077 
+06A real_zero: 
+06A SL0 s2
+06B JUMP NC, END
+06C LOAD s1, 00
+06D OUTPUT s1, LED_port
+06E JUMP END
+06F END: 
+06F LOAD s1, 00; reset
+070 LOAD s2, 00
+071 LOAD s3, 00
+072 STORE s1, save_s1; save to memory
+073 STORE s2, save_s2
+074 STORE s3, save_s3
+075 FETCH s0, ISR_preserve_s0;let's return them to the stack
+076 FETCH s1, ISR_preserve_s1
+077 FETCH s2, ISR_preserve_s2
+078 FETCH s3, ISR_preserve_s3
+079 FETCH s4, ISR_preserve_s4
+07A FETCH s5, ISR_preserve_s5
+07B RETURNI ENABLE
+07C 
 ;**************************************************************************************
-077 ; Interrupt Vector
-077 
+07C ; Interrupt Vector
+07C 
 ;**************************************************************************************
-077 ;
+07C ;
 3FF ADDRESS 3FF;for interrupt
 3FF JUMP ISR;for interrupt
 3FF ;

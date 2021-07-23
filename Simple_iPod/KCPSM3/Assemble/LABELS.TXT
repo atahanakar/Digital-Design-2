@@ -25,4 +25,5 @@ Table of addresses and their specified labels.
 05B  two
 060  one
 065  zero
-06A  END
+06A  real_zero
+06F  END

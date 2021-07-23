@@ -203,8 +203,14 @@ negative_to_positive:
                       JUMP END
                 zero: 
                       SL0 s2
-                      JUMP NC, END
+                      JUMP NC, real_zero
                       LOAD s1, 80
+                      OUTPUT s1, LED_port
+                      JUMP END
+           real_zero: 
+                      SL0 s2
+                      JUMP NC, END
+                      LOAD s1, 00
                       OUTPUT s1, LED_port
                       JUMP END
                  END: 

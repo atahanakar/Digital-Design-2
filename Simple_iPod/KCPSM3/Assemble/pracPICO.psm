@@ -226,24 +226,30 @@
                 two:
                     SL0 s2 
                     JUMP NC,one
-                    LOAD s1,E0 
-                    OUTPUT s1,LED_port
+                    LOAD s1, E0 
+                    OUTPUT s1, LED_port
                     JUMP END
 
                 one:
                     SL0 s2 
-                    JUMP NC,zero
-                    LOAD s1,C0
-                    OUTPUT s1,LED_port
+                    JUMP NC, zero
+                    LOAD s1, C0
+                    OUTPUT s1, LED_port
                     JUMP END
 
                 zero:
                     SL0 s2 
-                    JUMP NC,END
-                    LOAD s1,80
-                    OUTPUT s1,LED_port
+                    JUMP NC, real_zero
+                    LOAD s1, 80
+                    OUTPUT s1, LED_port
                     JUMP END
 
+                real_zero:
+                    SL0 s2 
+                    JUMP NC, END
+                    LOAD s1, 00
+                    OUTPUT s1, LED_port
+                    JUMP END
 
                 END:
                     LOAD s1, 00  ; reset
