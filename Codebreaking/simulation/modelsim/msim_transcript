@@ -1,0 +1,70 @@
+# Reading C:/altera/15.0/modelsim_ase/tcl/vsim/pref.tcl
+# ERROR: No extended dataflow license exists
+# do rc4_run_msim_rtl_verilog.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim PE vmap 10.3d Lib Mapping Utility 2014.10 Oct  7 2014
+# vmap -modelsim_quiet work rtl_work 
+# Copying C:/altera/15.0/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# ** Warning: Copied C:/altera/15.0/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini.
+#          Updated modelsim.ini.
+# 
+# vlog -sv -work work +incdir+C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking {C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/s_memory.v}
+# Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
+# Start time: 00:52:18 on Jul 24,2021
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking" C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/s_memory.v 
+# -- Compiling module s_memory
+# 
+# Top level modules:
+# 	s_memory
+# End time: 00:52:18 on Jul 24,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking {C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/sseg_controller.sv}
+# Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
+# Start time: 00:52:18 on Jul 24,2021
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking" C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/sseg_controller.sv 
+# -- Compiling module sseg_controller
+# 
+# Top level modules:
+# 	sseg_controller
+# End time: 00:52:18 on Jul 24,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking {C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/ksa.sv}
+# Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
+# Start time: 00:52:18 on Jul 24,2021
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking" C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/ksa.sv 
+# -- Compiling module ksa
+# 
+# Top level modules:
+# 	ksa
+# End time: 00:52:18 on Jul 24,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking {C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/fsm.sv}
+# Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
+# Start time: 00:52:18 on Jul 24,2021
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking" C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/fsm.sv 
+# -- Compiling module fsm
+# 
+# Top level modules:
+# 	fsm
+# End time: 00:52:18 on Jul 24,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+vsim work.ksa
+# vsim -gui "+altera" -l msim_transcript -do "rc4_run_msim_rtl_verilog.do" 
+# Start time: 00:52:21 on Jul 24,2021
+# Loading sv_std.std
+# Loading work.ksa
+# Loading work.s_memory
+# ** Error: (vsim-3033) C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/s_memory.v(63): Instantiation of 'altsyncram' failed. The design unit was not found.
+# 
+#         Region: /ksa/s_memory_inst
+#         Searched libraries:
+#             C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/simulation/modelsim/rtl_work
+# Loading work.fsm
+# Loading work.sseg_controller
+# Error loading design

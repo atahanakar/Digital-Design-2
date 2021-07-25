@@ -1,0 +1,50 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/simulation/qsim
+vksa
+Z1 !s110 1627111568
+!i10b 1
+!s100 jZeZHC_`NUae8^hP5Rh1N3
+IB7j48KJJ63bLaC7UM]]]33
+Z2 V`JN@9S9cnhjKRR_L]QIcM3
+R0
+w1627111567
+8rc4.vo
+Frc4.vo
+L0 32
+Z3 OV;L;10.3d;59
+r1
+!s85 0
+31
+!s108 1627111568.220000
+!s107 rc4.vo|
+!s90 -work|work|rc4.vo|
+!i113 1
+Z4 o-work work
+vksa_vlg_vec_tst
+R1
+!i10b 1
+!s100 D:ZSQ`L4Z_Lj;CPMkH]<C2
+I2AQEYId8iBbLXU=:dRL;?3
+R2
+R0
+w1627111566
+8Waveform.vwf.vt
+FWaveform.vwf.vt
+L0 30
+R3
+r1
+!s85 0
+31
+!s108 1627111568.312000
+!s107 Waveform.vwf.vt|
+!s90 -work|work|Waveform.vwf.vt|
+!i113 1
+R4

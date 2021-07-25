@@ -1,0 +1,38 @@
+Quartus II Archive log --	C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/rc4.qarlog
+
+Archive:	C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/rc4.qar
+Date:		Sun Jul 25 00:39:18 2021
+Quartus II 64-Bit		15.0.0 Build 145 04/22/2015 SJ Web Edition
+
+	=========== Files Selected: ===========
+C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/d_memory.cmp
+C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/d_memory.qip
+C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/d_memory.v
+C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/d_memory_inst.v
+C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/e_rom.cmp
+C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/e_rom.qip
+C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/e_rom.v
+C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/e_rom_inst.v
+C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/fsm.sv
+C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/ksa.sv
+C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/rc4.qpf
+C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/rc4.qsf
+C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/rc4_assignment_defaults.qdf
+C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/s_memory.bsf
+C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/s_memory.cmp
+C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/s_memory.inc
+C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/s_memory.qip
+C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/s_memory.v
+C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/s_memory_bb.v
+C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/s_memory_inst.v
+C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/s_memory_syn.v
+C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/secret_messages/msg_1_for_task2b/message.mif
+C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/secret_messages/msg_2_for_task2b/message.mif
+C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/secret_messages/msg_3_for_task2b/message.mif
+C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/secret_messages/msg_4_for_task3/message.mif
+C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/sseg_controller.sv
+C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/timing_constraints.sdc
+	======= Total: 27 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.

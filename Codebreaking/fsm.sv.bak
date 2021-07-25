@@ -1,0 +1,139 @@
+module fsm(
+    input logic clk,
+    input logic rst,
+    input logic [23:0] secret_key, // Coming from Switches
+    input logic [255:0] q_s, // Coming from Working Memory RAM (S)
+    input logic [255:0] q_m, // Coming from Encrypted Message 32 x 8 ROM 
+    input logic [255:0] encrypted_input,
+
+    // To Decrypted Message 32 x 8 RAM
+    output logic wren_d,
+    output logic data_d,
+    output logic address_d,
+
+    output logic [255:0] decrypted_output,
+
+    // To Encrypted Message 32 x 8 ROM
+    output logic address_m,
+
+    // To Working Memory RAM (S) 256 x 8
+    output logic wren_s,
+    output logic data_s,
+    output logic address_s, 
+
+    // To DE1-SoC to indicate fail or success flag
+    output logic cracked, // LED0
+    output logic failed   // LED1
+    );  
+
+    // Parameters
+    parameter MESSAGE_LENGTH = 32;
+    parameter KEY_LENGTH     = 3;
+
+    // Essential wires
+    logic       [7:0]       i, j, k;
+    logic       [255:0]     s;
+
+
+    typedef enum logic [15:0] {
+        INIT                = 16'b0000_0000_00_000000;
+        INIT_S              = 16'b0000_0000_00_000001;
+        SHUFFLE_S_1         = 16'b0000_0000_00_000010;
+        SHUFFLE_S_2         = 16'b0000_0000_00_000011;
+        COMPUTE_ONE_BYTE_1  = 16'b0000_0000_00_000100;
+        COMPUTE_ONE_BYTE_2  = 16'b0000_0000_00_000101;
+        COMPUTE_ONE_BYTE_3  = 16'b0000_0000_00_000110;
+        COMPUTE_ONE_BYTE_3  = 16'b0000_0000_00_000111;
+        DONE                = 16'b0000_0000_00_001000;
+        FAIL                = 16'b0000_0000_00_001001; 
+    } state_logic;
+
+    initial begin
+        state <= INIT;
+    end
+
+    always_ff @ (posedge clk or posedge rst) begin
+        if(rst)
+            state <= INIT;
+
+        else
+            case(state)
+                // Initializing i, j, and k
+                INIT: begin
+                    i <= 8'b0;
+                    j <= 8'b0;
+                    k <= 8'b0;
+                    state <= FOR_I;
+                end
+
+                // Task 1: Initialize s array.
+                INIT_S: begin
+                    if(i < 255) begin
+                        s[i] <= i;
+                        i <= i + 8'b1;
+                        state <= FOR_I;
+                    end
+
+                    else begin
+                        i <= 8'b0;
+                        j <= 8'b0;
+                        state <= SHUFFLE_S_1;
+                    end
+                end
+
+                // Task 2
+
+                //      Shuffling arrays
+                SHUFFLE_S_1: begin
+                    j <= (j + s[i] + secret_key[(i % KEY_LENGTH) * 8 + 7: (i % KEY_LENGTH) * 8]);
+                    state <= SHUFFLE_S_2;
+                end
+
+                SHUFFLE_S_2: begin
+                    if(i <= 255) begin
+                        s[i] <= s[j];
+                        i <= i + 8'b1;
+                        state <= SHUFFLE_S_1;
+                    end
+
+                    else begin
+                        i <= 8'b1;
+                        j <= 8'b0;
+                        k <= 8'b0;
+                        state <= COMPUTE_ONE_BYTE_1;
+                    end
+                end
+
+                //      Computing one byte per character in the encrypted message
+                COMPUTE_ONE_BYTE_1: begin
+                    j <= j + s[i];
+                    state <= COMPUTE_ONE_BYTE_2;
+                end
+
+                COMPUTE_ONE_BYTE_2: begin
+                    s[i] <= s[j];
+                    state <= COMPUTE_ONE_BYTE_3;
+                end
+
+                COMPUTE_ONE_BYTE_3: begin
+                    f <= s[s[i] + s[j]];
+                    state <= COMPUTE_ONE_BYTE_4;
+                end
+
+                COMPUTE_ONE_BYTE_4: begin
+                    decrypted_output[k] <= f ^ encrypted_input[k];
+                    k <= k + 1;
+                    i <= i + 1;
+                    if(k <= MESSAGE_LENGTH)
+                        state <= COMPUTE_ONE_BYTE_1;
+                    else    
+                        state <= DONE;
+                end
+
+                default: state <= INIT;
+
+            endcase
+    end
+
+
+endmodule

@@ -1,0 +1,56 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/altera/15.0
+vfsm
+Z0 DXx6 sv_std 3 std 0 22 <EOTafDcUY:cQeO^ICn]m3
+!s110 1627203475
+!i10b 1
+!s100 Q4jPb5SYd3_V4lRk>?`;?2
+I2cM_n9K1hX7Z1bWjMAhQ30
+Z1 V`JN@9S9cnhjKRR_L]QIcM3
+!s105 fsm_sv_unit
+S1
+Z2 dC:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking
+w1627203366
+8C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/fsm.sv
+FC:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/fsm.sv
+L0 1
+Z3 OV;L;10.3d;59
+r1
+!s85 0
+31
+!s108 1627203475.980000
+!s107 C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/fsm.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/fsm.sv|
+!i113 1
+Z4 o-work work -sv
+vfsm_tb
+R0
+!s110 1627193454
+!i10b 1
+!s100 E^gFbacY9B?VTgUD2CjWV3
+IgA<l`3N6N14[Q`Zk85`L]0
+R1
+!s105 fsm_tb_sv_unit
+S1
+R2
+w1627193450
+8C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/fsm_tb.sv
+FC:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/fsm_tb.sv
+L0 2
+R3
+r1
+!s85 0
+31
+!s108 1627193454.973000
+!s107 C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/fsm_tb.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/ATAHAN/Documents/GitHub/Digital-Design-2/Codebreaking/fsm_tb.sv|
+!i113 1
+R4
