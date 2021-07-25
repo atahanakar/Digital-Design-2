@@ -4,7 +4,6 @@ module fsm #(
     )
     (
     input logic clk,
-    input logic [31:0] core_no,
     input logic done,
     input logic rst,
     input logic [7:0] q_s,         // Coming from Working Memory RAM (S)
