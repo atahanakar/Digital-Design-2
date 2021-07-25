@@ -101,7 +101,7 @@ module ksa(
                 .final_secret_key(final_secret_key[i])
             );
         end
-        
+
         reg [31:0] j;
         always @ (posedge |cracked) 
             for(j = 0; j < CORE_NUMBER; j = j + 1) begin: FOR_SECRET_KEY
@@ -110,8 +110,6 @@ module ksa(
             end
 
     endgenerate
-
-    
 
     // ================= HEX DISPLAY ====================== //
     sseg_controller DISPLAY_HEX0(.in(secret_key[3:0]),   .segs(HEX0));
