@@ -3,131 +3,323 @@ TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1100mV 85C Model Setup 'CLOCK_50'
-Slack : 6.339
+Slack : 5.570
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Setup 'altera_reserved_tck'
-Slack : 9.646
+Slack : 8.919
 TNS   : 0.000
 
-Type  : Slow 1100mV 85C Model Hold 'CLOCK_50'
-Slack : 0.318
+Type  : Slow 1100mV 85C Model Setup 'fsm:FOR_MULTI_CORE[1].RC4_CRACK|real_cracked'
+Slack : 14.059
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Setup 'fsm:FOR_MULTI_CORE[2].RC4_CRACK|real_cracked'
+Slack : 14.272
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Setup 'fsm:FOR_MULTI_CORE[0].RC4_CRACK|real_cracked'
+Slack : 14.345
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Setup 'fsm:FOR_MULTI_CORE[3].RC4_CRACK|real_cracked'
+Slack : 14.345
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Hold 'altera_reserved_tck'
-Slack : 0.386
+Slack : 0.117
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'CLOCK_50'
+Slack : 0.319
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'fsm:FOR_MULTI_CORE[0].RC4_CRACK|real_cracked'
+Slack : 0.762
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'fsm:FOR_MULTI_CORE[3].RC4_CRACK|real_cracked'
+Slack : 0.825
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'fsm:FOR_MULTI_CORE[2].RC4_CRACK|real_cracked'
+Slack : 1.069
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'fsm:FOR_MULTI_CORE[1].RC4_CRACK|real_cracked'
+Slack : 1.155
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Recovery 'altera_reserved_tck'
-Slack : 14.283
+Slack : 14.386
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Removal 'altera_reserved_tck'
-Slack : 0.698
+Slack : 0.772
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Minimum Pulse Width 'CLOCK_50'
-Slack : 8.963
+Slack : 8.881
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Minimum Pulse Width 'altera_reserved_tck'
-Slack : 15.064
+Slack : 15.072
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'fsm:FOR_MULTI_CORE[1].RC4_CRACK|real_cracked'
+Slack : 19.328
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'fsm:FOR_MULTI_CORE[2].RC4_CRACK|real_cracked'
+Slack : 19.330
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'fsm:FOR_MULTI_CORE[3].RC4_CRACK|real_cracked'
+Slack : 19.344
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'fsm:FOR_MULTI_CORE[0].RC4_CRACK|real_cracked'
+Slack : 19.349
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Setup 'CLOCK_50'
-Slack : 5.855
+Slack : 5.056
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Setup 'altera_reserved_tck'
-Slack : 9.871
+Slack : 9.074
 TNS   : 0.000
 
-Type  : Slow 1100mV 0C Model Hold 'CLOCK_50'
-Slack : 0.293
+Type  : Slow 1100mV 0C Model Setup 'fsm:FOR_MULTI_CORE[1].RC4_CRACK|real_cracked'
+Slack : 14.239
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Setup 'fsm:FOR_MULTI_CORE[2].RC4_CRACK|real_cracked'
+Slack : 14.476
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Setup 'fsm:FOR_MULTI_CORE[3].RC4_CRACK|real_cracked'
+Slack : 14.487
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Setup 'fsm:FOR_MULTI_CORE[0].RC4_CRACK|real_cracked'
+Slack : 14.547
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Hold 'altera_reserved_tck'
-Slack : 0.391
+Slack : 0.106
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'CLOCK_50'
+Slack : 0.279
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'fsm:FOR_MULTI_CORE[0].RC4_CRACK|real_cracked'
+Slack : 0.752
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'fsm:FOR_MULTI_CORE[3].RC4_CRACK|real_cracked'
+Slack : 0.887
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'fsm:FOR_MULTI_CORE[2].RC4_CRACK|real_cracked'
+Slack : 1.054
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'fsm:FOR_MULTI_CORE[1].RC4_CRACK|real_cracked'
+Slack : 1.172
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Recovery 'altera_reserved_tck'
-Slack : 14.411
+Slack : 14.515
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Removal 'altera_reserved_tck'
-Slack : 0.691
+Slack : 0.711
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Minimum Pulse Width 'CLOCK_50'
-Slack : 8.993
+Slack : 8.823
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Minimum Pulse Width 'altera_reserved_tck'
-Slack : 15.052
+Slack : 15.080
 TNS   : 0.000
 
-Type  : Fast 1100mV 85C Model Setup 'altera_reserved_tck'
-Slack : 12.541
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'fsm:FOR_MULTI_CORE[1].RC4_CRACK|real_cracked'
+Slack : 19.334
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'fsm:FOR_MULTI_CORE[2].RC4_CRACK|real_cracked'
+Slack : 19.343
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'fsm:FOR_MULTI_CORE[3].RC4_CRACK|real_cracked'
+Slack : 19.346
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'fsm:FOR_MULTI_CORE[0].RC4_CRACK|real_cracked'
+Slack : 19.358
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Setup 'CLOCK_50'
-Slack : 12.551
+Slack : 12.070
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Setup 'altera_reserved_tck'
+Slack : 12.170
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Setup 'fsm:FOR_MULTI_CORE[1].RC4_CRACK|real_cracked'
+Slack : 16.180
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Setup 'fsm:FOR_MULTI_CORE[2].RC4_CRACK|real_cracked'
+Slack : 16.269
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Setup 'fsm:FOR_MULTI_CORE[0].RC4_CRACK|real_cracked'
+Slack : 16.320
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Setup 'fsm:FOR_MULTI_CORE[3].RC4_CRACK|real_cracked'
+Slack : 16.360
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Hold 'altera_reserved_tck'
-Slack : 0.144
+Slack : 0.023
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Hold 'CLOCK_50'
-Slack : 0.181
+Slack : 0.183
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'fsm:FOR_MULTI_CORE[3].RC4_CRACK|real_cracked'
+Slack : 0.215
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'fsm:FOR_MULTI_CORE[0].RC4_CRACK|real_cracked'
+Slack : 0.236
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'fsm:FOR_MULTI_CORE[1].RC4_CRACK|real_cracked'
+Slack : 0.426
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'fsm:FOR_MULTI_CORE[2].RC4_CRACK|real_cracked'
+Slack : 0.516
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Recovery 'altera_reserved_tck'
-Slack : 15.580
+Slack : 15.642
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Removal 'altera_reserved_tck'
-Slack : 0.310
+Slack : 0.345
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Minimum Pulse Width 'CLOCK_50'
-Slack : 8.530
+Slack : 8.527
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Minimum Pulse Width 'altera_reserved_tck'
-Slack : 14.760
+Slack : 14.773
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'fsm:FOR_MULTI_CORE[1].RC4_CRACK|real_cracked'
+Slack : 19.549
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'fsm:FOR_MULTI_CORE[2].RC4_CRACK|real_cracked'
+Slack : 19.558
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'fsm:FOR_MULTI_CORE[0].RC4_CRACK|real_cracked'
+Slack : 19.567
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'fsm:FOR_MULTI_CORE[3].RC4_CRACK|real_cracked'
+Slack : 19.567
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Setup 'CLOCK_50'
-Slack : 12.913
+Slack : 12.432
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Setup 'altera_reserved_tck'
-Slack : 13.092
+Slack : 12.737
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'fsm:FOR_MULTI_CORE[1].RC4_CRACK|real_cracked'
+Slack : 16.579
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'fsm:FOR_MULTI_CORE[2].RC4_CRACK|real_cracked'
+Slack : 16.670
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'fsm:FOR_MULTI_CORE[0].RC4_CRACK|real_cracked'
+Slack : 16.714
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'fsm:FOR_MULTI_CORE[3].RC4_CRACK|real_cracked'
+Slack : 16.729
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Hold 'altera_reserved_tck'
-Slack : 0.130
+Slack : 0.011
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Hold 'CLOCK_50'
-Slack : 0.135
+Slack : 0.167
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'fsm:FOR_MULTI_CORE[0].RC4_CRACK|real_cracked'
+Slack : 0.205
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'fsm:FOR_MULTI_CORE[3].RC4_CRACK|real_cracked'
+Slack : 0.215
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'fsm:FOR_MULTI_CORE[1].RC4_CRACK|real_cracked'
+Slack : 0.388
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'fsm:FOR_MULTI_CORE[2].RC4_CRACK|real_cracked'
+Slack : 0.463
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Recovery 'altera_reserved_tck'
-Slack : 15.803
+Slack : 15.863
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Removal 'altera_reserved_tck'
-Slack : 0.270
+Slack : 0.300
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Minimum Pulse Width 'CLOCK_50'
-Slack : 8.482
+Slack : 8.478
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Minimum Pulse Width 'altera_reserved_tck'
-Slack : 14.748
+Slack : 14.759
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'fsm:FOR_MULTI_CORE[1].RC4_CRACK|real_cracked'
+Slack : 19.573
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'fsm:FOR_MULTI_CORE[2].RC4_CRACK|real_cracked'
+Slack : 19.583
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'fsm:FOR_MULTI_CORE[3].RC4_CRACK|real_cracked'
+Slack : 19.586
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'fsm:FOR_MULTI_CORE[0].RC4_CRACK|real_cracked'
+Slack : 19.588
 TNS   : 0.000
 
 ------------------------------------------------------------

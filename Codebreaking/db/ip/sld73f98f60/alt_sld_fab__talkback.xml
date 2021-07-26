@@ -11,7 +11,7 @@
    <SOPCModuleParameter>
     <C>2</C>
     <Name>DESIGN_HASH</Name>
-    <Value>94d0caea2f34c34933e5</Value>
+    <Value>d59a6bcb509be4e86b36</Value>
    </SOPCModuleParameter>
    <SOPCModuleParameter>
     <C>3</C>
@@ -41,7 +41,7 @@
    <SOPCModuleParameter>
     <C>8</C>
     <Name>EP_INFOS</Name>
-    <Value>{hpath {s_memory:FOR_MULTI_CORE[0].s_memory_inst|altsyncram:altsyncram_component|altsyncram_2d32:auto_generated|sld_mod_ram_rom:mgl_prim2} } {hpath {d_memory:FOR_MULTI_CORE[0].d_memory_inst|altsyncram:altsyncram_component|altsyncram_oa32:auto_generated|sld_mod_ram_rom:mgl_prim2} } {hpath {e_rom:FOR_MULTI_CORE[0].E_ROM|altsyncram:altsyncram_component|altsyncram_7g02:auto_generated|sld_mod_ram_rom:mgl_prim2} } {hpath {s_memory:FOR_MULTI_CORE[1].s_memory_inst|altsyncram:altsyncram_component|altsyncram_2d32:auto_generated|sld_mod_ram_rom:mgl_prim2} } {hpath {d_memory:FOR_MULTI_CORE[1].d_memory_inst|altsyncram:altsyncram_component|altsyncram_oa32:auto_generated|sld_mod_ram_rom:mgl_prim2} } {hpath {e_rom:FOR_MULTI_CORE[1].E_ROM|altsyncram:altsyncram_component|altsyncram_7g02:auto_generated|sld_mod_ram_rom:mgl_prim2} } {hpath {s_memory:FOR_MULTI_CORE[2].s_memory_inst|altsyncram:altsyncram_component|altsyncram_2d32:auto_generated|sld_mod_ram_rom:mgl_prim2} } {hpath {d_memory:FOR_MULTI_CORE[2].d_memory_inst|altsyncram:altsyncram_component|altsyncram_oa32:auto_generated|sld_mod_ram_rom:mgl_prim2} } {hpath {e_rom:FOR_MULTI_CORE[2].E_ROM|altsyncram:altsyncram_component|altsyncram_7g02:auto_generated|sld_mod_ram_rom:mgl_prim2} } {hpath {s_memory:FOR_MULTI_CORE[3].s_memory_inst|altsyncram:altsyncram_component|altsyncram_2d32:auto_generated|sld_mod_ram_rom:mgl_prim2} } {hpath {d_memory:FOR_MULTI_CORE[3].d_memory_inst|altsyncram:altsyncram_component|altsyncram_oa32:auto_generated|sld_mod_ram_rom:mgl_prim2} } {hpath {e_rom:FOR_MULTI_CORE[3].E_ROM|altsyncram:altsyncram_component|altsyncram_7g02:auto_generated|sld_mod_ram_rom:mgl_prim2} } </Value>
+    <Value>{hpath {s_memory:FOR_MULTI_CORE[0].s_memory_inst|altsyncram:altsyncram_component|altsyncram_2d32:auto_generated|sld_mod_ram_rom:mgl_prim2} } {hpath {d_memory:FOR_MULTI_CORE[0].d_memory_inst|altsyncram:altsyncram_component|altsyncram_oa32:auto_generated|sld_mod_ram_rom:mgl_prim2} } {hpath {e_rom:FOR_MULTI_CORE[0].E_ROM|altsyncram:altsyncram_component|altsyncram_ne02:auto_generated|sld_mod_ram_rom:mgl_prim2} } {hpath {s_memory:FOR_MULTI_CORE[1].s_memory_inst|altsyncram:altsyncram_component|altsyncram_2d32:auto_generated|sld_mod_ram_rom:mgl_prim2} } {hpath {d_memory:FOR_MULTI_CORE[1].d_memory_inst|altsyncram:altsyncram_component|altsyncram_oa32:auto_generated|sld_mod_ram_rom:mgl_prim2} } {hpath {e_rom:FOR_MULTI_CORE[1].E_ROM|altsyncram:altsyncram_component|altsyncram_ne02:auto_generated|sld_mod_ram_rom:mgl_prim2} } {hpath {s_memory:FOR_MULTI_CORE[2].s_memory_inst|altsyncram:altsyncram_component|altsyncram_2d32:auto_generated|sld_mod_ram_rom:mgl_prim2} } {hpath {d_memory:FOR_MULTI_CORE[2].d_memory_inst|altsyncram:altsyncram_component|altsyncram_oa32:auto_generated|sld_mod_ram_rom:mgl_prim2} } {hpath {e_rom:FOR_MULTI_CORE[2].E_ROM|altsyncram:altsyncram_component|altsyncram_ne02:auto_generated|sld_mod_ram_rom:mgl_prim2} } {hpath {s_memory:FOR_MULTI_CORE[3].s_memory_inst|altsyncram:altsyncram_component|altsyncram_2d32:auto_generated|sld_mod_ram_rom:mgl_prim2} } {hpath {d_memory:FOR_MULTI_CORE[3].d_memory_inst|altsyncram:altsyncram_component|altsyncram_oa32:auto_generated|sld_mod_ram_rom:mgl_prim2} } {hpath {e_rom:FOR_MULTI_CORE[3].E_ROM|altsyncram:altsyncram_component|altsyncram_ne02:auto_generated|sld_mod_ram_rom:mgl_prim2} } </Value>
    </SOPCModuleParameter>
    <SOPCModuleParameter>
     <C>9</C>
@@ -69,7 +69,7 @@
     <Value>Unknown</Value>
    </SOPCModuleParameter>
   </SOPCModule>
-  <SystemID>1564138971</SystemID>
+  <SystemID>1611994245</SystemID>
  </SOPCSystem>
  <SchemaVersion>schema_2013-01-18</SchemaVersion>
 </ProgramExecution>

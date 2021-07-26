@@ -22,7 +22,8 @@ module ksa(
     wire                                rst = ~KEY[3];
     wire                                clk = CLOCK_50;
     wire        [CORE_NUMBER - 1: 0]    cracked;
-    wire        [23:0]                  init_secret_key[CORE_NUMBER]; 
+    wire        [CORE_NUMBER - 1: 0]    real_cracked;
+    wire        [23:0]                  init_secret_key [CORE_NUMBER]; 
 	wire        [23:0]                  final_secret_key[CORE_NUMBER];    
 	wire        [23:0]                  secret_key;
     logic       [CORE_NUMBER - 1: 0]    failed;
@@ -94,6 +95,9 @@ module ksa(
                 .data_s(data_s[i]),
                 .address_s(address_s[i]), 
 
+                // To secret key
+                .real_cracked(real_cracked[i]),
+
                 // To DE1-SoC to indicate fail or success flag
                 .cracked(cracked[i]),  // LED0
                 .failed(failed[i]),    // LED1 
@@ -102,11 +106,13 @@ module ksa(
             );
         end
 
+        //Deciding secret_key to display
         reg [31:0] j;
-        always @ (posedge |cracked) 
+
+        always @ (*) 
             for(j = 0; j < CORE_NUMBER; j = j + 1) begin: FOR_SECRET_KEY
-                if(cracked[j])
-                    secret_key <= final_secret_key[j];
+                if(real_cracked[j] == 1'b1)
+                    secret_key = rst ? 24'b0 : final_secret_key[j];
             end
 
     endgenerate
@@ -120,9 +126,14 @@ module ksa(
     sseg_controller DISPLAY_HEX5(.in(secret_key[23:20]), .segs(HEX5));
 
     // ================= LED DISPLAY ====================== //
+    assign LEDR[9]   = real_cracked[3];
+    assign LEDR[8]   = real_cracked[2];
+    assign LEDR[7]   = real_cracked[1];
+    assign LEDR[6]   = real_cracked[0];
     assign LEDR[2]   = not_done;
     assign LEDR[1]   = failed;
     assign LEDR[0]   = cracked;
+
 
 endmodule
 

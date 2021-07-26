@@ -23,6 +23,9 @@ module fsm #(
     output logic [7:0] data_s,
     output logic [7:0] address_s, 
 
+    // To secret key
+    output logic real_cracked,
+
     // To DE1-SoC to indicate fail or success flag
     output logic cracked,  // LED0
     output logic failed,   // LED1
@@ -84,12 +87,14 @@ module fsm #(
 
     initial begin
         state = INIT;
+        real_cracked <= 0;
         secret_key = CORE_NO * MAX_SIZE_OF_SECRET_KEY / CORE_NUMBER;
     end
 
     always_ff @ (posedge clk or posedge rst) begin
         if(rst) begin
             secret_key = CORE_NO * MAX_SIZE_OF_SECRET_KEY / CORE_NUMBER;
+            real_cracked = 0;
             state <= INIT;
         end
 
@@ -98,6 +103,7 @@ module fsm #(
                 // Initializing i, j, and k
                 INIT: begin
                     i <= 0;
+                    real_cracked <= 0;
                     j <= 0;
                     k <= 0;
                     state <= INIT_S;
@@ -120,7 +126,6 @@ module fsm #(
                 end
 
                 // Task 2
-
                 //      Shuffling arrays 2 - a
                 SHUFFLE_S_1: begin
                     address_s <= i;
@@ -257,10 +262,12 @@ module fsm #(
                         state <= CRACK_RC_1;
                     end
                     else begin
+                        real_cracked <= 1;
                         state <= DONE;
                     end
                 end
-
+                
+                // Task 3
                 // Cracking RC
                 CRACK_RC_1: begin
                     if((data_d <= 8'd122 && data_d >= 8'd97) || data_d == 8'd32) begin
@@ -268,10 +275,8 @@ module fsm #(
                         i <= i + 1;
                         state <= COMPUTE_ONE_BYTE_1;
                     end
-
                     else
                         state <= CRACK_RC_2;
-
                 end
 
                 CRACK_RC_2: begin
@@ -282,12 +287,10 @@ module fsm #(
 
                     else 
                         state <= FAILED;
-
                 end
 
                 // End
                 DONE: begin
-                    final_secret_key <= secret_key;
                     state <= DONE;
                 end
 
@@ -301,8 +304,11 @@ module fsm #(
 
         else begin
             state <= DONE;
-        end
-            
+        end    
+    end
+
+    always @ (posedge real_cracked) begin
+        final_secret_key <= secret_key;
     end
 
 endmodule
