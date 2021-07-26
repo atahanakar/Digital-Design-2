@@ -8,7 +8,7 @@ module pacoblaze_instruction_memory
            integer   index;
 
            initial begin
-              $readmemh("KCPSM3/Assemble/PRACPICO.MEM",memory);
+              $readmemh("KCPSM3/Assemble/SPEECH.MEM",memory);
            end
 		   
 		  assign     outdata = memory[addr];

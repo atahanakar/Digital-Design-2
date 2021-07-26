@@ -3,7 +3,6 @@ module simple_ipod_solution(
 
     //////////// CLOCK //////////
     CLOCK_50,
-    TD_CLK27,
 
     //////////// LED //////////
     LEDR,
@@ -32,31 +31,10 @@ module simple_ipod_solution(
 
     //////////// I2C for Audio  //////////
     FPGA_I2C_SCLK,
-    FPGA_I2C_SDAT,
-    
-    
-    //////// PS2 //////////
-    PS2_CLK,
-    PS2_DAT,
-    
-    //////// SDRAM //////////
-    DRAM_ADDR,
-    DRAM_BA,
-    DRAM_CAS_N,
-    DRAM_CKE,
-    DRAM_CLK,
-    DRAM_CS_N,
-    DRAM_DQ,
-    DRAM_LDQM,
-    DRAM_UDQM,
-    DRAM_RAS_N,
-    DRAM_WE_N,
-    
-    //////// GPIO //////////
-    GPIO_0,
-    GPIO_1
-    
+    FPGA_I2C_SDAT
+
 );
+
 `define zero_pad(width,signal)  {{((width)-$size(signal)){1'b0}},(signal)}
 //=======================================================
 //  PORT declarations
@@ -64,7 +42,6 @@ module simple_ipod_solution(
 
 //////////// CLOCK //////////
 input                       CLOCK_50;
-input                       TD_CLK27;
 
 //////////// LED //////////
 output           [9:0]      LEDR;
@@ -97,29 +74,6 @@ output                      AUD_XCK;
 output                      FPGA_I2C_SCLK;
 inout                       FPGA_I2C_SDAT;
 
-//////////// PS2 //////////
-inout                       PS2_CLK;
-inout                       PS2_DAT;
-
-//////////// GPIO //////////
-inout           [35:0]      GPIO_0;
-inout           [35:0]      GPIO_1;
-                
-                
-//////////// SDRAM //////////
-output          [12:0]      DRAM_ADDR;
-output          [1:0]       DRAM_BA;
-output                      DRAM_CAS_N;
-output                      DRAM_CKE;
-output                      DRAM_CLK;
-output                      DRAM_CS_N;
-inout           [15:0]      DRAM_DQ;
-output                      DRAM_LDQM;
-output                      DRAM_UDQM;
-output                      DRAM_RAS_N;
-output                      DRAM_WE_N;
-
-
 //=======================================================
 //  REG/WIRE declarations
 //=======================================================
@@ -129,7 +83,7 @@ logic  [9:0] LED;
 assign CLK_50M =  CLOCK_50;
 assign LEDR[9:0] = LED[9:0];
 
-wire Clock_1KHz, Clock_1Hz;
+wire Clock_1KHz;
 
 //=======================================================================================================================
 
@@ -142,33 +96,25 @@ wire    [3:0]   flash_mem_byteenable;
 wire	[6:0]	 flash_mem_burstcount;
 
 wire            get_address;
+wire            pico_done;
+wire            start_pico;
+wire            silent;
+wire            decoded_silent;
 wire            address_ready;
-wire            Clock_22KHz;
-wire            Sync_Clock_22KHz;
 wire    [7:0]   audio_data;
 wire    [31:0]  out_clk_freq;
-wire            speed_up_raw;
-wire            speed_down_raw;
-wire            speed_up_event;
-wire            speed_down_event;
-wire            speed_reset_event;
-wire            speed_up_event_trigger;
-wire            speed_down_event_trigger; 
+wire            Clock_1Hz;
 wire            Sync_Clock_1Hz;
+wire            Clock_7200Hz;
+wire            Sync_Clock_7200Hz;
+wire    [23:0]  start_address;
+wire    [23:0]  end_address;
+wire    [9:0]   encoded_audio_data;
+wire    [7:0]   decoded_audio_data;
+wire    [7:0]   raw_audio_data;
+wire    [7:0]   phoneme_sel;
 
 // ==================================================================== //
-
-// Reading Flash Memory 
-read_flash FLASH_READ (
-    .clk(CLK_50M),
-    .address_ready(address_ready),
-    .flash_mem_waitrequest(flash_mem_waitrequest),
-    .flash_mem_readdatavalid(flash_mem_readdatavalid),
-    .flash_mem_read(flash_mem_read),
-    .flash_mem_byteenable(flash_mem_byteenable),
-    .flash_mem_burstcount(flash_mem_burstcount),
-    .get_address(get_address)
-);
 
 // Controlling the speed 
 clk_divider #(
@@ -187,57 +133,77 @@ doublesync SYNC_CLOCK1Hz (
     );
 
 speed_controller #(
-        .INITIAL_CLK_FREQ(32'd22_000)
+        .INITIAL_CLK_FREQ(32'd7200) // Speed of the clk we are using address fsm
     ) CONTROL_SPEED(
         .clk(Sync_Clock_1Hz),
         .KEYS(KEY[2:0]),
         .out_clk_freq(out_clk_freq)
     );
 
-// Generating the 22KHz clk
+// Generating the 7.2KHz clk
 clk_divider #(
-        .IN_CLOCK_FREQ(32'd27_000_000)
+        .IN_CLOCK_FREQ(32'd50_000_000) 
     )
     CLOCK22KHz (
-        .in_clk(TD_CLK27),
+        .in_clk(CLK_50M),
         .out_clk_freq(out_clk_freq),
-        .out_clk(Clock_22KHz)
+        .out_clk(Clock_7200Hz)
     );
 
 doublesync SYNC_CLOCK22KHz (   
-        .indata(Clock_22KHz),
-        .outdata(Sync_Clock_22KHz),
+        .indata(Clock_7200Hz),
+        .outdata(Sync_Clock_7200Hz),
         .clk(CLK_50M),
         .reset(1'b1)
     );
 
+// Reading Flash Memory 
+read_flash FLASH_READ (
+        .clk(CLK_50M),
+        .address_ready(address_ready),          // Coming from address fsm
+        .flash_mem_waitrequest(flash_mem_waitrequest),
+        .flash_mem_readdatavalid(flash_mem_readdatavalid),
+        .flash_mem_read(flash_mem_read),
+        .flash_mem_byteenable(flash_mem_byteenable),
+        .flash_mem_burstcount(flash_mem_burstcount),
+        .get_address(get_address)               // Going to address fsm
+    );
+
 // Getting the address of the sample
 address_fsm ADDRESS_CONTROLLER(
-        .clk(Sync_Clock_22KHz),
+        .clk(Sync_Clock_7200Hz),
+        .pico_done(pico_done),                  // Coming from Picoblaze 
+        .start_pico(start_pico),                // Going to Picoblaze
+        .silent(silent),            
         .flash_mem_address(flash_mem_address),
+        .start_address(start_address),
+        .end_address(end_address),
         .flash_mem_readdata(flash_mem_readdata),
-        .audio_data(audio_data),
-        .get_address(get_address),
-        .address_ready(address_ready),
-        .PLAY_BUTTON(SW[0]),  // Up = Play, Down = Pause
+        .audio_data(raw_audio_data),
+        .get_address(get_address),              // Coming from read fsm
+        .address_ready(address_ready),          // Going to read fsm
+        .PLAY_BUTTON(SW[0]),                    // Up = Play, Down = Pause
         .REVERSE_BUTTON(SW[1]),
 		.RESTART_BUTTON(SW[2])
     );
 
+    assign LED[0] = start_pico;
+    assign LED[1] = pico_done;
+
 // Flash Instantiation
 flash flash_inst (
-    .clk_clk                 (CLK_50M),
-    .reset_reset_n           (1'b1),
-    .flash_mem_write         (1'b0),
-    .flash_mem_burstcount    (flash_mem_burstcount),
-    .flash_mem_waitrequest   (flash_mem_waitrequest),
-    .flash_mem_read          (flash_mem_read),
-    .flash_mem_address       (flash_mem_address),
-    .flash_mem_writedata     (32'b0),
-    .flash_mem_readdata      (flash_mem_readdata),
-    .flash_mem_readdatavalid (flash_mem_readdatavalid),
-    .flash_mem_byteenable    (flash_mem_byteenable)
-);
+        .clk_clk                 (CLK_50M),
+        .reset_reset_n           (1'b1),
+        .flash_mem_write         (1'b0),
+        .flash_mem_burstcount    (flash_mem_burstcount),
+        .flash_mem_waitrequest   (flash_mem_waitrequest),
+        .flash_mem_read          (flash_mem_read),
+        .flash_mem_address       (flash_mem_address),
+        .flash_mem_writedata     (32'b0),
+        .flash_mem_readdata      (flash_mem_readdata),
+        .flash_mem_readdatavalid (flash_mem_readdatavalid),
+        .flash_mem_byteenable    (flash_mem_byteenable)
+    );
 
 // Displaying speed to HEX
 sseg_controller SSEG0(.in(flash_mem_address[3:0]),   .segs(HEX0));
@@ -248,17 +214,83 @@ sseg_controller SSEG5(.in(flash_mem_address[19:16]), .segs(HEX4));
 sseg_controller SSEG6(.in(flash_mem_address[22:20]), .segs(HEX5));
 
 // Picoblaze 
-picoblaze_template    #(
-                            .clk_freq_in_hz(25000000)
-                            ) 
-                    PICO_INST(
-                            .clk(CLK_50M),
-                            .input_data(audio_data),
-                            .UPPER_LEDS(LED[9:2]),
-                            .LED0(LED[0]),
-                            .interrupt(1'b1)
-                            );
-        
+picoblaze_template  #(
+                    .clk_freq_in_hz(3600)
+                    ) 
+            PICO_INST(
+                    .clk(Sync_Clock_7200Hz),
+                    .start_pico(start_pico),
+                    .output_data(phoneme_sel), // Going to narrator
+                    .pico_done(pico_done)
+                    );
+
+// Narrator Control
+narrator_ctrl NARRATOR (
+                .clk(CLK_50M),
+                .phoneme_sel(phoneme_sel),
+                .start_address(start_address),
+                .end_address(end_address),
+                .silent(silent)
+            );
+
+//8b to 10b 
+encoder_8b10b ENCODE(
+      
+                    // --- Resets //input
+                    .reset(),
+
+                    // --- Clocks //input
+                    .SBYTECLK(CLK_50M),
+                        
+                    // --- Control (K) input   
+                    .K(silent),
+                        
+                    // --- Eight Bt input bus    //input
+                    .ebi(raw_audio_data),
+                        
+                    // --- TB (Ten Bt Interface) output bus
+                    .tbi(encoded_audio_data), 
+
+                    .disparity()  //output
+                );
+
+ //10b to 8b 
+decoder_8b10b DECODE(
+      
+                    // --- Resets ---
+                    .reset(),
+
+                    // --- Clocks ---
+                    .RBYTECLK(CLK_50M),
+                        
+                    // --- TBI (Ten Bit Interface) input bus
+                    .tbi(encoded_audio_data),
+
+                    // --- Control (K) //output
+                    .K_out(decoded_silent),
+                        
+                    // -- Eight bit output bus
+                    .ebi(decoded_audio_data), 
+
+                    // --- 8B/10B RX coding error --- // output
+                    .coding_err(),
+                        
+                    // --- 8B/10B RX disparity --- //output
+                    .disparity(),
+                    
+                    // --- 8B/10B RX disparity error --- //output
+                    .disparity_err()
+                );   
+
+assign audio_data = decoded_silent ? 8'b0 : decoded_audio_data;
+
+// Display audio intensity on LEDs
+display_audio_intensity DISPLAY_AUDIO(
+                    .clk(Sync_Clock_7200Hz),
+                    .audio_data(audio_data),
+                    .intensity(LED[9:2])
+                );
+
 //=======================================================================================================================
 //
 //   Audio controller code - do not touch
@@ -305,12 +337,10 @@ audio_control(
   .audio_left_clock(audio_left_clock)
 );
 
-
 //=======================================================================================================================
 //
 //   End Audio controller code
 //
-//========================================================================================================================
-                    
+//========================================================================================================================               
             
 endmodule

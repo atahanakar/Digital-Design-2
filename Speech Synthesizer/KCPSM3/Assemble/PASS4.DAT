@@ -5,311 +5,1319 @@ INSTRUCTION-
   OP1 VALUE-
    OPERAND2-
   OP2 VALUE-
-    COMMENT-;**************************************************************************************
-    ADDRESS-000
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-; Port definitions
-    ADDRESS-000
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-;**************************************************************************************
-    ADDRESS-000
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-;
-    ADDRESS-000
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-;
-    ADDRESS-000
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-;
+    COMMENT-;; Define constants for all the ascii values.
     ADDRESS-000
       LABEL-
 INSTRUCTION-CONSTANT
-   OPERAND1-LED_port
-  OP1 VALUE-LED_port
+   OPERAND1-output_phoneme
+  OP1 VALUE-output_phoneme
    OPERAND2-80
   OP2 VALUE-80
-    COMMENT-;8 simple LEDs. Is an OUTPUT port. for LED[9:2]
+    COMMENT-
     ADDRESS-000
       LABEL-
 INSTRUCTION-CONSTANT
-   OPERAND1-DATA_IN_PORT
-  OP1 VALUE-DATA_IN_PORT
-   OPERAND2-00
-  OP2 VALUE-00
-    COMMENT-;input data port. this is an INPUT port.
-    ADDRESS-000
-      LABEL-
-INSTRUCTION-CONSTANT
-   OPERAND1-LED_0
-  OP1 VALUE-LED_0
+   OPERAND1-pico_done
+  OP1 VALUE-pico_done
    OPERAND2-40
   OP2 VALUE-40
     COMMENT-
     ADDRESS-000
       LABEL-
 INSTRUCTION-CONSTANT
-   OPERAND1-ISR_preserve_s0
-  OP1 VALUE-ISR_preserve_s0
+   OPERAND1-start_pico
+  OP1 VALUE-start_pico
    OPERAND2-00
   OP2 VALUE-00
-    COMMENT-;Preserve s0 contents during ISR
+    COMMENT-
     ADDRESS-000
       LABEL-
 INSTRUCTION-CONSTANT
-   OPERAND1-ISR_preserve_s1
-  OP1 VALUE-ISR_preserve_s1
+   OPERAND1-ascii_SPACE
+  OP1 VALUE-ascii_SPACE
+   OPERAND2-20
+  OP2 VALUE-20
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_EXCLAIM
+  OP1 VALUE-ascii_EXCLAIM
+   OPERAND2-21
+  OP2 VALUE-21
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_DBLQUOT
+  OP1 VALUE-ascii_DBLQUOT
+   OPERAND2-22
+  OP2 VALUE-22
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_NUMSIGN
+  OP1 VALUE-ascii_NUMSIGN
+   OPERAND2-23
+  OP2 VALUE-23
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_DOLLAR
+  OP1 VALUE-ascii_DOLLAR
+   OPERAND2-24
+  OP2 VALUE-24
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_PERCENT
+  OP1 VALUE-ascii_PERCENT
+   OPERAND2-25
+  OP2 VALUE-25
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_AMP
+  OP1 VALUE-ascii_AMP
+   OPERAND2-26
+  OP2 VALUE-26
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_SINQUOT
+  OP1 VALUE-ascii_SINQUOT
+   OPERAND2-27
+  OP2 VALUE-27
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_LPAREN
+  OP1 VALUE-ascii_LPAREN
+   OPERAND2-28
+  OP2 VALUE-28
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_RPAREN
+  OP1 VALUE-ascii_RPAREN
+   OPERAND2-29
+  OP2 VALUE-29
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_ASTERISK
+  OP1 VALUE-ascii_ASTERISK
+   OPERAND2-2A
+  OP2 VALUE-2A
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_PLUS
+  OP1 VALUE-ascii_PLUS
+   OPERAND2-2B
+  OP2 VALUE-2B
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_COMMA
+  OP1 VALUE-ascii_COMMA
+   OPERAND2-2C
+  OP2 VALUE-2C
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_MINUS
+  OP1 VALUE-ascii_MINUS
+   OPERAND2-2D
+  OP2 VALUE-2D
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_PERIOD
+  OP1 VALUE-ascii_PERIOD
+   OPERAND2-2E
+  OP2 VALUE-2E
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_FWDSLASH
+  OP1 VALUE-ascii_FWDSLASH
+   OPERAND2-2F
+  OP2 VALUE-2F
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_0
+  OP1 VALUE-ascii_0
+   OPERAND2-30
+  OP2 VALUE-30
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_1
+  OP1 VALUE-ascii_1
+   OPERAND2-31
+  OP2 VALUE-31
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_2
+  OP1 VALUE-ascii_2
+   OPERAND2-32
+  OP2 VALUE-32
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_3
+  OP1 VALUE-ascii_3
+   OPERAND2-33
+  OP2 VALUE-33
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_4
+  OP1 VALUE-ascii_4
+   OPERAND2-34
+  OP2 VALUE-34
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_5
+  OP1 VALUE-ascii_5
+   OPERAND2-35
+  OP2 VALUE-35
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_6
+  OP1 VALUE-ascii_6
+   OPERAND2-36
+  OP2 VALUE-36
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_7
+  OP1 VALUE-ascii_7
+   OPERAND2-37
+  OP2 VALUE-37
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_8
+  OP1 VALUE-ascii_8
+   OPERAND2-38
+  OP2 VALUE-38
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_9
+  OP1 VALUE-ascii_9
+   OPERAND2-39
+  OP2 VALUE-39
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_COLON
+  OP1 VALUE-ascii_COLON
+   OPERAND2-3A
+  OP2 VALUE-3A
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_SEMI
+  OP1 VALUE-ascii_SEMI
+   OPERAND2-3B
+  OP2 VALUE-3B
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_LESS
+  OP1 VALUE-ascii_LESS
+   OPERAND2-3C
+  OP2 VALUE-3C
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_EQUAL
+  OP1 VALUE-ascii_EQUAL
+   OPERAND2-3D
+  OP2 VALUE-3D
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_GREATER
+  OP1 VALUE-ascii_GREATER
+   OPERAND2-3E
+  OP2 VALUE-3E
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_QUESTION
+  OP1 VALUE-ascii_QUESTION
+   OPERAND2-3F
+  OP2 VALUE-3F
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_CIRCAT
+  OP1 VALUE-ascii_CIRCAT
+   OPERAND2-40
+  OP2 VALUE-40
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_A
+  OP1 VALUE-ascii_A
+   OPERAND2-41
+  OP2 VALUE-41
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_B
+  OP1 VALUE-ascii_B
+   OPERAND2-42
+  OP2 VALUE-42
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_C
+  OP1 VALUE-ascii_C
+   OPERAND2-43
+  OP2 VALUE-43
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_D
+  OP1 VALUE-ascii_D
+   OPERAND2-44
+  OP2 VALUE-44
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_E
+  OP1 VALUE-ascii_E
+   OPERAND2-45
+  OP2 VALUE-45
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_F
+  OP1 VALUE-ascii_F
+   OPERAND2-46
+  OP2 VALUE-46
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_G
+  OP1 VALUE-ascii_G
+   OPERAND2-47
+  OP2 VALUE-47
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_H
+  OP1 VALUE-ascii_H
+   OPERAND2-48
+  OP2 VALUE-48
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_I
+  OP1 VALUE-ascii_I
+   OPERAND2-49
+  OP2 VALUE-49
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_J
+  OP1 VALUE-ascii_J
+   OPERAND2-4A
+  OP2 VALUE-4A
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_K
+  OP1 VALUE-ascii_K
+   OPERAND2-4B
+  OP2 VALUE-4B
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_L
+  OP1 VALUE-ascii_L
+   OPERAND2-4C
+  OP2 VALUE-4C
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_M
+  OP1 VALUE-ascii_M
+   OPERAND2-4D
+  OP2 VALUE-4D
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_N
+  OP1 VALUE-ascii_N
+   OPERAND2-4E
+  OP2 VALUE-4E
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_O
+  OP1 VALUE-ascii_O
+   OPERAND2-4F
+  OP2 VALUE-4F
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_P
+  OP1 VALUE-ascii_P
+   OPERAND2-50
+  OP2 VALUE-50
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_Q
+  OP1 VALUE-ascii_Q
+   OPERAND2-51
+  OP2 VALUE-51
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_R
+  OP1 VALUE-ascii_R
+   OPERAND2-52
+  OP2 VALUE-52
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_S
+  OP1 VALUE-ascii_S
+   OPERAND2-53
+  OP2 VALUE-53
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_T
+  OP1 VALUE-ascii_T
+   OPERAND2-54
+  OP2 VALUE-54
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_U
+  OP1 VALUE-ascii_U
+   OPERAND2-55
+  OP2 VALUE-55
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_V
+  OP1 VALUE-ascii_V
+   OPERAND2-56
+  OP2 VALUE-56
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_W
+  OP1 VALUE-ascii_W
+   OPERAND2-57
+  OP2 VALUE-57
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_X
+  OP1 VALUE-ascii_X
+   OPERAND2-58
+  OP2 VALUE-58
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_Y
+  OP1 VALUE-ascii_Y
+   OPERAND2-59
+  OP2 VALUE-59
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_Z
+  OP1 VALUE-ascii_Z
+   OPERAND2-5A
+  OP2 VALUE-5A
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_LBKT
+  OP1 VALUE-ascii_LBKT
+   OPERAND2-5B
+  OP2 VALUE-5B
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_BKSLASH
+  OP1 VALUE-ascii_BKSLASH
+   OPERAND2-5C
+  OP2 VALUE-5C
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_RBKT
+  OP1 VALUE-ascii_RBKT
+   OPERAND2-5D
+  OP2 VALUE-5D
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_CARET
+  OP1 VALUE-ascii_CARET
+   OPERAND2-5E
+  OP2 VALUE-5E
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_DASH
+  OP1 VALUE-ascii_DASH
+   OPERAND2-5F
+  OP2 VALUE-5F
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_TICK
+  OP1 VALUE-ascii_TICK
+   OPERAND2-60
+  OP2 VALUE-60
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_a
+  OP1 VALUE-ascii_a
+   OPERAND2-61
+  OP2 VALUE-61
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_b
+  OP1 VALUE-ascii_b
+   OPERAND2-62
+  OP2 VALUE-62
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_c
+  OP1 VALUE-ascii_c
+   OPERAND2-63
+  OP2 VALUE-63
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_d
+  OP1 VALUE-ascii_d
+   OPERAND2-64
+  OP2 VALUE-64
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_e
+  OP1 VALUE-ascii_e
+   OPERAND2-65
+  OP2 VALUE-65
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_f
+  OP1 VALUE-ascii_f
+   OPERAND2-66
+  OP2 VALUE-66
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_g
+  OP1 VALUE-ascii_g
+   OPERAND2-67
+  OP2 VALUE-67
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_h
+  OP1 VALUE-ascii_h
+   OPERAND2-68
+  OP2 VALUE-68
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_i
+  OP1 VALUE-ascii_i
+   OPERAND2-69
+  OP2 VALUE-69
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_j
+  OP1 VALUE-ascii_j
+   OPERAND2-6A
+  OP2 VALUE-6A
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_k
+  OP1 VALUE-ascii_k
+   OPERAND2-6B
+  OP2 VALUE-6B
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_l
+  OP1 VALUE-ascii_l
+   OPERAND2-6C
+  OP2 VALUE-6C
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_m
+  OP1 VALUE-ascii_m
+   OPERAND2-6D
+  OP2 VALUE-6D
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_n
+  OP1 VALUE-ascii_n
+   OPERAND2-6E
+  OP2 VALUE-6E
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_o
+  OP1 VALUE-ascii_o
+   OPERAND2-6F
+  OP2 VALUE-6F
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_p
+  OP1 VALUE-ascii_p
+   OPERAND2-70
+  OP2 VALUE-70
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_q
+  OP1 VALUE-ascii_q
+   OPERAND2-71
+  OP2 VALUE-71
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_r
+  OP1 VALUE-ascii_r
+   OPERAND2-72
+  OP2 VALUE-72
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_s
+  OP1 VALUE-ascii_s
+   OPERAND2-73
+  OP2 VALUE-73
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_t
+  OP1 VALUE-ascii_t
+   OPERAND2-74
+  OP2 VALUE-74
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_u
+  OP1 VALUE-ascii_u
+   OPERAND2-75
+  OP2 VALUE-75
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_v
+  OP1 VALUE-ascii_v
+   OPERAND2-76
+  OP2 VALUE-76
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_w
+  OP1 VALUE-ascii_w
+   OPERAND2-77
+  OP2 VALUE-77
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_x
+  OP1 VALUE-ascii_x
+   OPERAND2-78
+  OP2 VALUE-78
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_y
+  OP1 VALUE-ascii_y
+   OPERAND2-79
+  OP2 VALUE-79
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_z
+  OP1 VALUE-ascii_z
+   OPERAND2-7A
+  OP2 VALUE-7A
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_LBRACE
+  OP1 VALUE-ascii_LBRACE
+   OPERAND2-7B
+  OP2 VALUE-7B
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_VBAR
+  OP1 VALUE-ascii_VBAR
+   OPERAND2-7C
+  OP2 VALUE-7C
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_RBRACE
+  OP1 VALUE-ascii_RBRACE
+   OPERAND2-7D
+  OP2 VALUE-7D
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_TILDE
+  OP1 VALUE-ascii_TILDE
+   OPERAND2-7E
+  OP2 VALUE-7E
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-ascii_ULINE
+  OP1 VALUE-ascii_ULINE
+   OPERAND2-7F
+  OP2 VALUE-7F
+    COMMENT-; ascii code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-;; Define constants for all the phoneme values.
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_PA1
+  OP1 VALUE-phoneme_PA1
+   OPERAND2-00
+  OP2 VALUE-00
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_PA2
+  OP1 VALUE-phoneme_PA2
    OPERAND2-01
   OP2 VALUE-01
-    COMMENT-;Preserve s1 contents during ISR
+    COMMENT-; phoneme code
     ADDRESS-000
       LABEL-
 INSTRUCTION-CONSTANT
-   OPERAND1-ISR_preserve_s2
-  OP1 VALUE-ISR_preserve_s2
+   OPERAND1-phoneme_PA3
+  OP1 VALUE-phoneme_PA3
    OPERAND2-02
   OP2 VALUE-02
-    COMMENT-;Preserve s2 contents during ISR
+    COMMENT-; phoneme code
     ADDRESS-000
       LABEL-
 INSTRUCTION-CONSTANT
-   OPERAND1-ISR_preserve_s3
-  OP1 VALUE-ISR_preserve_s3
+   OPERAND1-phoneme_PA4
+  OP1 VALUE-phoneme_PA4
    OPERAND2-03
   OP2 VALUE-03
-    COMMENT-;Preserve s3 contents during ISR
+    COMMENT-; phoneme code
     ADDRESS-000
       LABEL-
 INSTRUCTION-CONSTANT
-   OPERAND1-ISR_preserve_s4
-  OP1 VALUE-ISR_preserve_s4
+   OPERAND1-phoneme_PA5
+  OP1 VALUE-phoneme_PA5
    OPERAND2-04
   OP2 VALUE-04
-    COMMENT-
+    COMMENT-; phoneme code
     ADDRESS-000
       LABEL-
 INSTRUCTION-CONSTANT
-   OPERAND1-ISR_preserve_s5
-  OP1 VALUE-ISR_preserve_s5
+   OPERAND1-phoneme_OY
+  OP1 VALUE-phoneme_OY
    OPERAND2-05
   OP2 VALUE-05
-    COMMENT-
+    COMMENT-; phoneme code
     ADDRESS-000
       LABEL-
 INSTRUCTION-CONSTANT
-   OPERAND1-save_s2
-  OP1 VALUE-save_s2
-   OPERAND2-07
-  OP2 VALUE-07
-    COMMENT-
-    ADDRESS-000
-      LABEL-
-INSTRUCTION-CONSTANT
-   OPERAND1-save_s3
-  OP1 VALUE-save_s3
-   OPERAND2-08
-  OP2 VALUE-08
-    COMMENT-
-    ADDRESS-000
-      LABEL-
-INSTRUCTION-CONSTANT
-   OPERAND1-save_s1
-  OP1 VALUE-save_s1
+   OPERAND1-phoneme_AY
+  OP1 VALUE-phoneme_AY
    OPERAND2-06
   OP2 VALUE-06
-    COMMENT-
-    ADDRESS-000
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-;
+    COMMENT-; phoneme code
     ADDRESS-000
       LABEL-
 INSTRUCTION-CONSTANT
-   OPERAND1-LED_pattern
-  OP1 VALUE-LED_pattern
-   OPERAND2-04
-  OP2 VALUE-04
-    COMMENT-;remember state of LEDs (8-bit counter in this case)
-    ADDRESS-000
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-;
-    ADDRESS-000
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-;**************************************************************************************
-    ADDRESS-000
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-; Useful data constants
-    ADDRESS-000
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-;**************************************************************************************
-    ADDRESS-000
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-;
-    ADDRESS-000
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-;
-    ADDRESS-000
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-; Constant to define a software delay of 1us. This must be adjusted to reflect the
-    ADDRESS-000
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-; clock applied to KCPSM3. Every instruction executes in 2 clock cycles making the
-    ADDRESS-000
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-; calculation highly predictable. The '6' in the following equation even allows for
-    ADDRESS-000
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-; 'CALL delay_1us' instruction in the initiating code.
-    ADDRESS-000
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-;
-    ADDRESS-000
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-; delay_1us_constant =  (clock_rate - 6)/4       Where 'clock_rate' is in MHz
-    ADDRESS-000
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-;
-    ADDRESS-000
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-; Example: For a 50MHz clock the constant value is (10-6)/4 = 11  (0B Hex).
-    ADDRESS-000
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-; For clock rates below 10MHz the value of 1 must be used and the operation will
-    ADDRESS-000
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-; become lower than intended. Interrupts may effect the timing of software based
-    ADDRESS-000
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-; delays.
-    ADDRESS-000
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-;
+   OPERAND1-phoneme_EH
+  OP1 VALUE-phoneme_EH
+   OPERAND2-07
+  OP2 VALUE-07
+    COMMENT-; phoneme code
     ADDRESS-000
       LABEL-
 INSTRUCTION-CONSTANT
-   OPERAND1-delay_1us_constant
-  OP1 VALUE-delay_1us_constant
-   OPERAND2-05
-  OP2 VALUE-05
-    COMMENT-
+   OPERAND1-phoneme_KK3
+  OP1 VALUE-phoneme_KK3
+   OPERAND2-08
+  OP2 VALUE-08
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_PP
+  OP1 VALUE-phoneme_PP
+   OPERAND2-09
+  OP2 VALUE-09
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_JH
+  OP1 VALUE-phoneme_JH
+   OPERAND2-0A
+  OP2 VALUE-0A
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_NN1
+  OP1 VALUE-phoneme_NN1
+   OPERAND2-0B
+  OP2 VALUE-0B
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_IH
+  OP1 VALUE-phoneme_IH
+   OPERAND2-0C
+  OP2 VALUE-0C
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_TT2
+  OP1 VALUE-phoneme_TT2
+   OPERAND2-0D
+  OP2 VALUE-0D
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_RR1
+  OP1 VALUE-phoneme_RR1
+   OPERAND2-0E
+  OP2 VALUE-0E
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_AX
+  OP1 VALUE-phoneme_AX
+   OPERAND2-0F
+  OP2 VALUE-0F
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_MM
+  OP1 VALUE-phoneme_MM
+   OPERAND2-10
+  OP2 VALUE-10
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_TT1
+  OP1 VALUE-phoneme_TT1
+   OPERAND2-11
+  OP2 VALUE-11
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_DH1
+  OP1 VALUE-phoneme_DH1
+   OPERAND2-12
+  OP2 VALUE-12
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_IY
+  OP1 VALUE-phoneme_IY
+   OPERAND2-13
+  OP2 VALUE-13
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_EY
+  OP1 VALUE-phoneme_EY
+   OPERAND2-14
+  OP2 VALUE-14
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_DD1
+  OP1 VALUE-phoneme_DD1
+   OPERAND2-15
+  OP2 VALUE-15
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_UW1
+  OP1 VALUE-phoneme_UW1
+   OPERAND2-16
+  OP2 VALUE-16
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_AO
+  OP1 VALUE-phoneme_AO
+   OPERAND2-17
+  OP2 VALUE-17
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_AA
+  OP1 VALUE-phoneme_AA
+   OPERAND2-18
+  OP2 VALUE-18
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_YY2
+  OP1 VALUE-phoneme_YY2
+   OPERAND2-19
+  OP2 VALUE-19
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_AE
+  OP1 VALUE-phoneme_AE
+   OPERAND2-1A
+  OP2 VALUE-1A
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_HH1
+  OP1 VALUE-phoneme_HH1
+   OPERAND2-1B
+  OP2 VALUE-1B
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_BB1
+  OP1 VALUE-phoneme_BB1
+   OPERAND2-1C
+  OP2 VALUE-1C
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_TH
+  OP1 VALUE-phoneme_TH
+   OPERAND2-1D
+  OP2 VALUE-1D
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_UH
+  OP1 VALUE-phoneme_UH
+   OPERAND2-1E
+  OP2 VALUE-1E
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_UW2
+  OP1 VALUE-phoneme_UW2
+   OPERAND2-1F
+  OP2 VALUE-1F
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_AW
+  OP1 VALUE-phoneme_AW
+   OPERAND2-20
+  OP2 VALUE-20
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_DD2
+  OP1 VALUE-phoneme_DD2
+   OPERAND2-21
+  OP2 VALUE-21
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_GG3
+  OP1 VALUE-phoneme_GG3
+   OPERAND2-22
+  OP2 VALUE-22
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_VV
+  OP1 VALUE-phoneme_VV
+   OPERAND2-23
+  OP2 VALUE-23
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_GG1
+  OP1 VALUE-phoneme_GG1
+   OPERAND2-24
+  OP2 VALUE-24
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_SH
+  OP1 VALUE-phoneme_SH
+   OPERAND2-25
+  OP2 VALUE-25
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_ZH
+  OP1 VALUE-phoneme_ZH
+   OPERAND2-26
+  OP2 VALUE-26
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_RR2
+  OP1 VALUE-phoneme_RR2
+   OPERAND2-27
+  OP2 VALUE-27
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_FF
+  OP1 VALUE-phoneme_FF
+   OPERAND2-28
+  OP2 VALUE-28
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_KK2
+  OP1 VALUE-phoneme_KK2
+   OPERAND2-29
+  OP2 VALUE-29
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_KK1
+  OP1 VALUE-phoneme_KK1
+   OPERAND2-2A
+  OP2 VALUE-2A
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_ZZ
+  OP1 VALUE-phoneme_ZZ
+   OPERAND2-2B
+  OP2 VALUE-2B
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_NG
+  OP1 VALUE-phoneme_NG
+   OPERAND2-2C
+  OP2 VALUE-2C
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_LL
+  OP1 VALUE-phoneme_LL
+   OPERAND2-2D
+  OP2 VALUE-2D
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_WW
+  OP1 VALUE-phoneme_WW
+   OPERAND2-2E
+  OP2 VALUE-2E
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_XR
+  OP1 VALUE-phoneme_XR
+   OPERAND2-2F
+  OP2 VALUE-2F
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_WH
+  OP1 VALUE-phoneme_WH
+   OPERAND2-30
+  OP2 VALUE-30
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_YY1
+  OP1 VALUE-phoneme_YY1
+   OPERAND2-31
+  OP2 VALUE-31
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_CH
+  OP1 VALUE-phoneme_CH
+   OPERAND2-32
+  OP2 VALUE-32
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_ER1
+  OP1 VALUE-phoneme_ER1
+   OPERAND2-33
+  OP2 VALUE-33
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_ER2
+  OP1 VALUE-phoneme_ER2
+   OPERAND2-34
+  OP2 VALUE-34
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_OW
+  OP1 VALUE-phoneme_OW
+   OPERAND2-35
+  OP2 VALUE-35
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_DH2
+  OP1 VALUE-phoneme_DH2
+   OPERAND2-36
+  OP2 VALUE-36
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_SS
+  OP1 VALUE-phoneme_SS
+   OPERAND2-37
+  OP2 VALUE-37
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_NN2
+  OP1 VALUE-phoneme_NN2
+   OPERAND2-38
+  OP2 VALUE-38
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_HH2
+  OP1 VALUE-phoneme_HH2
+   OPERAND2-39
+  OP2 VALUE-39
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_OR
+  OP1 VALUE-phoneme_OR
+   OPERAND2-3A
+  OP2 VALUE-3A
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_AR
+  OP1 VALUE-phoneme_AR
+   OPERAND2-3B
+  OP2 VALUE-3B
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_YR
+  OP1 VALUE-phoneme_YR
+   OPERAND2-3C
+  OP2 VALUE-3C
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_GG2
+  OP1 VALUE-phoneme_GG2
+   OPERAND2-3D
+  OP2 VALUE-3D
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_EL
+  OP1 VALUE-phoneme_EL
+   OPERAND2-3E
+  OP2 VALUE-3E
+    COMMENT-; phoneme code
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CONSTANT
+   OPERAND1-phoneme_BB2
+  OP1 VALUE-phoneme_BB2
+   OPERAND2-3F
+  OP2 VALUE-3F
+    COMMENT-; phoneme code
     ADDRESS-000
       LABEL-
 INSTRUCTION-
@@ -317,7 +1325,7 @@ INSTRUCTION-
   OP1 VALUE-
    OPERAND2-
   OP2 VALUE-
-    COMMENT-;
+    COMMENT-;;============================================================================
     ADDRESS-000
       LABEL-
 INSTRUCTION-
@@ -325,7 +1333,7 @@ INSTRUCTION-
   OP1 VALUE-
    OPERAND2-
   OP2 VALUE-
-    COMMENT-;
+    COMMENT-;; Infinite loop.
     ADDRESS-000
       LABEL-
 INSTRUCTION-
@@ -333,1564 +1341,4644 @@ INSTRUCTION-
   OP1 VALUE-
    OPERAND2-
   OP2 VALUE-
-    COMMENT-;
-    ADDRESS-000
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-;**************************************************************************************
-    ADDRESS-000
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-; Initialise the system
-    ADDRESS-000
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-;**************************************************************************************
-    ADDRESS-000
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-;
+    COMMENT-;;============================================================================
     ADDRESS-000
       LABEL-cold_start
-INSTRUCTION-LOAD
-   OPERAND1-s0
-  OP1 VALUE-s0
-   OPERAND2-00
-  OP2 VALUE-00
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-000
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
+   OPERAND2-
+  OP2 VALUE-
     COMMENT-
     ADDRESS-001
       LABEL-
-INSTRUCTION-STORE
-   OPERAND1-s0
-  OP1 VALUE-s0
-   OPERAND2-LED_pattern
-  OP2 VALUE-04
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
+   OPERAND2-
+  OP2 VALUE-
     COMMENT-
     ADDRESS-002
       LABEL-
-INSTRUCTION-OUTPUT
-   OPERAND1-s0
-  OP1 VALUE-s0
-   OPERAND2-LED_port
-  OP2 VALUE-80
+INSTRUCTION-CALL
+   OPERAND1-talkword0
+  OP1 VALUE-064
+   OPERAND2-
+  OP2 VALUE-
     COMMENT-
     ADDRESS-003
       LABEL-
-INSTRUCTION-ENABLE
-   OPERAND1-INTERRUPT
-  OP1 VALUE-INTERRUPT
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-;now interrupts are on
-    ADDRESS-004
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-;*******************PART1*******************;
-    ADDRESS-004
-      LABEL-main_program
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
    OPERAND2-
   OP2 VALUE-
     COMMENT-
     ADDRESS-004
       LABEL-
-INSTRUCTION-LOAD
-   OPERAND1-s6
-  OP1 VALUE-s6
-   OPERAND2-01
-  OP2 VALUE-01
-    COMMENT-;mov s1,#1
+INSTRUCTION-CALL
+   OPERAND1-talkword1
+  OP1 VALUE-069
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
     ADDRESS-005
       LABEL-
-INSTRUCTION-OUTPUT
-   OPERAND1-s6
-  OP1 VALUE-s6
-   OPERAND2-LED_0
-  OP2 VALUE-40
-    COMMENT-;now the LED0 is on
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
     ADDRESS-006
       LABEL-
 INSTRUCTION-CALL
-   OPERAND1-delay_1s
-  OP1 VALUE-01E
+   OPERAND1-talkword2
+  OP1 VALUE-06D
    OPERAND2-
   OP2 VALUE-
-    COMMENT-;wait 1 second
+    COMMENT-
     ADDRESS-007
       LABEL-
-INSTRUCTION-LOAD
-   OPERAND1-s6
-  OP1 VALUE-s6
-   OPERAND2-00
-  OP2 VALUE-00
-    COMMENT-;mov s1,#0
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
     ADDRESS-008
       LABEL-
-INSTRUCTION-OUTPUT
-   OPERAND1-s6
-  OP1 VALUE-s6
-   OPERAND2-LED_0
-  OP2 VALUE-40
-    COMMENT-;now the LED0 is off
+INSTRUCTION-CALL
+   OPERAND1-talkword3
+  OP1 VALUE-070
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
     ADDRESS-009
       LABEL-
 INSTRUCTION-CALL
-   OPERAND1-delay_1s
-  OP1 VALUE-01E
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
    OPERAND2-
   OP2 VALUE-
-    COMMENT-;wait 1 second
+    COMMENT-
     ADDRESS-00A
       LABEL-
-INSTRUCTION-JUMP
-   OPERAND1-main_program
-  OP1 VALUE-004
+INSTRUCTION-CALL
+   OPERAND1-talkword4
+  OP1 VALUE-074
    OPERAND2-
   OP2 VALUE-
     COMMENT-
     ADDRESS-00B
       LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
    OPERAND2-
   OP2 VALUE-
-    COMMENT-;**************************************************************************************
-    ADDRESS-00B
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-; Software delay routines
-    ADDRESS-00B
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-;**************************************************************************************
-    ADDRESS-00B
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-;
-    ADDRESS-00B
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-; Delay of 1us.
-    ADDRESS-00B
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-;
-    ADDRESS-00B
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-; Constant value 'delay_1us_constant' reflects the clock applied to KCPSM3. Every
-    ADDRESS-00B
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-; instruction executes in 2 clock cycles making the calculation highly predictable.
-    ADDRESS-00B
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-; The '6' in the following equation allows for the 'CALL delay_1us' instruction used
-    ADDRESS-00B
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-; in the initiating code. Interrupts may effect software derived delays.
-    ADDRESS-00B
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-;
-    ADDRESS-00B
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-; delay_1us_constant =  (clock_rate - 6)/4       Where 'clock_rate' is in MHz
-    ADDRESS-00B
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-;
-    ADDRESS-00B
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-; Registers used s0
-    ADDRESS-00B
-      LABEL-delay_1us
-INSTRUCTION-LOAD
-   OPERAND1-s0
-  OP1 VALUE-s0
-   OPERAND2-delay_1us_constant
-  OP2 VALUE-05
     COMMENT-
     ADDRESS-00C
-      LABEL-wait_1us
-INSTRUCTION-SUB
-   OPERAND1-s0
-  OP1 VALUE-s0
-   OPERAND2-01
-  OP2 VALUE-01
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkword5
+  OP1 VALUE-077
+   OPERAND2-
+  OP2 VALUE-
     COMMENT-
     ADDRESS-00D
       LABEL-
-INSTRUCTION-JUMP
-   OPERAND1-NZ
-  OP1 VALUE-NZ
-   OPERAND2-wait_1us
-  OP2 VALUE-00C
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
+   OPERAND2-
+  OP2 VALUE-
     COMMENT-
     ADDRESS-00E
       LABEL-
-INSTRUCTION-RETURN
-   OPERAND1-
-  OP1 VALUE-
+INSTRUCTION-CALL
+   OPERAND1-talkword6
+  OP1 VALUE-07B
    OPERAND2-
   OP2 VALUE-
     COMMENT-
     ADDRESS-00F
       LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-;
-    ADDRESS-00F
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-; Delay of 40us.
-    ADDRESS-00F
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-;
-    ADDRESS-00F
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-; Registers used s0, s1
-    ADDRESS-00F
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-;
-    ADDRESS-00F
-      LABEL-delay_40us
-INSTRUCTION-LOAD
-   OPERAND1-s1
-  OP1 VALUE-s1
-   OPERAND2-28
-  OP2 VALUE-28
-    COMMENT-;40 x 1us = 40us
-    ADDRESS-010
-      LABEL-wait_40us
 INSTRUCTION-CALL
-   OPERAND1-delay_1us
-  OP1 VALUE-00B
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-010
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkword7
+  OP1 VALUE-081
    OPERAND2-
   OP2 VALUE-
     COMMENT-
     ADDRESS-011
       LABEL-
-INSTRUCTION-SUB
-   OPERAND1-s1
-  OP1 VALUE-s1
-   OPERAND2-01
-  OP2 VALUE-01
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
+   OPERAND2-
+  OP2 VALUE-
     COMMENT-
     ADDRESS-012
       LABEL-
-INSTRUCTION-JUMP
-   OPERAND1-NZ
-  OP1 VALUE-NZ
-   OPERAND2-wait_40us
-  OP2 VALUE-010
+INSTRUCTION-CALL
+   OPERAND1-talkword8
+  OP1 VALUE-087
+   OPERAND2-
+  OP2 VALUE-
     COMMENT-
     ADDRESS-013
       LABEL-
-INSTRUCTION-RETURN
-   OPERAND1-
-  OP1 VALUE-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
    OPERAND2-
   OP2 VALUE-
     COMMENT-
     ADDRESS-014
       LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-;
-    ADDRESS-014
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-;
-    ADDRESS-014
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-; Delay of 1ms.
-    ADDRESS-014
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-;
-    ADDRESS-014
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-; Registers used s0, s1, s2
-    ADDRESS-014
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-;
-    ADDRESS-014
-      LABEL-delay_1ms
-INSTRUCTION-LOAD
-   OPERAND1-s2
-  OP1 VALUE-s2
-   OPERAND2-19
-  OP2 VALUE-19
-    COMMENT-;25 x 40us = 1ms
-    ADDRESS-015
-      LABEL-wait_1ms
 INSTRUCTION-CALL
-   OPERAND1-delay_40us
-  OP1 VALUE-00F
+   OPERAND1-talkword9
+  OP1 VALUE-08A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-015
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
    OPERAND2-
   OP2 VALUE-
     COMMENT-
     ADDRESS-016
       LABEL-
-INSTRUCTION-SUB
-   OPERAND1-s2
-  OP1 VALUE-s2
-   OPERAND2-01
-  OP2 VALUE-01
+INSTRUCTION-CALL
+   OPERAND1-talkword10
+  OP1 VALUE-08E
+   OPERAND2-
+  OP2 VALUE-
     COMMENT-
     ADDRESS-017
       LABEL-
-INSTRUCTION-JUMP
-   OPERAND1-NZ
-  OP1 VALUE-NZ
-   OPERAND2-wait_1ms
-  OP2 VALUE-015
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
+   OPERAND2-
+  OP2 VALUE-
     COMMENT-
     ADDRESS-018
       LABEL-
-INSTRUCTION-RETURN
-   OPERAND1-
-  OP1 VALUE-
+INSTRUCTION-CALL
+   OPERAND1-talkword11
+  OP1 VALUE-092
    OPERAND2-
   OP2 VALUE-
     COMMENT-
     ADDRESS-019
       LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-;
-    ADDRESS-019
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-; Delay of 20ms.
-    ADDRESS-019
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-;
-    ADDRESS-019
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-; Delay of 20ms used during initialisation.
-    ADDRESS-019
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-;
-    ADDRESS-019
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-; Registers used s0, s1, s2, s3
-    ADDRESS-019
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-;
-    ADDRESS-019
-      LABEL-delay_20ms
-INSTRUCTION-LOAD
-   OPERAND1-s3
-  OP1 VALUE-s3
-   OPERAND2-14
-  OP2 VALUE-14
-    COMMENT-;20 x 1ms = 20ms
-    ADDRESS-01A
-      LABEL-wait_20ms
 INSTRUCTION-CALL
-   OPERAND1-delay_1ms
-  OP1 VALUE-014
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-01A
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkword12
+  OP1 VALUE-099
    OPERAND2-
   OP2 VALUE-
     COMMENT-
     ADDRESS-01B
       LABEL-
-INSTRUCTION-SUB
-   OPERAND1-s3
-  OP1 VALUE-s3
-   OPERAND2-01
-  OP2 VALUE-01
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
+   OPERAND2-
+  OP2 VALUE-
     COMMENT-
     ADDRESS-01C
       LABEL-
-INSTRUCTION-JUMP
-   OPERAND1-NZ
-  OP1 VALUE-NZ
-   OPERAND2-wait_20ms
-  OP2 VALUE-01A
+INSTRUCTION-CALL
+   OPERAND1-talkword13
+  OP1 VALUE-09F
+   OPERAND2-
+  OP2 VALUE-
     COMMENT-
     ADDRESS-01D
       LABEL-
-INSTRUCTION-RETURN
-   OPERAND1-
-  OP1 VALUE-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
    OPERAND2-
   OP2 VALUE-
     COMMENT-
     ADDRESS-01E
       LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-;
-    ADDRESS-01E
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-; Delay of approximately 1 second.
-    ADDRESS-01E
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-;
-    ADDRESS-01E
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-; Registers used s0, s1, s2, s3, s4
-    ADDRESS-01E
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-;
-    ADDRESS-01E
-      LABEL-delay_1s
-INSTRUCTION-LOAD
-   OPERAND1-s4
-  OP1 VALUE-s4
-   OPERAND2-32
-  OP2 VALUE-32
-    COMMENT-;50 x 20ms = 1000ms
-    ADDRESS-01F
-      LABEL-wait_1s
 INSTRUCTION-CALL
-   OPERAND1-delay_20ms
-  OP1 VALUE-019
+   OPERAND1-talkword14
+  OP1 VALUE-0A5
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-01F
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
    OPERAND2-
   OP2 VALUE-
     COMMENT-
     ADDRESS-020
       LABEL-
-INSTRUCTION-SUB
-   OPERAND1-s4
-  OP1 VALUE-s4
-   OPERAND2-01
-  OP2 VALUE-01
+INSTRUCTION-CALL
+   OPERAND1-talkword15
+  OP1 VALUE-0A7
+   OPERAND2-
+  OP2 VALUE-
     COMMENT-
     ADDRESS-021
       LABEL-
-INSTRUCTION-JUMP
-   OPERAND1-NZ
-  OP1 VALUE-NZ
-   OPERAND2-wait_1s
-  OP2 VALUE-01F
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
+   OPERAND2-
+  OP2 VALUE-
     COMMENT-
     ADDRESS-022
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkword16
+  OP1 VALUE-0AB
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-023
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-024
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkword17
+  OP1 VALUE-0AD
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-025
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-026
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkword18
+  OP1 VALUE-0AF
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-027
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-028
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkword19
+  OP1 VALUE-0B1
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-029
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-02A
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkword20
+  OP1 VALUE-0B3
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-02B
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-02C
+      LABEL-loop
+INSTRUCTION-JUMP
+   OPERAND1-cold_start
+  OP1 VALUE-000
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; loop forever
+    ADDRESS-02D
+      LABEL-
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-;following words are not said, feel free to play with them for fun
+    ADDRESS-02D
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-02E
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkword30
+  OP1 VALUE-0BA
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-02F
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-030
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkword40
+  OP1 VALUE-0BD
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-031
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-032
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkword50
+  OP1 VALUE-0BF
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-033
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-034
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkword60
+  OP1 VALUE-0C3
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-035
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-036
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkword70
+  OP1 VALUE-0C5
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-037
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-038
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkword80
+  OP1 VALUE-0C7
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-039
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-03A
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkword90
+  OP1 VALUE-0C9
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-03B
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-03C
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkwordhundred
+  OP1 VALUE-0CB
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-03D
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkworddepth
+  OP1 VALUE-0D2
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-03E
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-03F
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkwordpoint
+  OP1 VALUE-0D8
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-040
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-041
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkwordanchor
+  OP1 VALUE-0DC
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-042
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-043
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkwordalarm
+  OP1 VALUE-0E0
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-044
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-045
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkwordon
+  OP1 VALUE-0E5
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-046
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-047
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkwordoff
+  OP1 VALUE-0E8
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-048
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-049
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkwordshallow
+  OP1 VALUE-0EC
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-04A
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-04B
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkwordand
+  OP1 VALUE-0F1
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-04C
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-04D
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkwordwatch
+  OP1 VALUE-0F6
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-04E
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-04F
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkwordgps
+  OP1 VALUE-10C
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-050
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-051
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkwordlimit
+  OP1 VALUE-0FB
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-052
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-053
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkwordset
+  OP1 VALUE-101
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-054
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-055
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkwordheading
+  OP1 VALUE-106
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-056
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-057
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkwordno
+  OP1 VALUE-114
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-058
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-059
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkwordnorth
+  OP1 VALUE-11C
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-05A
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-05B
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkwordsouth
+  OP1 VALUE-120
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-05C
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-05D
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkwordeast
+  OP1 VALUE-126
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-05E
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-05F
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkwordwest
+  OP1 VALUE-12B
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-060
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-061
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkwordposition
+  OP1 VALUE-131
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-062
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA6
+  OP1 VALUE-1C3
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-063
+      LABEL-loop2
+INSTRUCTION-JUMP
+   OPERAND1-cold_start
+  OP1 VALUE-000
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; loop forever
+    ADDRESS-064
+      LABEL-
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-;;============================================================================
+    ADDRESS-064
+      LABEL-
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-;; Test message and phoneme voicing subroutine.
+    ADDRESS-064
+      LABEL-
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-;;============================================================================
+    ADDRESS-064
+      LABEL-talkword0
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-064
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeZZ
+  OP1 VALUE-1B7
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-065
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeEH
+  OP1 VALUE-15F
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-066
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeRR2
+  OP1 VALUE-195
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-067
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeOW
+  OP1 VALUE-18D
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-068
       LABEL-
 INSTRUCTION-RETURN
    OPERAND1-
   OP1 VALUE-
    OPERAND2-
   OP2 VALUE-
-    COMMENT-;from pracPICO.psm
-    ADDRESS-023
-      LABEL-
+    COMMENT-
+    ADDRESS-069
+      LABEL-talkword1
 INSTRUCTION-
    OPERAND1-
   OP1 VALUE-
    OPERAND2-
   OP2 VALUE-
-    COMMENT-;*******************PART2***************************;
-    ADDRESS-023
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-;some important comments:
-    ADDRESS-023
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-;we need to read the data and then  s1 counter s2 sum
-    ADDRESS-023
-      LABEL-ISR
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-
-    ADDRESS-023
-      LABEL-
-INSTRUCTION-STORE
-   OPERAND1-s0
-  OP1 VALUE-s0
-   OPERAND2-ISR_preserve_s0
-  OP2 VALUE-00
-    COMMENT-;data
-    ADDRESS-024
-      LABEL-
-INSTRUCTION-STORE
-   OPERAND1-s1
-  OP1 VALUE-s1
-   OPERAND2-ISR_preserve_s1
-  OP2 VALUE-01
-    COMMENT-;let's use it as a counter
-    ADDRESS-025
-      LABEL-
-INSTRUCTION-STORE
-   OPERAND1-s2
-  OP1 VALUE-s2
-   OPERAND2-ISR_preserve_s2
-  OP2 VALUE-02
-    COMMENT-;let's use it as sum1
-    ADDRESS-026
-      LABEL-
-INSTRUCTION-STORE
-   OPERAND1-s3
-  OP1 VALUE-s3
-   OPERAND2-ISR_preserve_s3
-  OP2 VALUE-03
-    COMMENT-;let's use it as save_s3
-    ADDRESS-027
-      LABEL-
-INSTRUCTION-STORE
-   OPERAND1-s4
-  OP1 VALUE-s4
-   OPERAND2-ISR_preserve_s4
-  OP2 VALUE-04
-    COMMENT-;let's use it as unimportant sum
-    ADDRESS-028
-      LABEL-
-INSTRUCTION-STORE
-   OPERAND1-s5
-  OP1 VALUE-s5
-   OPERAND2-ISR_preserve_s5
-  OP2 VALUE-05
-    COMMENT-;this is the output of led
-    ADDRESS-029
-      LABEL-
-INSTRUCTION-FETCH
-   OPERAND1-s1
-  OP1 VALUE-s1
-   OPERAND2-save_s1
-  OP2 VALUE-06
-    COMMENT-; reload the values of this
-    ADDRESS-02A
-      LABEL-
-INSTRUCTION-FETCH
-   OPERAND1-s2
-  OP1 VALUE-s2
-   OPERAND2-save_s2
-  OP2 VALUE-07
-    COMMENT-
-    ADDRESS-02B
-      LABEL-
-INSTRUCTION-FETCH
-   OPERAND1-s3
-  OP1 VALUE-s3
-   OPERAND2-save_s3
-  OP2 VALUE-08
-    COMMENT-
-    ADDRESS-02C
-      LABEL-
-INSTRUCTION-INPUT
-   OPERAND1-s0
-  OP1 VALUE-s0
-   OPERAND2-DATA_IN_PORT
-  OP2 VALUE-00
-    COMMENT-; s0 gets the data
-    ADDRESS-02D
-      LABEL-
-INSTRUCTION-COMPARE
-   OPERAND1-s0
-  OP1 VALUE-s0
-   OPERAND2-80
-  OP2 VALUE-80
-    COMMENT-; see if the msb is 1 which means negative
-    ADDRESS-02E
-      LABEL-
-INSTRUCTION-JUMP
-   OPERAND1-NC
-  OP1 VALUE-NC
-   OPERAND2-negative_to_positive
-  OP2 VALUE-03F
-    COMMENT-
-    ADDRESS-02F
-      LABEL-continue1
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-
-    ADDRESS-02F
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-;now  256 times wait
-    ADDRESS-02F
-      LABEL-
-INSTRUCTION-ADD
-   OPERAND1-s1
-  OP1 VALUE-s1
-   OPERAND2-s0
-  OP2 VALUE-s0
-    COMMENT-;  now add this save_s1
-    ADDRESS-030
-      LABEL-
-INSTRUCTION-JUMP
-   OPERAND1-C
-  OP1 VALUE-C
-   OPERAND2-increment_LED
-  OP2 VALUE-03D
-    COMMENT-
-    ADDRESS-031
-      LABEL-counter_loop
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-
-    ADDRESS-031
-      LABEL-
-INSTRUCTION-ADD
-   OPERAND1-s3
-  OP1 VALUE-s3
-   OPERAND2-01
-  OP2 VALUE-01
-    COMMENT-;will finish it after it reaches to FF
-    ADDRESS-032
-      LABEL-
-INSTRUCTION-JUMP
-   OPERAND1-C
-  OP1 VALUE-C
-   OPERAND2-got_256
-  OP2 VALUE-042
-    COMMENT-
-    ADDRESS-033
-      LABEL-
-INSTRUCTION-STORE
-   OPERAND1-s1
-  OP1 VALUE-s1
-   OPERAND2-save_s1
-  OP2 VALUE-06
-    COMMENT-;save them to memory
-    ADDRESS-034
-      LABEL-
-INSTRUCTION-STORE
-   OPERAND1-s2
-  OP1 VALUE-s2
-   OPERAND2-save_s2
-  OP2 VALUE-07
-    COMMENT-
-    ADDRESS-035
-      LABEL-
-INSTRUCTION-STORE
-   OPERAND1-s3
-  OP1 VALUE-s3
-   OPERAND2-save_s3
-  OP2 VALUE-08
-    COMMENT-
-    ADDRESS-036
-      LABEL-
-INSTRUCTION-FETCH
-   OPERAND1-s0
-  OP1 VALUE-s0
-   OPERAND2-ISR_preserve_s0
-  OP2 VALUE-00
-    COMMENT-;let's return them to the stack
-    ADDRESS-037
-      LABEL-
-INSTRUCTION-FETCH
-   OPERAND1-s1
-  OP1 VALUE-s1
-   OPERAND2-ISR_preserve_s1
-  OP2 VALUE-01
-    COMMENT-
-    ADDRESS-038
-      LABEL-
-INSTRUCTION-FETCH
-   OPERAND1-s2
-  OP1 VALUE-s2
-   OPERAND2-ISR_preserve_s2
-  OP2 VALUE-02
-    COMMENT-
-    ADDRESS-039
-      LABEL-
-INSTRUCTION-FETCH
-   OPERAND1-s3
-  OP1 VALUE-s3
-   OPERAND2-ISR_preserve_s3
-  OP2 VALUE-03
-    COMMENT-
-    ADDRESS-03A
-      LABEL-
-INSTRUCTION-FETCH
-   OPERAND1-s4
-  OP1 VALUE-s4
-   OPERAND2-ISR_preserve_s4
-  OP2 VALUE-04
-    COMMENT-
-    ADDRESS-03B
-      LABEL-
-INSTRUCTION-FETCH
-   OPERAND1-s5
-  OP1 VALUE-s5
-   OPERAND2-ISR_preserve_s5
-  OP2 VALUE-05
-    COMMENT-
-    ADDRESS-03C
-      LABEL-
-INSTRUCTION-RETURNI
-   OPERAND1-ENABLE
-  OP1 VALUE-ENABLE
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-
-    ADDRESS-03D
-      LABEL-increment_LED
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-
-    ADDRESS-03D
-      LABEL-
-INSTRUCTION-ADD
-   OPERAND1-s2
-  OP1 VALUE-s2
-   OPERAND2-01
-  OP2 VALUE-01
-    COMMENT-;save_s3 is incrementing by 1
-    ADDRESS-03E
-      LABEL-
-INSTRUCTION-JUMP
-   OPERAND1-counter_loop
-  OP1 VALUE-031
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-
-    ADDRESS-03F
-      LABEL-negative_to_positive
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-
-    ADDRESS-03F
-      LABEL-
-INSTRUCTION-XOR
-   OPERAND1-s0
-  OP1 VALUE-s0
-   OPERAND2-FF
-  OP2 VALUE-FF
-    COMMENT-
-    ADDRESS-040
-      LABEL-
-INSTRUCTION-ADD
-   OPERAND1-s0
-  OP1 VALUE-s0
-   OPERAND2-01
-  OP2 VALUE-01
-    COMMENT-;now we convert negative to positive
-    ADDRESS-041
-      LABEL-
-INSTRUCTION-JUMP
-   OPERAND1-continue1
-  OP1 VALUE-02F
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-
-    ADDRESS-042
-      LABEL-got_256
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-;here we will compare the value of save_s3 then output it to LEDs
-    ADDRESS-042
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-;let's say we got 5 = 00000101 then we need to get xxx00000
-    ADDRESS-042
-      LABEL-
-INSTRUCTION-SL0
-   OPERAND1-s2
-  OP1 VALUE-s2
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-
-    ADDRESS-043
-      LABEL-
-INSTRUCTION-JUMP
-   OPERAND1-NC
-  OP1 VALUE-NC
-   OPERAND2-six
-  OP2 VALUE-047
-    COMMENT-
-    ADDRESS-044
-      LABEL-
-INSTRUCTION-LOAD
-   OPERAND1-s1
-  OP1 VALUE-s1
-   OPERAND2-FF
-  OP2 VALUE-FF
-    COMMENT-;LED2
-    ADDRESS-045
-      LABEL-
-INSTRUCTION-OUTPUT
-   OPERAND1-s1
-  OP1 VALUE-s1
-   OPERAND2-LED_port
-  OP2 VALUE-80
-    COMMENT-
-    ADDRESS-046
-      LABEL-
-INSTRUCTION-JUMP
-   OPERAND1-END
-  OP1 VALUE-06F
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-
-    ADDRESS-047
-      LABEL-six
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-
-    ADDRESS-047
-      LABEL-
-INSTRUCTION-SL0
-   OPERAND1-s2
-  OP1 VALUE-s2
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-
-    ADDRESS-048
-      LABEL-
-INSTRUCTION-JUMP
-   OPERAND1-NC
-  OP1 VALUE-NC
-   OPERAND2-five
-  OP2 VALUE-04C
-    COMMENT-
-    ADDRESS-049
-      LABEL-
-INSTRUCTION-LOAD
-   OPERAND1-s1
-  OP1 VALUE-s1
-   OPERAND2-FE
-  OP2 VALUE-FE
-    COMMENT-
-    ADDRESS-04A
-      LABEL-
-INSTRUCTION-OUTPUT
-   OPERAND1-s1
-  OP1 VALUE-s1
-   OPERAND2-LED_port
-  OP2 VALUE-80
-    COMMENT-
-    ADDRESS-04B
-      LABEL-
-INSTRUCTION-JUMP
-   OPERAND1-END
-  OP1 VALUE-06F
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-
-    ADDRESS-04C
-      LABEL-five
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-
-    ADDRESS-04C
-      LABEL-
-INSTRUCTION-SL0
-   OPERAND1-s2
-  OP1 VALUE-s2
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-
-    ADDRESS-04D
-      LABEL-
-INSTRUCTION-JUMP
-   OPERAND1-NC
-  OP1 VALUE-NC
-   OPERAND2-four
-  OP2 VALUE-051
-    COMMENT-
-    ADDRESS-04E
-      LABEL-
-INSTRUCTION-LOAD
-   OPERAND1-s1
-  OP1 VALUE-s1
-   OPERAND2-FC
-  OP2 VALUE-FC
-    COMMENT-
-    ADDRESS-04F
-      LABEL-
-INSTRUCTION-OUTPUT
-   OPERAND1-s1
-  OP1 VALUE-s1
-   OPERAND2-LED_port
-  OP2 VALUE-80
-    COMMENT-
-    ADDRESS-050
-      LABEL-
-INSTRUCTION-JUMP
-   OPERAND1-END
-  OP1 VALUE-06F
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-
-    ADDRESS-051
-      LABEL-four
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-
-    ADDRESS-051
-      LABEL-
-INSTRUCTION-SL0
-   OPERAND1-s2
-  OP1 VALUE-s2
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-
-    ADDRESS-052
-      LABEL-
-INSTRUCTION-JUMP
-   OPERAND1-NC
-  OP1 VALUE-NC
-   OPERAND2-three
-  OP2 VALUE-056
-    COMMENT-
-    ADDRESS-053
-      LABEL-
-INSTRUCTION-LOAD
-   OPERAND1-s1
-  OP1 VALUE-s1
-   OPERAND2-F8
-  OP2 VALUE-F8
-    COMMENT-
-    ADDRESS-054
-      LABEL-
-INSTRUCTION-OUTPUT
-   OPERAND1-s1
-  OP1 VALUE-s1
-   OPERAND2-LED_port
-  OP2 VALUE-80
-    COMMENT-
-    ADDRESS-055
-      LABEL-
-INSTRUCTION-JUMP
-   OPERAND1-END
-  OP1 VALUE-06F
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-
-    ADDRESS-056
-      LABEL-three
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-
-    ADDRESS-056
-      LABEL-
-INSTRUCTION-SL0
-   OPERAND1-s2
-  OP1 VALUE-s2
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-
-    ADDRESS-057
-      LABEL-
-INSTRUCTION-JUMP
-   OPERAND1-NC
-  OP1 VALUE-NC
-   OPERAND2-two
-  OP2 VALUE-05B
-    COMMENT-
-    ADDRESS-058
-      LABEL-
-INSTRUCTION-LOAD
-   OPERAND1-s1
-  OP1 VALUE-s1
-   OPERAND2-F0
-  OP2 VALUE-F0
-    COMMENT-
-    ADDRESS-059
-      LABEL-
-INSTRUCTION-OUTPUT
-   OPERAND1-s1
-  OP1 VALUE-s1
-   OPERAND2-LED_port
-  OP2 VALUE-80
-    COMMENT-
-    ADDRESS-05A
-      LABEL-
-INSTRUCTION-JUMP
-   OPERAND1-END
-  OP1 VALUE-06F
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-
-    ADDRESS-05B
-      LABEL-two
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-
-    ADDRESS-05B
-      LABEL-
-INSTRUCTION-SL0
-   OPERAND1-s2
-  OP1 VALUE-s2
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-
-    ADDRESS-05C
-      LABEL-
-INSTRUCTION-JUMP
-   OPERAND1-NC
-  OP1 VALUE-NC
-   OPERAND2-one
-  OP2 VALUE-060
-    COMMENT-
-    ADDRESS-05D
-      LABEL-
-INSTRUCTION-LOAD
-   OPERAND1-s1
-  OP1 VALUE-s1
-   OPERAND2-E0
-  OP2 VALUE-E0
-    COMMENT-
-    ADDRESS-05E
-      LABEL-
-INSTRUCTION-OUTPUT
-   OPERAND1-s1
-  OP1 VALUE-s1
-   OPERAND2-LED_port
-  OP2 VALUE-80
-    COMMENT-
-    ADDRESS-05F
-      LABEL-
-INSTRUCTION-JUMP
-   OPERAND1-END
-  OP1 VALUE-06F
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-
-    ADDRESS-060
-      LABEL-one
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-
-    ADDRESS-060
-      LABEL-
-INSTRUCTION-SL0
-   OPERAND1-s2
-  OP1 VALUE-s2
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-
-    ADDRESS-061
-      LABEL-
-INSTRUCTION-JUMP
-   OPERAND1-NC
-  OP1 VALUE-NC
-   OPERAND2-zero
-  OP2 VALUE-065
-    COMMENT-
-    ADDRESS-062
-      LABEL-
-INSTRUCTION-LOAD
-   OPERAND1-s1
-  OP1 VALUE-s1
-   OPERAND2-C0
-  OP2 VALUE-C0
-    COMMENT-
-    ADDRESS-063
-      LABEL-
-INSTRUCTION-OUTPUT
-   OPERAND1-s1
-  OP1 VALUE-s1
-   OPERAND2-LED_port
-  OP2 VALUE-80
-    COMMENT-
-    ADDRESS-064
-      LABEL-
-INSTRUCTION-JUMP
-   OPERAND1-END
-  OP1 VALUE-06F
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-
-    ADDRESS-065
-      LABEL-zero
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-
-    ADDRESS-065
-      LABEL-
-INSTRUCTION-SL0
-   OPERAND1-s2
-  OP1 VALUE-s2
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-
-    ADDRESS-066
-      LABEL-
-INSTRUCTION-JUMP
-   OPERAND1-NC
-  OP1 VALUE-NC
-   OPERAND2-real_zero
-  OP2 VALUE-06A
-    COMMENT-
-    ADDRESS-067
-      LABEL-
-INSTRUCTION-LOAD
-   OPERAND1-s1
-  OP1 VALUE-s1
-   OPERAND2-80
-  OP2 VALUE-80
-    COMMENT-
-    ADDRESS-068
-      LABEL-
-INSTRUCTION-OUTPUT
-   OPERAND1-s1
-  OP1 VALUE-s1
-   OPERAND2-LED_port
-  OP2 VALUE-80
     COMMENT-
     ADDRESS-069
       LABEL-
-INSTRUCTION-JUMP
-   OPERAND1-END
-  OP1 VALUE-06F
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-
-    ADDRESS-06A
-      LABEL-real_zero
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeWW
+  OP1 VALUE-1AB
    OPERAND2-
   OP2 VALUE-
     COMMENT-
     ADDRESS-06A
       LABEL-
-INSTRUCTION-SL0
-   OPERAND1-s2
-  OP1 VALUE-s2
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeAO
+  OP1 VALUE-147
    OPERAND2-
   OP2 VALUE-
     COMMENT-
     ADDRESS-06B
       LABEL-
-INSTRUCTION-JUMP
-   OPERAND1-NC
-  OP1 VALUE-NC
-   OPERAND2-END
-  OP2 VALUE-06F
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeNN1
+  OP1 VALUE-187
+   OPERAND2-
+  OP2 VALUE-
     COMMENT-
     ADDRESS-06C
+      LABEL-
+INSTRUCTION-RETURN
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-06D
+      LABEL-talkword2
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-06D
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeTT2
+  OP1 VALUE-19F
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-06E
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeUW2
+  OP1 VALUE-1A5
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-06F
+      LABEL-
+INSTRUCTION-RETURN
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-070
+      LABEL-talkword3
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-070
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeTH
+  OP1 VALUE-19B
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-071
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeRR2
+  OP1 VALUE-195
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-072
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeIY
+  OP1 VALUE-177
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-073
+      LABEL-
+INSTRUCTION-RETURN
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-074
+      LABEL-talkword4
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-074
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeFF
+  OP1 VALUE-169
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-075
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeOR
+  OP1 VALUE-18B
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-076
+      LABEL-
+INSTRUCTION-RETURN
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-077
+      LABEL-talkword5
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-077
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeFF
+  OP1 VALUE-169
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-078
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeAY
+  OP1 VALUE-14F
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-079
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeVV
+  OP1 VALUE-1A7
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-07A
+      LABEL-
+INSTRUCTION-RETURN
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-07B
+      LABEL-talkword6
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-07B
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeSS
+  OP1 VALUE-199
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-07C
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeIH
+  OP1 VALUE-175
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-07D
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeKK2
+  OP1 VALUE-17D
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-07E
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeSS
+  OP1 VALUE-199
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-07F
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeSS
+  OP1 VALUE-199
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-080
+      LABEL-
+INSTRUCTION-RETURN
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-081
+      LABEL-talkword7
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-081
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeSS
+  OP1 VALUE-199
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-082
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeEH
+  OP1 VALUE-15F
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-083
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeVV
+  OP1 VALUE-1A7
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-084
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeAX
+  OP1 VALUE-14D
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-085
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeNN1
+  OP1 VALUE-187
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-086
+      LABEL-
+INSTRUCTION-RETURN
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-087
+      LABEL-talkword8
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-087
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeEY
+  OP1 VALUE-167
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-088
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeTT1
+  OP1 VALUE-19D
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-089
+      LABEL-
+INSTRUCTION-RETURN
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-08A
+      LABEL-talkword9
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-08A
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeNN2
+  OP1 VALUE-189
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-08B
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeAY
+  OP1 VALUE-14F
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-08C
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeNN1
+  OP1 VALUE-187
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-08D
+      LABEL-
+INSTRUCTION-RETURN
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-08E
+      LABEL-talkword10
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-08E
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeTT2
+  OP1 VALUE-19F
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-08F
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeEH
+  OP1 VALUE-15F
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-090
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeNN1
+  OP1 VALUE-187
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-091
+      LABEL-
+INSTRUCTION-RETURN
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-092
+      LABEL-talkword11
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-092
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeIH
+  OP1 VALUE-175
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-093
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeLL
+  OP1 VALUE-181
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-094
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeEH
+  OP1 VALUE-15F
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-095
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeVV
+  OP1 VALUE-1A7
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-096
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeEH
+  OP1 VALUE-15F
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-097
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeNN1
+  OP1 VALUE-187
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-098
+      LABEL-
+INSTRUCTION-RETURN
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-099
+      LABEL-talkword12
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-099
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeTT2
+  OP1 VALUE-19F
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-09A
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeWW
+  OP1 VALUE-1AB
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-09B
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeEH
+  OP1 VALUE-15F
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-09C
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeEL
+  OP1 VALUE-161
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-09D
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeVV
+  OP1 VALUE-1A7
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-09E
+      LABEL-
+INSTRUCTION-RETURN
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-09F
+      LABEL-talkword13
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-09F
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeTH
+  OP1 VALUE-19B
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0A0
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeER2
+  OP1 VALUE-165
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0A1
+      LABEL-talkwordteen
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0A1
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeTT2
+  OP1 VALUE-19F
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0A2
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeIY
+  OP1 VALUE-177
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0A3
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeNN1
+  OP1 VALUE-187
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0A4
+      LABEL-
+INSTRUCTION-RETURN
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0A5
+      LABEL-talkword14
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0A5
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkword4
+  OP1 VALUE-074
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0A6
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-talkwordteen
+  OP1 VALUE-0A1
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0A7
+      LABEL-talkword15
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0A7
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeFF
+  OP1 VALUE-169
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0A8
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeIH
+  OP1 VALUE-175
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0A9
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeFF
+  OP1 VALUE-169
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0AA
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-talkwordteen
+  OP1 VALUE-0A1
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0AB
+      LABEL-talkword16
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0AB
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkword6
+  OP1 VALUE-07B
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0AC
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-talkwordteen
+  OP1 VALUE-0A1
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0AD
+      LABEL-talkword17
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0AD
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkword7
+  OP1 VALUE-081
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0AE
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-talkwordteen
+  OP1 VALUE-0A1
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0AF
+      LABEL-talkword18
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0AF
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkword8
+  OP1 VALUE-087
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0B0
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-talkwordteen
+  OP1 VALUE-0A1
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0B1
+      LABEL-talkword19
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0B1
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkword9
+  OP1 VALUE-08A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0B2
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-talkwordteen
+  OP1 VALUE-0A1
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0B3
+      LABEL-talkword20
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0B3
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeTT2
+  OP1 VALUE-19F
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0B4
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeWW
+  OP1 VALUE-1AB
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0B5
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeEH
+  OP1 VALUE-15F
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0B6
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeNN1
+  OP1 VALUE-187
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0B7
+      LABEL-talkwordty
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0B7
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeTT2
+  OP1 VALUE-19F
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0B8
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeIY
+  OP1 VALUE-177
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0B9
+      LABEL-
+INSTRUCTION-RETURN
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0BA
+      LABEL-talkword30
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0BA
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeTH
+  OP1 VALUE-19B
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0BB
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeER1
+  OP1 VALUE-163
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0BC
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-talkwordty
+  OP1 VALUE-0B7
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0BD
+      LABEL-talkword40
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0BD
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkword4
+  OP1 VALUE-074
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0BE
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-talkwordty
+  OP1 VALUE-0B7
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0BF
+      LABEL-talkword50
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0BF
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeFF
+  OP1 VALUE-169
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0C0
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeIH
+  OP1 VALUE-175
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0C1
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeFF
+  OP1 VALUE-169
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0C2
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-talkwordty
+  OP1 VALUE-0B7
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0C3
+      LABEL-talkword60
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0C3
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkword6
+  OP1 VALUE-07B
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0C4
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-talkwordty
+  OP1 VALUE-0B7
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0C5
+      LABEL-talkword70
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0C5
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkword7
+  OP1 VALUE-081
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0C6
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-talkwordty
+  OP1 VALUE-0B7
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0C7
+      LABEL-talkword80
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0C7
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkword8
+  OP1 VALUE-087
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0C8
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-talkwordty
+  OP1 VALUE-0B7
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0C9
+      LABEL-talkword90
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0C9
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkword9
+  OP1 VALUE-08A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0CA
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-talkwordty
+  OP1 VALUE-0B7
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0CB
+      LABEL-talkwordhundred
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0CB
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeHH2
+  OP1 VALUE-173
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0CC
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeAX
+  OP1 VALUE-14D
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0CD
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeNN1
+  OP1 VALUE-187
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0CE
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeDD2
+  OP1 VALUE-159
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0CF
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeRR2
+  OP1 VALUE-195
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0D0
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeDD1
+  OP1 VALUE-157
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0D1
+      LABEL-
+INSTRUCTION-RETURN
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0D2
+      LABEL-talkworddepth
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0D2
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeDD2
+  OP1 VALUE-159
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0D3
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeEH
+  OP1 VALUE-15F
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0D4
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeEH
+  OP1 VALUE-15F
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0D5
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePP
+  OP1 VALUE-191
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0D6
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeTH
+  OP1 VALUE-19B
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0D7
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-endword
+  OP1 VALUE-138
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0D8
+      LABEL-talkwordpoint
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0D8
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePP
+  OP1 VALUE-191
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0D9
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeOY
+  OP1 VALUE-18F
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0DA
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeTT1
+  OP1 VALUE-19D
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0DB
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-endword
+  OP1 VALUE-138
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0DC
+      LABEL-talkwordanchor
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0DC
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeEY
+  OP1 VALUE-167
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0DD
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeKK3
+  OP1 VALUE-17F
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0DE
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeAE
+  OP1 VALUE-145
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0DF
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-endword
+  OP1 VALUE-138
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0E0
+      LABEL-talkwordalarm
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0E0
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeAE
+  OP1 VALUE-145
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0E1
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeLL
+  OP1 VALUE-181
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0E2
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeAR
+  OP1 VALUE-149
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0E3
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeMM
+  OP1 VALUE-183
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0E4
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-endword
+  OP1 VALUE-138
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0E5
+      LABEL-talkwordon
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0E5
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeAO
+  OP1 VALUE-147
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0E6
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeNG
+  OP1 VALUE-185
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0E7
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-endword
+  OP1 VALUE-138
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0E8
+      LABEL-talkwordoff
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0E8
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeAO
+  OP1 VALUE-147
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0E9
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeFF
+  OP1 VALUE-169
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0EA
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeFF
+  OP1 VALUE-169
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0EB
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-endword
+  OP1 VALUE-138
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0EC
+      LABEL-talkwordshallow
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0EC
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeSH
+  OP1 VALUE-197
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0ED
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeAE
+  OP1 VALUE-145
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0EE
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeLL
+  OP1 VALUE-181
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0EF
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeOW
+  OP1 VALUE-18D
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0F0
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-endword
+  OP1 VALUE-138
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0F1
+      LABEL-talkwordand
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0F1
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeIH
+  OP1 VALUE-175
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0F2
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeIH
+  OP1 VALUE-175
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0F3
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeNN1
+  OP1 VALUE-187
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0F4
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeDD2
+  OP1 VALUE-159
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0F5
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-endword
+  OP1 VALUE-138
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0F6
+      LABEL-talkwordwatch
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0F6
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeWW
+  OP1 VALUE-1AB
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0F7
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeAO
+  OP1 VALUE-147
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0F8
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeTT1
+  OP1 VALUE-19D
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0F9
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeCH
+  OP1 VALUE-155
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0FA
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-endword
+  OP1 VALUE-138
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0FB
+      LABEL-talkwordlimit
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0FB
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeLL
+  OP1 VALUE-181
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0FC
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeIH
+  OP1 VALUE-175
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0FD
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeMM
+  OP1 VALUE-183
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0FE
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeIH
+  OP1 VALUE-175
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-0FF
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeTT1
+  OP1 VALUE-19D
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-100
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-endword
+  OP1 VALUE-138
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-101
+      LABEL-talkwordset
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-101
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeSS
+  OP1 VALUE-199
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-102
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeSS
+  OP1 VALUE-199
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-103
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeEH
+  OP1 VALUE-15F
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-104
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeTT2
+  OP1 VALUE-19F
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-105
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-endword
+  OP1 VALUE-138
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-106
+      LABEL-talkwordheading
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-106
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeHH1
+  OP1 VALUE-171
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-107
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeEH
+  OP1 VALUE-15F
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-108
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeDD2
+  OP1 VALUE-159
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-109
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeIH
+  OP1 VALUE-175
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-10A
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeNG
+  OP1 VALUE-185
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-10B
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-endword
+  OP1 VALUE-138
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-10C
+      LABEL-talkwordgps
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-10C
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeJH
+  OP1 VALUE-179
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-10D
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeIY
+  OP1 VALUE-177
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-10E
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePP
+  OP1 VALUE-191
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-10F
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeIY
+  OP1 VALUE-177
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-110
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeEH
+  OP1 VALUE-15F
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-111
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeSS
+  OP1 VALUE-199
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-112
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeSS
+  OP1 VALUE-199
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-113
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-endword
+  OP1 VALUE-138
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-114
+      LABEL-talkwordno
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-114
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeNN2
+  OP1 VALUE-189
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-115
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeOW
+  OP1 VALUE-18D
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-116
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-endword
+  OP1 VALUE-138
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-117
+      LABEL-talkworddata
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-117
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeDD2
+  OP1 VALUE-159
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-118
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeEY
+  OP1 VALUE-167
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-119
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeTT2
+  OP1 VALUE-19F
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-11A
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeAX
+  OP1 VALUE-14D
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-11B
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-endword
+  OP1 VALUE-138
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-11C
+      LABEL-talkwordnorth
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-11C
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeNN2
+  OP1 VALUE-189
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-11D
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeOR
+  OP1 VALUE-18B
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-11E
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeHH1
+  OP1 VALUE-171
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-11F
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-endword
+  OP1 VALUE-138
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-120
+      LABEL-talkwordsouth
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-120
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeSS
+  OP1 VALUE-199
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-121
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeSS
+  OP1 VALUE-199
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-122
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeAW
+  OP1 VALUE-14B
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-123
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeTH
+  OP1 VALUE-19B
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-124
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeTH
+  OP1 VALUE-19B
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-125
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-endword
+  OP1 VALUE-138
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-126
+      LABEL-talkwordeast
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-126
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeIY
+  OP1 VALUE-177
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-127
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeSS
+  OP1 VALUE-199
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-128
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeSS
+  OP1 VALUE-199
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-129
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeTT2
+  OP1 VALUE-19F
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-12A
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-endword
+  OP1 VALUE-138
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-12B
+      LABEL-talkwordwest
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-12B
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeWW
+  OP1 VALUE-1AB
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-12C
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeEH
+  OP1 VALUE-15F
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-12D
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeSS
+  OP1 VALUE-199
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-12E
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeSS
+  OP1 VALUE-199
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-12F
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeTT2
+  OP1 VALUE-19F
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-130
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-endword
+  OP1 VALUE-138
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-131
+      LABEL-talkwordposition
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-131
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePP
+  OP1 VALUE-191
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-132
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeIH
+  OP1 VALUE-175
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-133
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeZZ
+  OP1 VALUE-1B7
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-134
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeIH
+  OP1 VALUE-175
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-135
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeSH
+  OP1 VALUE-197
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-136
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemeNN1
+  OP1 VALUE-187
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-137
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-endword
+  OP1 VALUE-138
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-138
+      LABEL-endword
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-138
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA5
+  OP1 VALUE-1C1
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-139
+      LABEL-
+INSTRUCTION-RETURN
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-13A
+      LABEL-say_phoneme
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-13A
+      LABEL-
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-;make sure  to complete this subroutine in order for the synthesizer to work
+    ADDRESS-13A
+      LABEL-
+INSTRUCTION-INPUT
+   OPERAND1-s1
+  OP1 VALUE-s1
+   OPERAND2-start_pico
+  OP2 VALUE-00
+    COMMENT-
+    ADDRESS-13B
+      LABEL-
+INSTRUCTION-COMPARE
+   OPERAND1-s1
+  OP1 VALUE-s1
+   OPERAND2-01
+  OP2 VALUE-01
+    COMMENT-
+    ADDRESS-13C
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-NZ
+  OP1 VALUE-NZ
+   OPERAND2-say_phoneme
+  OP2 VALUE-13A
+    COMMENT-
+    ADDRESS-13D
+      LABEL-
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-;temporary part for pico_done
+    ADDRESS-13D
+      LABEL-
+INSTRUCTION-OUTPUT
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-output_phoneme
+  OP2 VALUE-80
+    COMMENT-
+    ADDRESS-13E
       LABEL-
 INSTRUCTION-LOAD
    OPERAND1-s1
   OP1 VALUE-s1
-   OPERAND2-00
-  OP2 VALUE-00
+   OPERAND2-01
+  OP2 VALUE-01
     COMMENT-
-    ADDRESS-06D
+    ADDRESS-13F
       LABEL-
 INSTRUCTION-OUTPUT
    OPERAND1-s1
   OP1 VALUE-s1
-   OPERAND2-LED_port
-  OP2 VALUE-80
+   OPERAND2-pico_done
+  OP2 VALUE-40
     COMMENT-
-    ADDRESS-06E
+    ADDRESS-140
       LABEL-
-INSTRUCTION-JUMP
-   OPERAND1-END
-  OP1 VALUE-06F
-   OPERAND2-
-  OP2 VALUE-
+INSTRUCTION-LOAD
+   OPERAND1-s1
+  OP1 VALUE-s1
+   OPERAND2-00
+  OP2 VALUE-00
     COMMENT-
-    ADDRESS-06F
-      LABEL-END
-INSTRUCTION-
+    ADDRESS-141
+      LABEL-
+INSTRUCTION-OUTPUT
+   OPERAND1-s1
+  OP1 VALUE-s1
+   OPERAND2-pico_done
+  OP2 VALUE-40
+    COMMENT-
+    ADDRESS-142
+      LABEL-
+INSTRUCTION-RETURN
    OPERAND1-
   OP1 VALUE-
    OPERAND2-
   OP2 VALUE-
     COMMENT-
-    ADDRESS-06F
+    ADDRESS-143
+      LABEL-talkphonemeAA
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; hOt
+    ADDRESS-143
       LABEL-
 INSTRUCTION-LOAD
-   OPERAND1-s1
-  OP1 VALUE-s1
-   OPERAND2-00
-  OP2 VALUE-00
-    COMMENT-; reset
-    ADDRESS-070
-      LABEL-
-INSTRUCTION-LOAD
-   OPERAND1-s2
-  OP1 VALUE-s2
-   OPERAND2-00
-  OP2 VALUE-00
-    COMMENT-
-    ADDRESS-071
-      LABEL-
-INSTRUCTION-LOAD
-   OPERAND1-s3
-  OP1 VALUE-s3
-   OPERAND2-00
-  OP2 VALUE-00
-    COMMENT-
-    ADDRESS-072
-      LABEL-
-INSTRUCTION-STORE
-   OPERAND1-s1
-  OP1 VALUE-s1
-   OPERAND2-save_s1
-  OP2 VALUE-06
-    COMMENT-; save to memory
-    ADDRESS-073
-      LABEL-
-INSTRUCTION-STORE
-   OPERAND1-s2
-  OP1 VALUE-s2
-   OPERAND2-save_s2
-  OP2 VALUE-07
-    COMMENT-
-    ADDRESS-074
-      LABEL-
-INSTRUCTION-STORE
-   OPERAND1-s3
-  OP1 VALUE-s3
-   OPERAND2-save_s3
-  OP2 VALUE-08
-    COMMENT-
-    ADDRESS-075
-      LABEL-
-INSTRUCTION-FETCH
    OPERAND1-s0
   OP1 VALUE-s0
-   OPERAND2-ISR_preserve_s0
-  OP2 VALUE-00
-    COMMENT-;let's return them to the stack
-    ADDRESS-076
-      LABEL-
-INSTRUCTION-FETCH
-   OPERAND1-s1
-  OP1 VALUE-s1
-   OPERAND2-ISR_preserve_s1
-  OP2 VALUE-01
-    COMMENT-
-    ADDRESS-077
-      LABEL-
-INSTRUCTION-FETCH
-   OPERAND1-s2
-  OP1 VALUE-s2
-   OPERAND2-ISR_preserve_s2
-  OP2 VALUE-02
-    COMMENT-
-    ADDRESS-078
-      LABEL-
-INSTRUCTION-FETCH
-   OPERAND1-s3
-  OP1 VALUE-s3
-   OPERAND2-ISR_preserve_s3
-  OP2 VALUE-03
-    COMMENT-
-    ADDRESS-079
-      LABEL-
-INSTRUCTION-FETCH
-   OPERAND1-s4
-  OP1 VALUE-s4
-   OPERAND2-ISR_preserve_s4
-  OP2 VALUE-04
-    COMMENT-
-    ADDRESS-07A
-      LABEL-
-INSTRUCTION-FETCH
-   OPERAND1-s5
-  OP1 VALUE-s5
-   OPERAND2-ISR_preserve_s5
-  OP2 VALUE-05
-    COMMENT-
-    ADDRESS-07B
-      LABEL-
-INSTRUCTION-RETURNI
-   OPERAND1-ENABLE
-  OP1 VALUE-ENABLE
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-
-    ADDRESS-07C
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-;**************************************************************************************
-    ADDRESS-07C
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-; Interrupt Vector
-    ADDRESS-07C
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-;**************************************************************************************
-    ADDRESS-07C
-      LABEL-
-INSTRUCTION-
-   OPERAND1-
-  OP1 VALUE-
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-;
-    ADDRESS-3FF
-      LABEL-
-INSTRUCTION-ADDRESS
-   OPERAND1-3FF
-  OP1 VALUE-3FF
-   OPERAND2-
-  OP2 VALUE-
-    COMMENT-;for interrupt
-    ADDRESS-3FF
+   OPERAND2-phoneme_AA
+  OP2 VALUE-18
+    COMMENT-; can be doubled
+    ADDRESS-144
       LABEL-
 INSTRUCTION-JUMP
-   OPERAND1-ISR
-  OP1 VALUE-023
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
    OPERAND2-
   OP2 VALUE-
-    COMMENT-;for interrupt
-    ADDRESS-3FF
-      LABEL-
+    COMMENT-
+    ADDRESS-145
+      LABEL-talkphonemeAE
 INSTRUCTION-
    OPERAND1-
   OP1 VALUE-
    OPERAND2-
   OP2 VALUE-
-    COMMENT-;
-    ADDRESS-3FF
+    COMMENT-; hAt
+    ADDRESS-145
       LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_AE
+  OP2 VALUE-1A
+    COMMENT-; can be doubled
+    ADDRESS-146
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-147
+      LABEL-talkphonemeAO
 INSTRUCTION-
    OPERAND1-
   OP1 VALUE-
    OPERAND2-
   OP2 VALUE-
-    COMMENT-;
+    COMMENT-; AUght
+    ADDRESS-147
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_AO
+  OP2 VALUE-17
+    COMMENT-; can be doubled
+    ADDRESS-148
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-149
+      LABEL-talkphonemeAR
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; alARm
+    ADDRESS-149
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_AR
+  OP2 VALUE-3B
+    COMMENT-
+    ADDRESS-14A
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-14B
+      LABEL-talkphonemeAW
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; dOWn
+    ADDRESS-14B
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_AW
+  OP2 VALUE-20
+    COMMENT-
+    ADDRESS-14C
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-14D
+      LABEL-talkphonemeAX
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; sUceed
+    ADDRESS-14D
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_AX
+  OP2 VALUE-0F
+    COMMENT-; can be doubled
+    ADDRESS-14E
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-14F
+      LABEL-talkphonemeAY
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; kIte
+    ADDRESS-14F
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_AY
+  OP2 VALUE-06
+    COMMENT-
+    ADDRESS-150
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-151
+      LABEL-talkphonemeBB1
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; riB
+    ADDRESS-151
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_BB1
+  OP2 VALUE-1C
+    COMMENT-; usually preceed with 10-30 mS silence
+    ADDRESS-152
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-153
+      LABEL-talkphonemeBB2
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; Beast
+    ADDRESS-153
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_BB2
+  OP2 VALUE-3F
+    COMMENT-; usually preceed with 10-30 mS silence
+    ADDRESS-154
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-155
+      LABEL-talkphonemeCH
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; CHurCH
+    ADDRESS-155
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_CH
+  OP2 VALUE-32
+    COMMENT-
+    ADDRESS-156
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-157
+      LABEL-talkphonemeDD1
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; enD
+    ADDRESS-157
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_DD1
+  OP2 VALUE-15
+    COMMENT-; usually preceed with 10-30 mS silence
+    ADDRESS-158
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-159
+      LABEL-talkphonemeDD2
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; Down
+    ADDRESS-159
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_DD2
+  OP2 VALUE-21
+    COMMENT-; usually preceed with 10-30 mS silence
+    ADDRESS-15A
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-15B
+      LABEL-talkphonemeDH1
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; THis
+    ADDRESS-15B
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_DH1
+  OP2 VALUE-12
+    COMMENT-
+    ADDRESS-15C
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-15D
+      LABEL-talkphonemeDH2
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; baTHe
+    ADDRESS-15D
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_DH2
+  OP2 VALUE-36
+    COMMENT-
+    ADDRESS-15E
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-15F
+      LABEL-talkphonemeEH
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; End
+    ADDRESS-15F
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_EH
+  OP2 VALUE-07
+    COMMENT-; can be doubled
+    ADDRESS-160
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-161
+      LABEL-talkphonemeEL
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; angLE
+    ADDRESS-161
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_EL
+  OP2 VALUE-3E
+    COMMENT-
+    ADDRESS-162
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-163
+      LABEL-talkphonemeER1
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; lettER
+    ADDRESS-163
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_ER1
+  OP2 VALUE-33
+    COMMENT-
+    ADDRESS-164
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-165
+      LABEL-talkphonemeER2
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; fERn
+    ADDRESS-165
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_ER2
+  OP2 VALUE-34
+    COMMENT-
+    ADDRESS-166
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-167
+      LABEL-talkphonemeEY
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; trAY
+    ADDRESS-167
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_EY
+  OP2 VALUE-14
+    COMMENT-
+    ADDRESS-168
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-169
+      LABEL-talkphonemeFF
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; Food
+    ADDRESS-169
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_FF
+  OP2 VALUE-28
+    COMMENT-; usually double for initial
+    ADDRESS-16A
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-16B
+      LABEL-talkphonemeGG1
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; Guest
+    ADDRESS-16B
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_GG1
+  OP2 VALUE-24
+    COMMENT-; usually preceed with 10-30 mS silence
+    ADDRESS-16C
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-16D
+      LABEL-talkphonemeGG2
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; Got
+    ADDRESS-16D
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_GG2
+  OP2 VALUE-3D
+    COMMENT-; usually preceed with 10-30 mS silence
+    ADDRESS-16E
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-16F
+      LABEL-talkphonemeGG3
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; peG
+    ADDRESS-16F
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_GG3
+  OP2 VALUE-22
+    COMMENT-; usually preceed with 10-30 mS silence
+    ADDRESS-170
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-171
+      LABEL-talkphonemeHH1
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; He
+    ADDRESS-171
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_HH1
+  OP2 VALUE-1B
+    COMMENT-; usually double for initial
+    ADDRESS-172
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-173
+      LABEL-talkphonemeHH2
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; Hoe
+    ADDRESS-173
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_HH2
+  OP2 VALUE-39
+    COMMENT-; usually double for initial
+    ADDRESS-174
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-175
+      LABEL-talkphonemeIH
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; sIt
+    ADDRESS-175
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_IH
+  OP2 VALUE-0C
+    COMMENT-; can be doubled
+    ADDRESS-176
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-177
+      LABEL-talkphonemeIY
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; sEE
+    ADDRESS-177
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_IY
+  OP2 VALUE-13
+    COMMENT-
+    ADDRESS-178
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-179
+      LABEL-talkphonemeJH
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; JudGe
+    ADDRESS-179
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_JH
+  OP2 VALUE-0A
+    COMMENT-
+    ADDRESS-17A
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-17B
+      LABEL-talkphonemeKK1
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; Can't
+    ADDRESS-17B
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_KK1
+  OP2 VALUE-2A
+    COMMENT-; usually preceed with 50-80 mS silence
+    ADDRESS-17C
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-17D
+      LABEL-talkphonemeKK2
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; speaK
+    ADDRESS-17D
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_KK2
+  OP2 VALUE-29
+    COMMENT-; usually preceed with 50-80 mS silence
+    ADDRESS-17E
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-17F
+      LABEL-talkphonemeKK3
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; Crane
+    ADDRESS-17F
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_KK3
+  OP2 VALUE-08
+    COMMENT-; usually preceed with 50-80 mS silence
+    ADDRESS-180
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-181
+      LABEL-talkphonemeLL
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; Like
+    ADDRESS-181
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_LL
+  OP2 VALUE-2D
+    COMMENT-
+    ADDRESS-182
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-183
+      LABEL-talkphonemeMM
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; Milk
+    ADDRESS-183
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_MM
+  OP2 VALUE-10
+    COMMENT-
+    ADDRESS-184
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-185
+      LABEL-talkphonemeNG
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; aNGer
+    ADDRESS-185
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_NG
+  OP2 VALUE-2C
+    COMMENT-
+    ADDRESS-186
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-187
+      LABEL-talkphonemeNN1
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; thiN
+    ADDRESS-187
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_NN1
+  OP2 VALUE-0B
+    COMMENT-
+    ADDRESS-188
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-189
+      LABEL-talkphonemeNN2
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; No
+    ADDRESS-189
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_NN2
+  OP2 VALUE-38
+    COMMENT-
+    ADDRESS-18A
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-18B
+      LABEL-talkphonemeOR
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; fORtune
+    ADDRESS-18B
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_OR
+  OP2 VALUE-3A
+    COMMENT-
+    ADDRESS-18C
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-18D
+      LABEL-talkphonemeOW
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; zOne
+    ADDRESS-18D
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_OW
+  OP2 VALUE-35
+    COMMENT-
+    ADDRESS-18E
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-18F
+      LABEL-talkphonemeOY
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; vOIce
+    ADDRESS-18F
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_OY
+  OP2 VALUE-05
+    COMMENT-
+    ADDRESS-190
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-191
+      LABEL-talkphonemePP
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; Pow
+    ADDRESS-191
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_PP
+  OP2 VALUE-09
+    COMMENT-; usually preceed with 50-80 mS silence
+    ADDRESS-192
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-193
+      LABEL-talkphonemeRR1
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; Read
+    ADDRESS-193
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_RR1
+  OP2 VALUE-0E
+    COMMENT-
+    ADDRESS-194
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-195
+      LABEL-talkphonemeRR2
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; cRane
+    ADDRESS-195
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_RR2
+  OP2 VALUE-27
+    COMMENT-
+    ADDRESS-196
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-197
+      LABEL-talkphonemeSH
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; SHip
+    ADDRESS-197
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_SH
+  OP2 VALUE-25
+    COMMENT-; usually double for initial
+    ADDRESS-198
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-199
+      LABEL-talkphonemeSS
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; veSt
+    ADDRESS-199
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_SS
+  OP2 VALUE-37
+    COMMENT-; usually double for initial
+    ADDRESS-19A
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-19B
+      LABEL-talkphonemeTH
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; THin
+    ADDRESS-19B
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_TH
+  OP2 VALUE-1D
+    COMMENT-; usually double for initial
+    ADDRESS-19C
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-19D
+      LABEL-talkphonemeTT1
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; parTs
+    ADDRESS-19D
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_TT1
+  OP2 VALUE-11
+    COMMENT-; usually preceed with 50-80 mS silence
+    ADDRESS-19E
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-19F
+      LABEL-talkphonemeTT2
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; To
+    ADDRESS-19F
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_TT2
+  OP2 VALUE-0D
+    COMMENT-; usually preceed with 50-80 mS silence
+    ADDRESS-1A0
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-1A1
+      LABEL-talkphonemeUH
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; bOOk
+    ADDRESS-1A1
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_UH
+  OP2 VALUE-1E
+    COMMENT-; may be doubled
+    ADDRESS-1A2
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-1A3
+      LABEL-talkphonemeUW1
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; tO
+    ADDRESS-1A3
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_UW1
+  OP2 VALUE-16
+    COMMENT-
+    ADDRESS-1A4
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-1A5
+      LABEL-talkphonemeUW2
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; fOOd
+    ADDRESS-1A5
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_UW2
+  OP2 VALUE-1F
+    COMMENT-
+    ADDRESS-1A6
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-1A7
+      LABEL-talkphonemeVV
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; Vest
+    ADDRESS-1A7
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_VV
+  OP2 VALUE-23
+    COMMENT-
+    ADDRESS-1A8
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-1A9
+      LABEL-talkphonemeWH
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; WHig
+    ADDRESS-1A9
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_WH
+  OP2 VALUE-30
+    COMMENT-; usually double for initial
+    ADDRESS-1AA
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-1AB
+      LABEL-talkphonemeWW
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; We
+    ADDRESS-1AB
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_WW
+  OP2 VALUE-2E
+    COMMENT-
+    ADDRESS-1AC
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-1AD
+      LABEL-talkphonemeXR
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; stARs
+    ADDRESS-1AD
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_XR
+  OP2 VALUE-2F
+    COMMENT-
+    ADDRESS-1AE
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-1AF
+      LABEL-talkphonemeYR
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; hEAr
+    ADDRESS-1AF
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_YR
+  OP2 VALUE-3C
+    COMMENT-
+    ADDRESS-1B0
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-1B1
+      LABEL-talkphonemeYY1
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; cUte
+    ADDRESS-1B1
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_YY1
+  OP2 VALUE-31
+    COMMENT-
+    ADDRESS-1B2
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-1B3
+      LABEL-talkphonemeYY2
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; Yes
+    ADDRESS-1B3
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_YY2
+  OP2 VALUE-19
+    COMMENT-
+    ADDRESS-1B4
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-1B5
+      LABEL-talkphonemeZH
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; pleaSure
+    ADDRESS-1B5
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_ZH
+  OP2 VALUE-26
+    COMMENT-
+    ADDRESS-1B6
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-1B7
+      LABEL-talkphonemeZZ
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; Zoo
+    ADDRESS-1B7
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_ZZ
+  OP2 VALUE-2B
+    COMMENT-
+    ADDRESS-1B8
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-1B9
+      LABEL-talkphonemePA1
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; 10 mS silence
+    ADDRESS-1B9
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_PA1
+  OP2 VALUE-00
+    COMMENT-
+    ADDRESS-1BA
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-1BB
+      LABEL-talkphonemePA2
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; 30 mS silence
+    ADDRESS-1BB
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_PA2
+  OP2 VALUE-01
+    COMMENT-
+    ADDRESS-1BC
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-1BD
+      LABEL-talkphonemePA3
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; 50 mS silence
+    ADDRESS-1BD
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_PA3
+  OP2 VALUE-02
+    COMMENT-
+    ADDRESS-1BE
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-1BF
+      LABEL-talkphonemePA4
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; 100 mS silence
+    ADDRESS-1BF
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_PA4
+  OP2 VALUE-03
+    COMMENT-
+    ADDRESS-1C0
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-1C1
+      LABEL-talkphonemePA5
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; 200 mS silence
+    ADDRESS-1C1
+      LABEL-
+INSTRUCTION-LOAD
+   OPERAND1-s0
+  OP1 VALUE-s0
+   OPERAND2-phoneme_PA5
+  OP2 VALUE-04
+    COMMENT-
+    ADDRESS-1C2
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-1C3
+      LABEL-talkphonemePA6
+INSTRUCTION-
+   OPERAND1-
+  OP1 VALUE-
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-; 500 mS silence
+    ADDRESS-1C3
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA5
+  OP1 VALUE-1C1
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-1C4
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA5
+  OP1 VALUE-1C1
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-1C5
+      LABEL-
+INSTRUCTION-CALL
+   OPERAND1-talkphonemePA4
+  OP1 VALUE-1BF
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
+    ADDRESS-1C6
+      LABEL-
+INSTRUCTION-JUMP
+   OPERAND1-say_phoneme
+  OP1 VALUE-13A
+   OPERAND2-
+  OP2 VALUE-
+    COMMENT-
