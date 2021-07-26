@@ -1,0 +1,16 @@
+Table of constant values and their specified constant labels.
+
+80  LED_port
+00  DATA_IN_PORT
+40  LED_0
+00  ISR_preserve_s0
+01  ISR_preserve_s1
+02  ISR_preserve_s2
+03  ISR_preserve_s3
+04  ISR_preserve_s4
+05  ISR_preserve_s5
+07  save_s2
+08  save_s3
+06  save_s1
+04  LED_pattern
+05  delay_1us_constant

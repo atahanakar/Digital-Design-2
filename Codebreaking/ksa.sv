@@ -133,8 +133,7 @@ module ksa(
     assign LEDR[2]   = not_done;
     assign LEDR[1]   = failed;
     assign LEDR[0]   = cracked;
-
-
+    
 endmodule
 
 

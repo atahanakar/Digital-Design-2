@@ -1,0 +1,1032 @@
+KCPSM3  v1.30.      Ken Chapman (Xilinx-UK) 2005
+
+The assembler for KCPSM3 Programmable State Machine
+
+PASS 1 - Reading input PSM file
+
+;**************************************************************************************
+; Port definitions
+;**************************************************************************************
+;
+;
+;
+CONSTANT LED_port, 80              ;8 simple LEDs. Is an OUTPUT port. for LED[9:2]
+CONSTANT DATA_IN_PORT, 00          ;input data port. this is an INPUT port.
+CONSTANT LED_0,40
+CONSTANT ISR_preserve_s0, 00        ;Preserve s0 contents during ISR
+CONSTANT ISR_preserve_s1, 01        ;Preserve s1 contents during ISR
+CONSTANT ISR_preserve_s2, 02        ;Preserve s2 contents during ISR
+CONSTANT ISR_preserve_s3, 03        ;Preserve s3 contents during ISR
+CONSTANT ISR_preserve_s4, 04
+CONSTANT ISR_preserve_s5, 05
+CONSTANT save_s2,07
+CONSTANT save_s3,08
+CONSTANT save_s1,06
+;
+CONSTANT LED_pattern, 04            ;remember state of LEDs (8-bit counter in this case)
+;
+;**************************************************************************************
+; Useful data constants
+;**************************************************************************************
+;
+;
+; Constant to define a software delay of 1us. This must be adjusted to reflect the
+; clock applied to KCPSM3. Every instruction executes in 2 clock cycles making the
+; calculation highly predictable. The '6' in the following equation even allows for
+; 'CALL delay_1us' instruction in the initiating code.
+;
+; delay_1us_constant =  (clock_rate - 6)/4       Where 'clock_rate' is in MHz
+;
+; Example: For a 50MHz clock the constant value is (10-6)/4 = 11  (0B Hex).
+; For clock rates below 10MHz the value of 1 must be used and the operation will
+; become lower than intended. Interrupts may effect the timing of software based
+; delays.
+;
+CONSTANT delay_1us_constant, 05
+;
+;
+;
+;**************************************************************************************
+; Initialise the system
+;**************************************************************************************
+;
+cold_start: LOAD s0,00
+STORE s0,LED_pattern
+OUTPUT s0,LED_port
+ENABLE INTERRUPT  ;now interrupts are on
+;*******************PART1*******************;
+main_program:
+LOAD s6,01  ;mov s1,#1
+OUTPUT s6,LED_0 ;now the LED0 is on
+CALL delay_1s ;wait 1 second
+LOAD s6,00 ;mov s1,#0
+OUTPUT s6,LED_0 ;now the LED0 is off
+CALL delay_1s ;wait 1 second
+JUMP main_program
+;**************************************************************************************
+; Software delay routines
+;**************************************************************************************
+;
+; Delay of 1us.
+;
+; Constant value 'delay_1us_constant' reflects the clock applied to KCPSM3. Every
+; instruction executes in 2 clock cycles making the calculation highly predictable.
+; The '6' in the following equation allows for the 'CALL delay_1us' instruction used
+; in the initiating code. Interrupts may effect software derived delays.
+;
+; delay_1us_constant =  (clock_rate - 6)/4       Where 'clock_rate' is in MHz
+;
+; Registers used s0
+delay_1us: LOAD s0, delay_1us_constant
+wait_1us: SUB s0, 01
+JUMP NZ, wait_1us
+RETURN
+;
+; Delay of 40us.
+;
+; Registers used s0, s1
+;
+delay_40us: LOAD s1, 28                         ;40 x 1us = 40us
+wait_40us: CALL delay_1us
+SUB s1, 01
+JUMP NZ, wait_40us
+RETURN
+;
+;
+; Delay of 1ms.
+;
+; Registers used s0, s1, s2
+;
+delay_1ms: LOAD s2, 19                         ;25 x 40us = 1ms
+wait_1ms: CALL delay_40us
+SUB s2, 01
+JUMP NZ, wait_1ms
+RETURN
+;
+; Delay of 20ms.
+;
+; Delay of 20ms used during initialisation.
+;
+; Registers used s0, s1, s2, s3
+;
+delay_20ms: LOAD s3, 14                         ;20 x 1ms = 20ms
+wait_20ms: CALL delay_1ms
+SUB s3, 01
+JUMP NZ, wait_20ms
+RETURN
+;
+; Delay of approximately 1 second.
+;
+; Registers used s0, s1, s2, s3, s4
+;
+delay_1s: LOAD s4, 32                         ;50 x 20ms = 1000ms
+wait_1s: CALL delay_20ms
+SUB s4, 01
+JUMP NZ, wait_1s
+RETURN  ;from pracPICO.psm
+;*******************PART2***************************;
+;some important comments:
+;we need to read the data and then  s1 counter s2 sum
+ISR:
+STORE s0, ISR_preserve_s0 ;data
+STORE s1, ISR_preserve_s1 ;let's use it as a counter
+STORE s2, ISR_preserve_s2 ;let's use it as sum1
+STORE s3, ISR_preserve_s3;let's use it as save_s3
+STORE s4, ISR_preserve_s4 ;let's use it as unimportant sum
+STORE s5, ISR_preserve_s5 ;this is the output of led
+FETCH s1, save_s1  ; reload the values of this
+FETCH s2, save_s2
+FETCH s3, save_s3
+INPUT s0, DATA_IN_PORT ; s0 gets the data
+COMPARE s0, 80 ; see if the msb is 1 which means negative
+JUMP NC, negative_to_positive
+continue1:
+;now  256 times wait
+ADD s1, s0 ;  now add this save_s1
+JUMP C, increment_LED
+counter_loop:
+ADD s3, 01 ;will finish it after it reaches to FF
+JUMP C, got_256
+STORE s1, save_s1 ;save them to memory
+STORE s2, save_s2
+STORE s3, save_s3
+FETCH s0, ISR_preserve_s0  ;let's return them to the stack
+FETCH s1, ISR_preserve_s1
+FETCH s2, ISR_preserve_s2
+FETCH s3, ISR_preserve_s3
+FETCH s4, ISR_preserve_s4
+FETCH s5, ISR_preserve_s5
+RETURNI ENABLE
+increment_LED:
+ADD s2, 01 ;save_s3 is incrementing by 1
+JUMP counter_loop
+negative_to_positive:
+XOR s0, FF
+ADD s0, 01 ;now we convert negative to positive
+JUMP continue1
+got_256: ;here we will compare the value of save_s3 then output it to LEDs
+;let's say we got 5 = 00000101 then we need to get xxx00000
+SL0 s2
+JUMP NC, six
+LOAD s1, FF      ;LED2
+OUTPUT s1, LED_port
+JUMP END
+six:
+SL0 s2
+JUMP NC, five
+LOAD s1, FE
+OUTPUT s1, LED_port
+JUMP END
+five:
+SL0 s2
+JUMP NC,four
+LOAD s1,FC
+OUTPUT s1,LED_port
+JUMP END
+four:
+SL0 s2
+JUMP NC,three
+LOAD s1,F8
+OUTPUT s1,LED_port
+JUMP END
+three:
+SL0 s2
+JUMP NC,two
+LOAD s1,F0
+OUTPUT s1,LED_port
+JUMP END
+two:
+SL0 s2
+JUMP NC,one
+LOAD s1, E0
+OUTPUT s1, LED_port
+JUMP END
+one:
+SL0 s2
+JUMP NC, zero
+LOAD s1, C0
+OUTPUT s1, LED_port
+JUMP END
+zero:
+SL0 s2
+JUMP NC, real_zero
+LOAD s1, 80
+OUTPUT s1, LED_port
+JUMP END
+real_zero:
+SL0 s2
+JUMP NC, END
+LOAD s1, 00
+OUTPUT s1, LED_port
+JUMP END
+END:
+LOAD s1, 00  ; reset
+LOAD s2, 00
+LOAD s3, 00
+STORE s1, save_s1 ; save to memory
+STORE s2, save_s2
+STORE s3, save_s3
+FETCH s0, ISR_preserve_s0  ;let's return them to the stack
+FETCH s1, ISR_preserve_s1
+FETCH s2, ISR_preserve_s2
+FETCH s3, ISR_preserve_s3
+FETCH s4, ISR_preserve_s4
+FETCH s5, ISR_preserve_s5
+RETURNI ENABLE
+;**************************************************************************************
+; Interrupt Vector
+;**************************************************************************************
+;
+ADDRESS 3FF  ;for interrupt
+JUMP ISR     ;for interrupt
+;
+;
+
+PASS 2 - Testing Instructions
+
+;**************************************************************************************
+; Port definitions
+;**************************************************************************************
+;
+;
+;
+CONSTANT LED_port, 80;8 simple LEDs. Is an OUTPUT port. for LED[9:2]
+CONSTANT DATA_IN_PORT, 00;input data port. this is an INPUT port.
+CONSTANT LED_0, 40
+CONSTANT ISR_preserve_s0, 00;Preserve s0 contents during ISR
+CONSTANT ISR_preserve_s1, 01;Preserve s1 contents during ISR
+CONSTANT ISR_preserve_s2, 02;Preserve s2 contents during ISR
+CONSTANT ISR_preserve_s3, 03;Preserve s3 contents during ISR
+CONSTANT ISR_preserve_s4, 04
+CONSTANT ISR_preserve_s5, 05
+CONSTANT save_s2, 07
+CONSTANT save_s3, 08
+CONSTANT save_s1, 06
+;
+CONSTANT LED_pattern, 04;remember state of LEDs (8-bit counter in this case)
+;
+;**************************************************************************************
+; Useful data constants
+;**************************************************************************************
+;
+;
+; Constant to define a software delay of 1us. This must be adjusted to reflect the
+; clock applied to KCPSM3. Every instruction executes in 2 clock cycles making the
+; calculation highly predictable. The '6' in the following equation even allows for
+; 'CALL delay_1us' instruction in the initiating code.
+;
+; delay_1us_constant =  (clock_rate - 6)/4       Where 'clock_rate' is in MHz
+;
+; Example: For a 50MHz clock the constant value is (10-6)/4 = 11  (0B Hex).
+; For clock rates below 10MHz the value of 1 must be used and the operation will
+; become lower than intended. Interrupts may effect the timing of software based
+; delays.
+;
+CONSTANT delay_1us_constant, 05
+;
+;
+;
+;**************************************************************************************
+; Initialise the system
+;**************************************************************************************
+;
+cold_start: LOAD s0, 00
+STORE s0, LED_pattern
+OUTPUT s0, LED_port
+ENABLE INTERRUPT;now interrupts are on
+;*******************PART1*******************;
+main_program: 
+LOAD s6, 01;mov s1,#1
+OUTPUT s6, LED_0;now the LED0 is on
+CALL delay_1s;wait 1 second
+LOAD s6, 00;mov s1,#0
+OUTPUT s6, LED_0;now the LED0 is off
+CALL delay_1s;wait 1 second
+JUMP main_program
+;**************************************************************************************
+; Software delay routines
+;**************************************************************************************
+;
+; Delay of 1us.
+;
+; Constant value 'delay_1us_constant' reflects the clock applied to KCPSM3. Every
+; instruction executes in 2 clock cycles making the calculation highly predictable.
+; The '6' in the following equation allows for the 'CALL delay_1us' instruction used
+; in the initiating code. Interrupts may effect software derived delays.
+;
+; delay_1us_constant =  (clock_rate - 6)/4       Where 'clock_rate' is in MHz
+;
+; Registers used s0
+delay_1us: LOAD s0, delay_1us_constant
+wait_1us: SUB s0, 01
+JUMP NZ, wait_1us
+RETURN
+;
+; Delay of 40us.
+;
+; Registers used s0, s1
+;
+delay_40us: LOAD s1, 28;40 x 1us = 40us
+wait_40us: CALL delay_1us
+SUB s1, 01
+JUMP NZ, wait_40us
+RETURN
+;
+;
+; Delay of 1ms.
+;
+; Registers used s0, s1, s2
+;
+delay_1ms: LOAD s2, 19;25 x 40us = 1ms
+wait_1ms: CALL delay_40us
+SUB s2, 01
+JUMP NZ, wait_1ms
+RETURN
+;
+; Delay of 20ms.
+;
+; Delay of 20ms used during initialisation.
+;
+; Registers used s0, s1, s2, s3
+;
+delay_20ms: LOAD s3, 14;20 x 1ms = 20ms
+wait_20ms: CALL delay_1ms
+SUB s3, 01
+JUMP NZ, wait_20ms
+RETURN
+;
+; Delay of approximately 1 second.
+;
+; Registers used s0, s1, s2, s3, s4
+;
+delay_1s: LOAD s4, 32;50 x 20ms = 1000ms
+wait_1s: CALL delay_20ms
+SUB s4, 01
+JUMP NZ, wait_1s
+RETURN;from pracPICO.psm
+;*******************PART2***************************;
+;some important comments:
+;we need to read the data and then  s1 counter s2 sum
+ISR: 
+STORE s0, ISR_preserve_s0;data
+STORE s1, ISR_preserve_s1;let's use it as a counter
+STORE s2, ISR_preserve_s2;let's use it as sum1
+STORE s3, ISR_preserve_s3;let's use it as save_s3
+STORE s4, ISR_preserve_s4;let's use it as unimportant sum
+STORE s5, ISR_preserve_s5;this is the output of led
+FETCH s1, save_s1; reload the values of this
+FETCH s2, save_s2
+FETCH s3, save_s3
+INPUT s0, DATA_IN_PORT; s0 gets the data
+COMPARE s0, 80; see if the msb is 1 which means negative
+JUMP NC, negative_to_positive
+continue1: 
+;now  256 times wait
+ADD s1, s0;  now add this save_s1
+JUMP C, increment_LED
+counter_loop: 
+ADD s3, 01;will finish it after it reaches to FF
+JUMP C, got_256
+STORE s1, save_s1;save them to memory
+STORE s2, save_s2
+STORE s3, save_s3
+FETCH s0, ISR_preserve_s0;let's return them to the stack
+FETCH s1, ISR_preserve_s1
+FETCH s2, ISR_preserve_s2
+FETCH s3, ISR_preserve_s3
+FETCH s4, ISR_preserve_s4
+FETCH s5, ISR_preserve_s5
+RETURNI ENABLE
+increment_LED: 
+ADD s2, 01;save_s3 is incrementing by 1
+JUMP counter_loop
+negative_to_positive: 
+XOR s0, FF
+ADD s0, 01;now we convert negative to positive
+JUMP continue1
+got_256: ;here we will compare the value of save_s3 then output it to LEDs
+;let's say we got 5 = 00000101 then we need to get xxx00000
+SL0 s2
+JUMP NC, six
+LOAD s1, FF;LED2
+OUTPUT s1, LED_port
+JUMP END
+six: 
+SL0 s2
+JUMP NC, five
+LOAD s1, FE
+OUTPUT s1, LED_port
+JUMP END
+five: 
+SL0 s2
+JUMP NC, four
+LOAD s1, FC
+OUTPUT s1, LED_port
+JUMP END
+four: 
+SL0 s2
+JUMP NC, three
+LOAD s1, F8
+OUTPUT s1, LED_port
+JUMP END
+three: 
+SL0 s2
+JUMP NC, two
+LOAD s1, F0
+OUTPUT s1, LED_port
+JUMP END
+two: 
+SL0 s2
+JUMP NC, one
+LOAD s1, E0
+OUTPUT s1, LED_port
+JUMP END
+one: 
+SL0 s2
+JUMP NC, zero
+LOAD s1, C0
+OUTPUT s1, LED_port
+JUMP END
+zero: 
+SL0 s2
+JUMP NC, real_zero
+LOAD s1, 80
+OUTPUT s1, LED_port
+JUMP END
+real_zero: 
+SL0 s2
+JUMP NC, END
+LOAD s1, 00
+OUTPUT s1, LED_port
+JUMP END
+END: 
+LOAD s1, 00; reset
+LOAD s2, 00
+LOAD s3, 00
+STORE s1, save_s1; save to memory
+STORE s2, save_s2
+STORE s3, save_s3
+FETCH s0, ISR_preserve_s0;let's return them to the stack
+FETCH s1, ISR_preserve_s1
+FETCH s2, ISR_preserve_s2
+FETCH s3, ISR_preserve_s3
+FETCH s4, ISR_preserve_s4
+FETCH s5, ISR_preserve_s5
+RETURNI ENABLE
+;**************************************************************************************
+; Interrupt Vector
+;**************************************************************************************
+;
+ADDRESS 3FF;for interrupt
+JUMP ISR;for interrupt
+;
+;
+
+PASS 3 - Resolving addresses and line labels
+
+000 
+;**************************************************************************************
+000 ; Port definitions
+000 
+;**************************************************************************************
+000 ;
+000 ;
+000 ;
+000 CONSTANT LED_port, 80;8 simple LEDs. Is an OUTPUT port. for LED[9:2]
+000 CONSTANT DATA_IN_PORT, 00;input data port. this is an INPUT port.
+000 CONSTANT LED_0, 40
+000 CONSTANT ISR_preserve_s0, 00;Preserve s0 contents during ISR
+000 CONSTANT ISR_preserve_s1, 01;Preserve s1 contents during ISR
+000 CONSTANT ISR_preserve_s2, 02;Preserve s2 contents during ISR
+000 CONSTANT ISR_preserve_s3, 03;Preserve s3 contents during ISR
+000 CONSTANT ISR_preserve_s4, 04
+000 CONSTANT ISR_preserve_s5, 05
+000 CONSTANT save_s2, 07
+000 CONSTANT save_s3, 08
+000 CONSTANT save_s1, 06
+000 ;
+000 CONSTANT LED_pattern, 04;remember state of LEDs (8-bit counter in this case)
+000 ;
+000 
+;**************************************************************************************
+000 ; Useful data constants
+000 
+;**************************************************************************************
+000 ;
+000 ;
+000 
+; Constant to define a software delay of 1us. This must be adjusted to reflect the
+000 
+; clock applied to KCPSM3. Every instruction executes in 2 clock cycles making the
+000 
+; calculation highly predictable. The '6' in the following equation even allows for
+000 ; 'CALL delay_1us' instruction in the initiating code.
+000 ;
+000 
+; delay_1us_constant =  (clock_rate - 6)/4       Where 'clock_rate' is in MHz
+000 ;
+000 ; Example: For a 50MHz clock the constant value is (10-6)/4 = 11  (0B Hex).
+000 
+; For clock rates below 10MHz the value of 1 must be used and the operation will
+000 
+; become lower than intended. Interrupts may effect the timing of software based
+000 ; delays.
+000 ;
+000 CONSTANT delay_1us_constant, 05
+000 ;
+000 ;
+000 ;
+000 
+;**************************************************************************************
+000 ; Initialise the system
+000 
+;**************************************************************************************
+000 ;
+000 cold_start: LOAD s0, 00
+001 STORE s0, LED_pattern
+002 OUTPUT s0, LED_port
+003 ENABLE INTERRUPT;now interrupts are on
+004 ;*******************PART1*******************;
+004 main_program: 
+004 LOAD s6, 01;mov s1,#1
+005 OUTPUT s6, LED_0;now the LED0 is on
+006 CALL delay_1s;wait 1 second
+007 LOAD s6, 00;mov s1,#0
+008 OUTPUT s6, LED_0;now the LED0 is off
+009 CALL delay_1s;wait 1 second
+00A JUMP main_program
+00B 
+;**************************************************************************************
+00B ; Software delay routines
+00B 
+;**************************************************************************************
+00B ;
+00B ; Delay of 1us.
+00B ;
+00B 
+; Constant value 'delay_1us_constant' reflects the clock applied to KCPSM3. Every
+00B 
+; instruction executes in 2 clock cycles making the calculation highly predictable.
+00B 
+; The '6' in the following equation allows for the 'CALL delay_1us' instruction used
+00B ; in the initiating code. Interrupts may effect software derived delays.
+00B ;
+00B 
+; delay_1us_constant =  (clock_rate - 6)/4       Where 'clock_rate' is in MHz
+00B ;
+00B ; Registers used s0
+00B delay_1us: LOAD s0, delay_1us_constant
+00C wait_1us: SUB s0, 01
+00D JUMP NZ, wait_1us
+00E RETURN
+00F ;
+00F ; Delay of 40us.
+00F ;
+00F ; Registers used s0, s1
+00F ;
+00F delay_40us: LOAD s1, 28;40 x 1us = 40us
+010 wait_40us: CALL delay_1us
+011 SUB s1, 01
+012 JUMP NZ, wait_40us
+013 RETURN
+014 ;
+014 ;
+014 ; Delay of 1ms.
+014 ;
+014 ; Registers used s0, s1, s2
+014 ;
+014 delay_1ms: LOAD s2, 19;25 x 40us = 1ms
+015 wait_1ms: CALL delay_40us
+016 SUB s2, 01
+017 JUMP NZ, wait_1ms
+018 RETURN
+019 ;
+019 ; Delay of 20ms.
+019 ;
+019 ; Delay of 20ms used during initialisation.
+019 ;
+019 ; Registers used s0, s1, s2, s3
+019 ;
+019 delay_20ms: LOAD s3, 14;20 x 1ms = 20ms
+01A wait_20ms: CALL delay_1ms
+01B SUB s3, 01
+01C JUMP NZ, wait_20ms
+01D RETURN
+01E ;
+01E ; Delay of approximately 1 second.
+01E ;
+01E ; Registers used s0, s1, s2, s3, s4
+01E ;
+01E delay_1s: LOAD s4, 32;50 x 20ms = 1000ms
+01F wait_1s: CALL delay_20ms
+020 SUB s4, 01
+021 JUMP NZ, wait_1s
+022 RETURN;from pracPICO.psm
+023 ;*******************PART2***************************;
+023 ;some important comments:
+023 ;we need to read the data and then  s1 counter s2 sum
+023 ISR: 
+023 STORE s0, ISR_preserve_s0;data
+024 STORE s1, ISR_preserve_s1;let's use it as a counter
+025 STORE s2, ISR_preserve_s2;let's use it as sum1
+026 STORE s3, ISR_preserve_s3;let's use it as save_s3
+027 STORE s4, ISR_preserve_s4;let's use it as unimportant sum
+028 STORE s5, ISR_preserve_s5;this is the output of led
+029 FETCH s1, save_s1; reload the values of this
+02A FETCH s2, save_s2
+02B FETCH s3, save_s3
+02C INPUT s0, DATA_IN_PORT; s0 gets the data
+02D COMPARE s0, 80; see if the msb is 1 which means negative
+02E JUMP NC, negative_to_positive
+02F continue1: 
+02F ;now  256 times wait
+02F ADD s1, s0;  now add this save_s1
+030 JUMP C, increment_LED
+031 counter_loop: 
+031 ADD s3, 01;will finish it after it reaches to FF
+032 JUMP C, got_256
+033 STORE s1, save_s1;save them to memory
+034 STORE s2, save_s2
+035 STORE s3, save_s3
+036 FETCH s0, ISR_preserve_s0;let's return them to the stack
+037 FETCH s1, ISR_preserve_s1
+038 FETCH s2, ISR_preserve_s2
+039 FETCH s3, ISR_preserve_s3
+03A FETCH s4, ISR_preserve_s4
+03B FETCH s5, ISR_preserve_s5
+03C RETURNI ENABLE
+03D increment_LED: 
+03D ADD s2, 01;save_s3 is incrementing by 1
+03E JUMP counter_loop
+03F negative_to_positive: 
+03F XOR s0, FF
+040 ADD s0, 01;now we convert negative to positive
+041 JUMP continue1
+042 got_256: ;here we will compare the value of save_s3 then output it to LEDs
+042 ;let's say we got 5 = 00000101 then we need to get xxx00000
+042 SL0 s2
+043 JUMP NC, six
+044 LOAD s1, FF;LED2
+045 OUTPUT s1, LED_port
+046 JUMP END
+047 six: 
+047 SL0 s2
+048 JUMP NC, five
+049 LOAD s1, FE
+04A OUTPUT s1, LED_port
+04B JUMP END
+04C five: 
+04C SL0 s2
+04D JUMP NC, four
+04E LOAD s1, FC
+04F OUTPUT s1, LED_port
+050 JUMP END
+051 four: 
+051 SL0 s2
+052 JUMP NC, three
+053 LOAD s1, F8
+054 OUTPUT s1, LED_port
+055 JUMP END
+056 three: 
+056 SL0 s2
+057 JUMP NC, two
+058 LOAD s1, F0
+059 OUTPUT s1, LED_port
+05A JUMP END
+05B two: 
+05B SL0 s2
+05C JUMP NC, one
+05D LOAD s1, E0
+05E OUTPUT s1, LED_port
+05F JUMP END
+060 one: 
+060 SL0 s2
+061 JUMP NC, zero
+062 LOAD s1, C0
+063 OUTPUT s1, LED_port
+064 JUMP END
+065 zero: 
+065 SL0 s2
+066 JUMP NC, real_zero
+067 LOAD s1, 80
+068 OUTPUT s1, LED_port
+069 JUMP END
+06A real_zero: 
+06A SL0 s2
+06B JUMP NC, END
+06C LOAD s1, 00
+06D OUTPUT s1, LED_port
+06E JUMP END
+06F END: 
+06F LOAD s1, 00; reset
+070 LOAD s2, 00
+071 LOAD s3, 00
+072 STORE s1, save_s1; save to memory
+073 STORE s2, save_s2
+074 STORE s3, save_s3
+075 FETCH s0, ISR_preserve_s0;let's return them to the stack
+076 FETCH s1, ISR_preserve_s1
+077 FETCH s2, ISR_preserve_s2
+078 FETCH s3, ISR_preserve_s3
+079 FETCH s4, ISR_preserve_s4
+07A FETCH s5, ISR_preserve_s5
+07B RETURNI ENABLE
+07C 
+;**************************************************************************************
+07C ; Interrupt Vector
+07C 
+;**************************************************************************************
+07C ;
+07C ADDRESS 3FF;for interrupt
+3FF JUMP ISR;for interrupt
+3FF ;
+3FF ;
+
+PASS 4 - Resolving Operands
+
+000 
+;**************************************************************************************
+000 ; Port definitions
+000 
+;**************************************************************************************
+000 ;
+000 ;
+000 ;
+000 CONSTANT LED_port, 80;8 simple LEDs. Is an OUTPUT port. for LED[9:2]
+000 CONSTANT DATA_IN_PORT, 00;input data port. this is an INPUT port.
+000 CONSTANT LED_0, 40
+000 CONSTANT ISR_preserve_s0, 00;Preserve s0 contents during ISR
+000 CONSTANT ISR_preserve_s1, 01;Preserve s1 contents during ISR
+000 CONSTANT ISR_preserve_s2, 02;Preserve s2 contents during ISR
+000 CONSTANT ISR_preserve_s3, 03;Preserve s3 contents during ISR
+000 CONSTANT ISR_preserve_s4, 04
+000 CONSTANT ISR_preserve_s5, 05
+000 CONSTANT save_s2, 07
+000 CONSTANT save_s3, 08
+000 CONSTANT save_s1, 06
+000 ;
+000 CONSTANT LED_pattern, 04;remember state of LEDs (8-bit counter in this case)
+000 ;
+000 
+;**************************************************************************************
+000 ; Useful data constants
+000 
+;**************************************************************************************
+000 ;
+000 ;
+000 
+; Constant to define a software delay of 1us. This must be adjusted to reflect the
+000 
+; clock applied to KCPSM3. Every instruction executes in 2 clock cycles making the
+000 
+; calculation highly predictable. The '6' in the following equation even allows for
+000 ; 'CALL delay_1us' instruction in the initiating code.
+000 ;
+000 
+; delay_1us_constant =  (clock_rate - 6)/4       Where 'clock_rate' is in MHz
+000 ;
+000 ; Example: For a 50MHz clock the constant value is (10-6)/4 = 11  (0B Hex).
+000 
+; For clock rates below 10MHz the value of 1 must be used and the operation will
+000 
+; become lower than intended. Interrupts may effect the timing of software based
+000 ; delays.
+000 ;
+000 CONSTANT delay_1us_constant, 05
+000 ;
+000 ;
+000 ;
+000 
+;**************************************************************************************
+000 ; Initialise the system
+000 
+;**************************************************************************************
+000 ;
+000 cold_start: LOAD s0, 00
+001 STORE s0, LED_pattern
+002 OUTPUT s0, LED_port
+003 ENABLE INTERRUPT;now interrupts are on
+004 ;*******************PART1*******************;
+004 main_program: 
+004 LOAD s6, 01;mov s1,#1
+005 OUTPUT s6, LED_0;now the LED0 is on
+006 CALL delay_1s;wait 1 second
+007 LOAD s6, 00;mov s1,#0
+008 OUTPUT s6, LED_0;now the LED0 is off
+009 CALL delay_1s;wait 1 second
+00A JUMP main_program
+00B 
+;**************************************************************************************
+00B ; Software delay routines
+00B 
+;**************************************************************************************
+00B ;
+00B ; Delay of 1us.
+00B ;
+00B 
+; Constant value 'delay_1us_constant' reflects the clock applied to KCPSM3. Every
+00B 
+; instruction executes in 2 clock cycles making the calculation highly predictable.
+00B 
+; The '6' in the following equation allows for the 'CALL delay_1us' instruction used
+00B ; in the initiating code. Interrupts may effect software derived delays.
+00B ;
+00B 
+; delay_1us_constant =  (clock_rate - 6)/4       Where 'clock_rate' is in MHz
+00B ;
+00B ; Registers used s0
+00B delay_1us: LOAD s0, delay_1us_constant
+00C wait_1us: SUB s0, 01
+00D JUMP NZ, wait_1us
+00E RETURN
+00F ;
+00F ; Delay of 40us.
+00F ;
+00F ; Registers used s0, s1
+00F ;
+00F delay_40us: LOAD s1, 28;40 x 1us = 40us
+010 wait_40us: CALL delay_1us
+011 SUB s1, 01
+012 JUMP NZ, wait_40us
+013 RETURN
+014 ;
+014 ;
+014 ; Delay of 1ms.
+014 ;
+014 ; Registers used s0, s1, s2
+014 ;
+014 delay_1ms: LOAD s2, 19;25 x 40us = 1ms
+015 wait_1ms: CALL delay_40us
+016 SUB s2, 01
+017 JUMP NZ, wait_1ms
+018 RETURN
+019 ;
+019 ; Delay of 20ms.
+019 ;
+019 ; Delay of 20ms used during initialisation.
+019 ;
+019 ; Registers used s0, s1, s2, s3
+019 ;
+019 delay_20ms: LOAD s3, 14;20 x 1ms = 20ms
+01A wait_20ms: CALL delay_1ms
+01B SUB s3, 01
+01C JUMP NZ, wait_20ms
+01D RETURN
+01E ;
+01E ; Delay of approximately 1 second.
+01E ;
+01E ; Registers used s0, s1, s2, s3, s4
+01E ;
+01E delay_1s: LOAD s4, 32;50 x 20ms = 1000ms
+01F wait_1s: CALL delay_20ms
+020 SUB s4, 01
+021 JUMP NZ, wait_1s
+022 RETURN;from pracPICO.psm
+023 ;*******************PART2***************************;
+023 ;some important comments:
+023 ;we need to read the data and then  s1 counter s2 sum
+023 ISR: 
+023 STORE s0, ISR_preserve_s0;data
+024 STORE s1, ISR_preserve_s1;let's use it as a counter
+025 STORE s2, ISR_preserve_s2;let's use it as sum1
+026 STORE s3, ISR_preserve_s3;let's use it as save_s3
+027 STORE s4, ISR_preserve_s4;let's use it as unimportant sum
+028 STORE s5, ISR_preserve_s5;this is the output of led
+029 FETCH s1, save_s1; reload the values of this
+02A FETCH s2, save_s2
+02B FETCH s3, save_s3
+02C INPUT s0, DATA_IN_PORT; s0 gets the data
+02D COMPARE s0, 80; see if the msb is 1 which means negative
+02E JUMP NC, negative_to_positive
+02F continue1: 
+02F ;now  256 times wait
+02F ADD s1, s0;  now add this save_s1
+030 JUMP C, increment_LED
+031 counter_loop: 
+031 ADD s3, 01;will finish it after it reaches to FF
+032 JUMP C, got_256
+033 STORE s1, save_s1;save them to memory
+034 STORE s2, save_s2
+035 STORE s3, save_s3
+036 FETCH s0, ISR_preserve_s0;let's return them to the stack
+037 FETCH s1, ISR_preserve_s1
+038 FETCH s2, ISR_preserve_s2
+039 FETCH s3, ISR_preserve_s3
+03A FETCH s4, ISR_preserve_s4
+03B FETCH s5, ISR_preserve_s5
+03C RETURNI ENABLE
+03D increment_LED: 
+03D ADD s2, 01;save_s3 is incrementing by 1
+03E JUMP counter_loop
+03F negative_to_positive: 
+03F XOR s0, FF
+040 ADD s0, 01;now we convert negative to positive
+041 JUMP continue1
+042 got_256: ;here we will compare the value of save_s3 then output it to LEDs
+042 ;let's say we got 5 = 00000101 then we need to get xxx00000
+042 SL0 s2
+043 JUMP NC, six
+044 LOAD s1, FF;LED2
+045 OUTPUT s1, LED_port
+046 JUMP END
+047 six: 
+047 SL0 s2
+048 JUMP NC, five
+049 LOAD s1, FE
+04A OUTPUT s1, LED_port
+04B JUMP END
+04C five: 
+04C SL0 s2
+04D JUMP NC, four
+04E LOAD s1, FC
+04F OUTPUT s1, LED_port
+050 JUMP END
+051 four: 
+051 SL0 s2
+052 JUMP NC, three
+053 LOAD s1, F8
+054 OUTPUT s1, LED_port
+055 JUMP END
+056 three: 
+056 SL0 s2
+057 JUMP NC, two
+058 LOAD s1, F0
+059 OUTPUT s1, LED_port
+05A JUMP END
+05B two: 
+05B SL0 s2
+05C JUMP NC, one
+05D LOAD s1, E0
+05E OUTPUT s1, LED_port
+05F JUMP END
+060 one: 
+060 SL0 s2
+061 JUMP NC, zero
+062 LOAD s1, C0
+063 OUTPUT s1, LED_port
+064 JUMP END
+065 zero: 
+065 SL0 s2
+066 JUMP NC, real_zero
+067 LOAD s1, 80
+068 OUTPUT s1, LED_port
+069 JUMP END
+06A real_zero: 
+06A SL0 s2
+06B JUMP NC, END
+06C LOAD s1, 00
+06D OUTPUT s1, LED_port
+06E JUMP END
+06F END: 
+06F LOAD s1, 00; reset
+070 LOAD s2, 00
+071 LOAD s3, 00
+072 STORE s1, save_s1; save to memory
+073 STORE s2, save_s2
+074 STORE s3, save_s3
+075 FETCH s0, ISR_preserve_s0;let's return them to the stack
+076 FETCH s1, ISR_preserve_s1
+077 FETCH s2, ISR_preserve_s2
+078 FETCH s3, ISR_preserve_s3
+079 FETCH s4, ISR_preserve_s4
+07A FETCH s5, ISR_preserve_s5
+07B RETURNI ENABLE
+07C 
+;**************************************************************************************
+07C ; Interrupt Vector
+07C 
+;**************************************************************************************
+07C ;
+3FF ADDRESS 3FF;for interrupt
+3FF JUMP ISR;for interrupt
+3FF ;
+3FF ;
+
+PASS 5 - Writing reformatted PSM file
+           pracpico.fmt
+
+PASS 6 - Writing assembler log file
+           pracpico.log
+
+PASS 7 - Writing coefficient file
+           pracpico.coe
+
+PASS 8 - Writing VHDL memory definition file
+           pracpico.vhd
+
+PASS 9 - Writing Verilog memory definition file
+           pracpico.v
+
+PASS 10 - Writing System Generator memory definition file
+           pracpico.m
+
+PASS 11 - Writing memory definition files
+           pracpico.hex
+           pracpico.dec
+           pracpico.mem
+
+
+KCPSM3 successful.
+
+KCPSM3 complete.
+

@@ -98,8 +98,8 @@ module fsm #(
             state <= INIT;
         end
 
-        else if(!done)
-            case(state)
+        else if(!done) begin
+            case(state) 
                 // Initializing i, j, and k
                 INIT: begin
                     i <= 0;
@@ -301,6 +301,7 @@ module fsm #(
                 default: state <= INIT;
 
             endcase
+        end
 
         else begin
             state <= DONE;
