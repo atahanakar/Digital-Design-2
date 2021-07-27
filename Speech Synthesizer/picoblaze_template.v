@@ -7,6 +7,7 @@ module picoblaze_template
       ) (
         input             clk,
         input             start_pico,
+        input             address_ready_for_pico,
         output reg [7:0]  output_data,
         output reg        pico_done
       );
@@ -87,6 +88,7 @@ reg event_1hz;
  begin
     case (port_id[7:0])
         8'h0:    in_port <= start_pico;
+        8'h20:   in_port <= address_ready_for_pico;
         default: in_port <= 8'bx;
     endcase
 end

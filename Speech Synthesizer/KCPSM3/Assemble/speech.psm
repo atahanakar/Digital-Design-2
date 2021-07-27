@@ -3,6 +3,7 @@
 CONSTANT output_phoneme, 80
 CONSTANT pico_done, 40
 CONSTANT start_pico, 00
+CONSTANT address_ready_for_pico, 20
 
 CONSTANT ascii_SPACE      , 20    ; ascii code
 CONSTANT ascii_EXCLAIM    , 21    ; ascii code
@@ -616,8 +617,6 @@ endword:
 				INPUT s1, start_pico
 				COMPARE s1, 01
 				JUMP NZ, say_phoneme
-
-				;temporary part for pico_done
 
 				OUTPUT s0, output_phoneme
 				LOAD s1, 01
