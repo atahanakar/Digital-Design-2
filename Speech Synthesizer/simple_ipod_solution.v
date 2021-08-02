@@ -98,9 +98,11 @@ wire	[6:0]	 flash_mem_burstcount;
 wire            get_address;
 wire            pico_done;
 wire            start_pico;
+wire            audio_done;
+wire 	          start_audio;
 wire            silent;
 wire            decoded_silent;
-wire            address_ready;
+wire            start_flash;
 wire    [7:0]   audio_data;
 wire    [31:0]  out_clk_freq;
 wire            Clock_1Hz;
@@ -132,6 +134,7 @@ doublesync SYNC_CLOCK1Hz (
         .reset(1'b1)
     );
 
+// Speed Controller
 speed_controller #(
         .INITIAL_CLK_FREQ(32'd7200) // Speed of the clk we are using address fsm
     ) CONTROL_SPEED(
@@ -146,7 +149,7 @@ clk_divider #(
     )
     CLOCK22KHz (
         .in_clk(CLK_50M),
-        .out_clk_freq(out_clk_freq),
+        .out_clk_freq(32'd7200),
         .out_clk(Clock_7200Hz)
     );
 
@@ -157,36 +160,54 @@ doublesync SYNC_CLOCK22KHz (
         .reset(1'b1)
     );
 
-// Reading Flash Memory 
-read_flash FLASH_READ (
+// Audio Controller
+audio_player AUDIO (
+        .clk(Sync_Clock_7200Hz),
+        .faster_clk(CLK_50M),
+        .PLAY_BUTTON(SW[0]),
+        .flash_mem_readdata(flash_mem_readdata),
+        .start_audio(start_audio),
+        .silent(silent),
+        .audio_done(audio_done),
+        .audio_data(raw_audio_data)
+      );
+
+// Flash Controller
+read_flash FLASH_READER (
         .clk(CLK_50M),
-        .address_ready(address_ready),          // Coming from address fsm
+        .flash_mem_read(flash_mem_read),
+        .start_flash(start_flash),
         .flash_mem_waitrequest(flash_mem_waitrequest),
         .flash_mem_readdatavalid(flash_mem_readdatavalid),
-        .flash_mem_read(flash_mem_read),
+        .start_audio(start_audio),
         .flash_mem_byteenable(flash_mem_byteenable),
-        .flash_mem_burstcount(flash_mem_burstcount),
-        .get_address(get_address)               // Going to address fsm
-    );
+        .flash_mem_burstcount(flash_mem_burstcount)
+      );
 
-// Getting the address of the sample
-address_fsm ADDRESS_CONTROLLER(
-        .clk(Sync_Clock_7200Hz),
-        .pico_done(pico_done),                  // Coming from Picoblaze 
-        .start_pico(start_pico),                // Going to Picoblaze
-        .silent(silent),            
-        .flash_mem_address(flash_mem_address),
+// Narrator 
+narrator_ctrl NARRATOR(
+        .clk(CLK_50M),
         .start_address(start_address),
         .end_address(end_address),
-        .flash_mem_readdata(flash_mem_readdata),
-        .audio_data(raw_audio_data),
-        .get_address(get_address),              // Coming from read fsm
-        .address_ready(address_ready),          // Going to read fsm
-        .PLAY_BUTTON(SW[0]),                    // Up = Play, Down = Pause
-        .REVERSE_BUTTON(SW[1]),
-		.RESTART_BUTTON(SW[2])
-    );
+        .silent(silent),
+        .phoneme_sel(phoneme_sel)
+      );
 
+// Flash Memory Address Controller
+address_fsm ADDRESS(
+        .clk(Sync_Clock_7200Hz),
+        .faster_clk(CLK_50M),
+        .PLAY_BUTTON(SW[0]),
+        .pico_done(pico_done),
+        .audio_done(audio_done),
+        .start_address(start_address), // 24 bits
+        .end_address(end_address),     // 24 bits
+
+        .start_pico(start_pico),
+        .start_flash(start_flash),
+        .flash_mem_address(flash_mem_address)
+    );
+        
     assign LED[0] = start_pico;
     assign LED[1] = pico_done;
 
@@ -206,32 +227,23 @@ flash flash_inst (
     );
 
 // Displaying speed to HEX
-sseg_controller SSEG0(.in(flash_mem_address[3:0]),   .segs(HEX0));
-sseg_controller SSEG1(.in(flash_mem_address[7:4]),   .segs(HEX1));
-sseg_controller SSEG2(.in(flash_mem_address[11:8]),  .segs(HEX2));
-sseg_controller SSEG3(.in(flash_mem_address[15:12]), .segs(HEX3));
-sseg_controller SSEG5(.in(flash_mem_address[19:16]), .segs(HEX4));
-sseg_controller SSEG6(.in(flash_mem_address[22:20]), .segs(HEX5));
+sseg_controller SSEG0(.in(end_address[3:0]),   .segs(HEX0));
+sseg_controller SSEG1(.in(end_address[7:4]),   .segs(HEX1));
+sseg_controller SSEG2(.in(end_address[11:8]),  .segs(HEX2));
+sseg_controller SSEG3(.in(end_address[15:12]), .segs(HEX3));
+sseg_controller SSEG5(.in(end_address[19:16]), .segs(HEX4));
+sseg_controller SSEG6(.in(end_address[22:20]), .segs(HEX5));
 
 // Picoblaze 
 picoblaze_template  #(
-                    .clk_freq_in_hz(3600)
+                    .clk_freq_in_hz(32'd25_000_000)
                     ) 
             PICO_INST(
-                    .clk(Sync_Clock_7200Hz),
+                    .clk(CLK_50M),
                     .start_pico(start_pico),
                     .output_data(phoneme_sel), // Going to narrator
                     .pico_done(pico_done)
                     );
-
-// Narrator Control
-narrator_ctrl NARRATOR (
-                .clk(CLK_50M),
-                .phoneme_sel(phoneme_sel),
-                .start_address(start_address),
-                .end_address(end_address),
-                .silent(silent)
-            );
 
 //8b to 10b 
 encoder_8b10b ENCODE(

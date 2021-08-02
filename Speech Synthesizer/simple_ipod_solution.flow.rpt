@@ -1,5 +1,5 @@
 Flow report for simple_ipod_solution
-Mon Jul 26 03:27:53 2021
+Wed Jul 28 11:15:17 2021
 Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 SJ Web Edition
 
 
@@ -41,15 +41,15 @@ agreement for further details.
 +------------------------------------------------------------------------------+
 ; Flow Summary                                                                 ;
 +---------------------------------+--------------------------------------------+
-; Flow Status                     ; Successful - Mon Jul 26 03:27:40 2021      ;
+; Flow Status                     ; Successful - Wed Jul 28 02:51:53 2021      ;
 ; Quartus II 64-Bit Version       ; 15.0.0 Build 145 04/22/2015 SJ Web Edition ;
 ; Revision Name                   ; simple_ipod_solution                       ;
 ; Top-level Entity Name           ; simple_ipod_solution                       ;
 ; Family                          ; Cyclone V                                  ;
 ; Device                          ; 5CSEMA5F31C6                               ;
 ; Timing Models                   ; Final                                      ;
-; Logic utilization (in ALMs)     ; 2,611 / 32,070 ( 8 % )                     ;
-; Total registers                 ; 4750                                       ;
+; Logic utilization (in ALMs)     ; 3,105 / 32,070 ( 10 % )                    ;
+; Total registers                 ; 5849                                       ;
 ; Total pins                      ; 75 / 457 ( 16 % )                          ;
 ; Total virtual pins              ; 0                                          ;
 ; Total block memory bits         ; 41,216 / 4,065,280 ( 1 % )                 ;
@@ -68,7 +68,7 @@ agreement for further details.
 +-------------------+----------------------+
 ; Option            ; Setting              ;
 +-------------------+----------------------+
-; Start date & time ; 07/26/2021 03:25:24  ;
+; Start date & time ; 07/28/2021 02:49:41  ;
 ; Main task         ; Compilation          ;
 ; Revision Name     ; simple_ipod_solution ;
 +-------------------+----------------------+
@@ -84,7 +84,7 @@ agreement for further details.
 ; AUTO_RAM_RECOGNITION                              ; Off                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ; On                 ; --          ; --               ;
 ; AUTO_ROM_RECOGNITION                              ; Off                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ; On                 ; --          ; --               ;
 ; BLOCK_RAM_AND_MLAB_EQUIVALENT_POWER_UP_CONDITIONS ; Care                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ; Auto               ; --          ; --               ;
-; COMPILER_SIGNATURE_ID                             ; 193675816236189.162729512302500                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ; --                 ; --          ; --               ;
+; COMPILER_SIGNATURE_ID                             ; 193675816236189.162746578128204                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ; --                 ; --          ; --               ;
 ; DRC_DETAIL_MESSAGE_LIMIT                          ; 3000                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ; 10                 ; --          ; --               ;
 ; DRC_VIOLATION_MESSAGE_LIMIT                       ; 3000                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ; 30                 ; --          ; --               ;
 ; ENABLE_IP_DEBUG                                   ; On                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ; Off                ; --          ; --               ;
@@ -155,12 +155,12 @@ agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:20     ; 1.0                     ; 5006 MB             ; 00:00:37                           ;
+; Analysis & Synthesis      ; 00:00:20     ; 1.0                     ; 5032 MB             ; 00:00:36                           ;
 ; I/O Assignment Analysis   ; 00:00:14     ; 1.0                     ; 5529 MB             ; 00:00:14                           ;
-; Fitter                    ; 00:01:25     ; 1.8                     ; 6862 MB             ; 00:03:14                           ;
-; Assembler                 ; 00:00:09     ; 1.0                     ; 4934 MB             ; 00:00:09                           ;
-; TimeQuest Timing Analyzer ; 00:00:11     ; 1.0                     ; 5160 MB             ; 00:00:11                           ;
-; Total                     ; 00:02:19     ; --                      ; --                  ; 00:04:25                           ;
+; Fitter                    ; 00:01:21     ; 1.9                     ; 6891 MB             ; 00:03:12                           ;
+; Assembler                 ; 00:00:09     ; 1.0                     ; 4933 MB             ; 00:00:09                           ;
+; TimeQuest Timing Analyzer ; 08:23:17     ; 1.0                     ; 5162 MB             ; 00:00:13                           ;
+; Total                     ; 08:25:21     ; --                      ; --                  ; 00:04:24                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

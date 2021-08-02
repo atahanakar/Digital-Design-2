@@ -1,16 +1,18 @@
 
 `default_nettype none
  `define USE_PACOBLAZE
-module picoblaze_template
-      #(
-        parameter clk_freq_in_hz = 7200
-      ) (
-        input             clk,
-        input             start_pico,
-        input             address_ready_for_pico,
-        output reg [7:0]  output_data,
-        output reg        pico_done
-      );
+module 
+picoblaze_template
+#(
+parameter clk_freq_in_hz = 7200
+) (
+        input clk,
+        input start_pico,
+        output [7:0] output_data,
+        output pico_done
+           );
+
+
   
 //--
 //------------------------------------------------------------------------------------
@@ -36,6 +38,26 @@ reg interrupt_locking; //this is added to regulate the interrupt
 reg[26:0] int_count;
 reg event_1hz;
 
+//-- Signals for LCD operation
+//--
+//--
+
+reg        lcd_rw_control;
+reg[7:0]   lcd_output_data;
+pacoblaze3 led_8seg_kcpsm
+(
+                  .address(address),
+               .instruction(instruction),
+                   .port_id(port_id),
+              .write_strobe(write_strobe),
+                  .out_port(out_port),
+               .read_strobe(read_strobe),
+                   .in_port(in_port),
+                 .interrupt(interrupt),
+             .interrupt_ack(interrupt_ack),
+                     .reset(kcpsm3_reset),
+                       .clk(clk));
+
  wire [19:0] raw_instruction;
   
   pacoblaze_instruction_memory 
@@ -51,6 +73,33 @@ reg event_1hz;
 
     assign kcpsm3_reset = 0;                       
   
+//  ----------------------------------------------------------------------------------------------------------------------------------
+//  -- Interrupt 
+//  ----------------------------------------------------------------------------------------------------------------------------------
+//  --
+//  --
+//  -- Interrupt is used to provide a 1 second time reference.
+//  --
+//  --
+//  -- A simple binary counter is used to divide the 50MHz system clock and provide interrupt pulses.
+//  --
+
+
+// Note that because we are using clock enable we DO NOT need to synchronize with clk
+
+  //always @ (posedge clk)
+  //begin
+      //--divide 50MHz by 50,000,000 to form 1Hz pulses
+  //    if (int_count==(clk_freq_in_hz-1)) //clock enable
+  //  begin
+   //      int_count <= 0;
+    //     event_1hz <= 1;
+     // end else
+    //begin
+     //    int_count <= int_count + 1;
+      //   event_1hz <= 0;
+      //end
+ //end
 
  always @ (posedge clk or posedge interrupt_ack)  //FF with clock "clk" and reset "interrupt_ack"
  begin
@@ -58,7 +107,12 @@ reg event_1hz;
             interrupt <= 0;
       else
     begin 
-
+          //if (interrupt_on)   //clock enable
+            //    interrupt <= 1;
+              //else
+                //interrupt <= interrupt;
+      //end
+ //end
         if(!interrupt_locking) //needed to add bounce back to get into interrupt only once 
         begin
             interrupt <= 1;
@@ -88,7 +142,6 @@ reg event_1hz;
  begin
     case (port_id[7:0])
         8'h0:    in_port <= start_pico;
-        8'h20:   in_port <= address_ready_for_pico;
         default: in_port <= 8'bx;
     endcase
 end
@@ -104,17 +157,14 @@ end
 //   
   always @ (posedge clk)
   begin
-
         //port 80 hex 
-        if (write_strobe & port_id[7])  //clock enable 
-          output_data <= out_port; //pico_done
-
+        if (write_strobe & port_id[7])  
+          output_data <= out_port;
 
         //port 40 hex 
-        if (write_strobe & port_id[6])  //clock enable 
-          pico_done <= out_port;       //port number 40 is used for pico_done
-  
-            
+        if (write_strobe & port_id[6])  
+          pico_done <= out_port;       
+    
   end
 
 endmodule
